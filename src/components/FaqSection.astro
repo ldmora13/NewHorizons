@@ -1,0 +1,70 @@
+---
+import FaqItem from "@src/components/FaqItem.astro";
+
+/* =========================
+   Types
+========================= */
+export interface Faq {
+  question: string;
+  answer: string;
+  open?: boolean;
+}
+
+export interface FaqSectionProps {
+  id?: string;
+  items: Faq[];
+}
+
+/* =========================
+   Default / Sample Data
+========================= */
+const {
+  id = "faq",
+  items = [
+    {
+      question: "What types of ocean trips do you offer?",
+      answer:
+        "We offer snorkeling tours, scuba diving, island hopping, wildlife encounters, luxury liveaboard cruises, private yacht trips, surf adventures, and eco-kayaking experiences.",
+      open: true,
+    },
+    {
+      question: "Do I need prior experience to join your tours?",
+      answer:
+        "Not at all. Many of our tours are beginner-friendly. Certified guides provide full briefings and assistance throughout the experience.",
+    },
+    {
+      question: "Are your trips safe and insured?",
+      answer:
+        "Yes. All trips follow international safety standards, operated by licensed partners and include insurance coverage where applicable.",
+    },
+    {
+      question: "Do you support sustainable tourism?",
+      answer:
+        "Absolutely. We prioritize eco-friendly operators, support marine conservation, and promote responsible travel practices.",
+    },
+    {
+      question: "Can I customize my trip?",
+      answer:
+        "Yes. We offer flexible and tailor-made itineraries designed to match your preferences.",
+    },
+  ],
+} = Astro.props as FaqSectionProps;
+---
+
+<!-- FAQ Section -->
+<section
+  id={id}
+  class="relative py-16 md:py-20 overflow-hidden"
+>
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="space-y-4">
+      {items.map((item) => (
+        <FaqItem
+          question={item.question}
+          answer={item.answer}
+          open={item.open}
+        />
+      ))}
+    </div>
+  </div>
+</section>

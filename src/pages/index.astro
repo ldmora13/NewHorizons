@@ -1,0 +1,77 @@
+---
+import AboutSection from "@src/components/AboutSection.astro";
+import BlogSection from "@src/components/BlogSection.astro";
+import CtaSection from "@src/components/CtaSection.astro";
+import HeroSection from "@src/components/HeroSection.astro";
+import CountriesSection from "@src/components/CountriesSection.astro";
+import WhySection from "@src/components/WhySection.astro";
+import MainLayout from "@src/layouts/MainLayout.astro";
+import Map from "@src/components/Map.astro";
+---
+
+<MainLayout title="New Horizons Immigration Law | Internacional Migration Experts" description="At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad">
+  <HeroSection
+      backgroundImage="/img/judge.jpg"
+      badgeText="Trust our experience and let us be your guide in the complex world of international migration."
+      title="Get a Consultation for Your International Project"
+      description="Ready to take the next step towards your international project? Contact us today to schedule a consultation. 
+			We'll help you navigate the complexities of the immigration process and ensure a smooth and successful outcome."
+      avatars={[
+        { src: "/img/male1.jpg", alt: "Traveler 1" },
+        { src: "/img/male2.jpg", alt: "Traveler 2" },
+        { src: "/img/female1.jpg", alt: "Traveler 3" },
+        { src: "/img/female2.jpg", alt: "Traveler 4" },
+      ]}
+      reviewText="16000+ People Accompanied"
+      rating={5}
+      ctas={[
+        {
+          label: "Programs",
+          href: "/programs",
+          variant: "white",
+        },
+        {
+          label: "About Us",
+          href: "/about",
+          variant: "primary",
+        },
+      ]}
+  />
+  <Map />
+  <WhySection title="What Have We Achieved?" />
+  <CountriesSection />
+  <AboutSection />
+  <CtaSection />
+</MainLayout>
+<script>
+  /**
+   * Smooth Scroll
+   */
+  (function initSmoothScroll(offset: number = 80): void {
+    document
+      .querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+      .forEach((anchor) => {
+        anchor.addEventListener("click", (e: MouseEvent) => {
+          const href = anchor.getAttribute("href");
+          if (!href || href === "#" || href.length < 2) return;
+
+          const target = document.querySelector<HTMLElement>(href);
+          if (!target) return;
+
+          e.preventDefault();
+
+          const top =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            offset;
+
+          window.scrollTo({
+            top,
+            behavior: "smooth",
+          });
+
+          history.pushState(null, "", href);
+        });
+      });
+  })(80);
+</script>

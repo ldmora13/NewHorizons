@@ -1,0 +1,110 @@
+---
+import Header from '@src/components/Header.astro';
+import Footer from '@src/components/Footer.astro';
+
+import 'glightbox/dist/css/glightbox.min.css';
+import '@src/styles/style.css';
+import BackToTop from '@src/components/BackToTop.astro';
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Programs", href: "/countries" },
+  { label: "FAQ", href: "/faqs" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "Contact", href: "/contact" },
+];
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title = "New Horizons Immigration Law | Internacional Migration Experts",
+  description = "At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad",
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+
+    <!-- Primary Meta -->
+    <meta name="description" content={description} />
+    <meta name="author" content="Author Name" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href={Astro.url?.href || "https://newhorizonsimmigrationlaw.org/"} />
+    <link rel="icon" type="image/x-icon" href="/img/logo-white.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="font-sans bg-[#313e52]">
+    <Header
+      logo={{
+        src: "/img/logo-white.png",
+        alt: "New Horizons Immigration Law",
+        href: "/",
+      }}
+      navItems={navItems}
+      cta={{
+        label: "Get Start",
+        href: "/checkout",
+      }}
+    />
+    <main>
+      <slot />
+    </main>
+    <Footer
+      backgroundImage="/img/jaydeep-visa.jpg"
+      about={{
+        title: "About Us",
+        description:
+          "At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad. Our main focus is on the United States, Europe and the United Arab Emirates.",
+      }}
+      navigation={[
+        { label: "Immigrations Programs", href: "/programs" },
+        { label: "Privacy Policy", href: "/privacy" },
+        { label: "Terms of Service", href: "/terms" },
+      ]}
+      programs={[
+        "EB-1 - Outstanding Career",
+        "EB-2 NIW - National Benefit",
+        "EB-5 - Investment Programs",
+        "Permanent Residence",
+        "NewHorizons Club",
+      ]}
+      copyright="© 2026 New Horizons Immigration Law. All rights reserved."
+    />
+    <BackToTop />
+
+    <!-- Alpine.js -->
+    <script>
+      import Alpine from 'alpinejs';
+      declare global {
+        interface Window {
+          Alpine: typeof Alpine;
+        }
+      }
+      window.Alpine = Alpine;
+      Alpine.start();
+    </script>
+
+    <!-- GLightbox -->
+    <script>
+      import GLightbox from 'glightbox';
+
+      const hasLightbox = document.querySelector('.glightbox');
+      if (hasLightbox) {
+        GLightbox({
+          selector: '.glightbox',
+          touchNavigation: true,
+          loop: true,
+        });
+      }
+    </script>
+  </body>
+</html>

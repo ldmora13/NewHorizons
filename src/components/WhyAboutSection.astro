@@ -1,0 +1,95 @@
+---
+import WhyCard from "@src/components/WhyCard.astro";
+
+/* =========================
+   Types
+========================= */
+export interface WhyItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface WhyAboutSectionProps {
+  id?: string;
+  title: string;
+  backgroundImage: string;
+  items: WhyItem[];
+}
+
+/* =========================
+   Default / Sample Data
+========================= */
+const {
+  id = "why-about",
+  title = "Why Choose Ocean Travel",
+  backgroundImage = "/img/about-sea.jpg",
+  items = [
+    {
+      icon: "bi:person-badge",
+      title: "Expert Local Guides",
+      description:
+        "Experienced professionals with deep knowledge of marine environments.",
+    },
+    {
+      icon: "bi:shield-check",
+      title: "Safety & Trust",
+      description:
+        "International safety standards, insured trips, and certified operators.",
+    },
+    {
+      icon: "bi:leaf",
+      title: "Sustainable Travel",
+      description:
+        "Low-impact tourism supporting marine conservation and local communities.",
+    },
+    {
+      icon: "bi:people",
+      title: "Small Group Focus",
+      description:
+        "More personal, immersive, and relaxed travel experiences.",
+    },
+    {
+      icon: "bi:sliders",
+      title: "Flexible Itineraries",
+      description:
+        "Custom-designed journeys to match your travel style.",
+    },
+    {
+      icon: "bi:headset",
+      title: "24/7 Support",
+      description:
+        "Assistance before, during, and after your journey.",
+    },
+  ],
+} = Astro.props as WhyAboutSectionProps;
+---
+
+<!-- Why About Section -->
+<section
+  id={id}
+  class="relative py-16 md:py-20 overflow-hidden mb-6"
+  style={`background-image: url('${backgroundImage}');
+         background-size: cover;
+         background-position: center;
+         background-attachment: fixed;`}
+>
+  <!-- overlay -->
+  <div class="absolute inset-0 bg-linear-to-b from-slate-950/50 via-slate-950/30 to-slate-950/20"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-semibold text-white text-shadow mb-10">
+      {title}
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {items.map((item) => (
+        <WhyCard
+          icon={item.icon}
+          title={item.title}
+          description={item.description}
+        />
+      ))}
+    </div>
+  </div>
+</section>

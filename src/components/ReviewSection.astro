@@ -1,0 +1,90 @@
+---
+import ReviewCard from "@src/components/ReviewCard.astro";
+
+/* =========================
+   Types
+========================= */
+export interface Review {
+  name: string;
+  country: string;
+  avatar: string;
+  rating: number;
+  message: string;
+}
+
+export interface ReviewSectionProps {
+  id?: string;
+  reviews: Review[];
+}
+
+/* =========================
+   Default / Sample Data
+========================= */
+const {
+  id = "reviews",
+  reviews = [
+    {
+      name: "Daniel R.",
+      country: "Australia",
+      avatar: "/img/male1.jpg",
+      rating: 5,
+      message:
+        "Absolutely unforgettable experience. The guides were professional, friendly, and truly cared about safety and marine life.",
+    },
+    {
+      name: "Sophie L.",
+      country: "France",
+      avatar: "/img/female1.jpg",
+      rating: 5,
+      message:
+        "From booking to the actual trip, everything was seamless. Highly recommended for ocean lovers!",
+    },
+    {
+      name: "James T.",
+      country: "United States",
+      avatar: "/img/male2.jpg",
+      rating: 4.5,
+      message:
+        "Small group experience made it feel exclusive. Definitely worth every dollar.",
+    },
+    {
+      name: "Emily K.",
+      country: "Canada",
+      avatar: "/img/female2.jpg",
+      rating: 5,
+      message:
+        "Crystal-clear waters, stunning coral reefs, and an amazing crew. This was the highlight of our vacation.",
+    },
+    {
+      name: "Luca M.",
+      country: "Italy",
+      avatar: "/img/male3.jpg",
+      rating: 4.8,
+      message:
+        "Well-organized trip with breathtaking ocean views. The attention to detail and hospitality were outstanding.",
+    },
+    {
+      name: "Hannah W.",
+      country: "United Kingdom",
+      avatar: "/img/female3.jpg",
+      rating: 5,
+      message:
+        "A perfect balance of adventure and relaxation. I felt safe, inspired, and deeply connected to the ocean.",
+    },
+  ],
+} = Astro.props as ReviewSectionProps;
+---
+
+<!-- Review Section -->
+<section
+  id={id}
+  class="relative py-16 md:py-20 overflow-hidden"
+>
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {reviews.map((review) => (
+        <ReviewCard {...review} />
+      ))}
+    </div>
+  </div>
+</section>

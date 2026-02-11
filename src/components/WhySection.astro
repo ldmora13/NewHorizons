@@ -1,0 +1,106 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface WhyCard {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface WhySectionProps {
+  id?: string;
+  title?: string;
+  cards?: WhyCard[];
+  backgroundImage?: string;
+  minHeight?: string;
+  className?: string;
+}
+
+const {
+  id = "intro",
+  title = "What Have We Achieved?",
+  cards = [
+    {
+      icon: "bi:people",
+      title: "16000+ People Accompanied",
+      description: "With over 16,000 cases successfully handled, our experience is backed by tangible results."
+    },
+    {
+      icon: "bi:person-badge",
+      title: "2k Team Members",
+      description: "We have a multidisciplinary team of highly qualified professionals specialized in different migration categories."
+    },
+    {
+      icon: "bi:clock",
+      title: "+15 Years of Experience",
+      description: "Over 15 years of experience in the migration industry, we have helped thousands of people achieve their dreams."
+    },
+    {
+      icon: "bi:clipboard-data",
+      title: "91% Success Rate",
+      description: "Over 91% of our clients have successfully completed their migration journey."
+    },
+    {
+      icon: "bi:person-check",
+      title: "52k Successful Cases",
+      description: "Over 52,000 successful cases, representing a diverse range of cultures, languages, and traditions."
+    },
+    {
+      icon: "bi:globe-americas",
+      title: "100+ Countries Represented",
+      description: "Successful cases in more than 100 countries, representing a diverse range of cultures, languages, and traditions."
+    }
+  ],
+  backgroundImage = "/img/bg-1.jpg",
+  minHeight = "78vh",
+  className = "",
+} = Astro.props as WhySectionProps;
+---
+
+<!-- Why Section -->
+<section
+  id={id}
+  class={`relative overflow-hidden py-16 flex items-center ${className}`}
+  style={`
+    background-image: url('${backgroundImage}');
+    background-size: cover;
+    background-position: center;
+    min-height: ${minHeight};
+  `}
+>
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-[#020617]/60"></div>
+  
+
+  <!-- Soft Light Rays -->
+  <div class="pointer-events-none absolute inset-0 opacity-40 mix-blend-screen">
+    <div class="absolute -top-24 left-1/4 h-[140%] w-40 rotate-12 bg-linear-to-b from-cyan-200/20 via-cyan-200/0 to-transparent blur-2xl"></div>
+    <div class="absolute -top-24 left-2/3 h-[140%] w-56 -rotate-6 bg-linear-to-b from-sky-200/15 via-sky-200/0 to-transparent blur-2xl"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative w-full max-w-6xl mx-auto px-4 z-20">
+    <h2 class="text-2xl md:text-3xl font-semibold text-white mb-6">
+      {title}
+    </h2>
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {cards.map((card) => (
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
+              <Icon name={card.icon} class="text-white text-lg w-5 h-5" />
+            </div>
+            <div class="text-lg font-semibold text-white">{card.title}</div>
+          </div>
+          <div class="mt-2 text-base text-white/70">
+            {card.description}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Bottom Fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-28 bg-linear-to-t from-[#313e52] to-transparent"></div>
+</section>

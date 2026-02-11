@@ -1,0 +1,43 @@
+---
+import MainLayout from "@src/layouts/MainLayout.astro";
+import TourCard from "@src/components/TourCard.astro";
+import Pagination from "@src/components/Pagination.astro";
+
+import { getCollection } from "astro:content";
+import HeadingSection from "@src/components/HeadingSection.astro";
+
+const allCountries = await getCollection("countries");
+
+const maxPerPage = 8;
+const currentPage = 1;
+const totalPages = Math.ceil(allCountries.length / maxPerPage);
+const visibleCountries = allCountries.slice(0, maxPerPage);
+---
+
+<MainLayout title="Countries – Migration Programs">
+    <HeadingSection
+      title="Explore Migration Programs"
+      description="Discover our curated selection of migration programs from the US to Europe and the UAE. Find your perfect residency opportunity today."
+    />
+  <section class="relative py-16 md:py-20 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {visibleCountries.map((country) => (
+          <TourCard country={country} />
+        ))}
+      </div>
+
+      {totalPages > 1 && (
+        <div class="mt-16 flex justify-center">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            basePath="/countries"
+          />
+        </div>
+      )}
+
+    </div>
+  </section>
+</MainLayout>
