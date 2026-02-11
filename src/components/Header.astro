@@ -28,7 +28,11 @@ const { logo, navItems, cta } = props;
 const pathname = Astro.url.pathname;
 ---
 
-<header x-data="{ open: false }" class="fixed top-4 left-0 right-0 z-50">
+<header 
+  id="main-header"
+  x-data="{ open: false }" 
+  class="fixed top-4 left-0 right-0 z-50 transition-transform duration-300 ease-in-out"
+>
   <div class="mx-auto max-w-6xl px-4">
     <div
       class="flex h-16 items-center justify-between rounded-2xl border border-white/10 bg-black/30 backdrop-blur-md"
@@ -128,3 +132,51 @@ const pathname = Astro.url.pathname;
     </div>
   </div>
 </header>
+
+<script>
+  /**
+   * Header Scroll Logic
+   */
+  const header = document.getElementById('main-header');
+  let lastScrollY = window.pageYOffset;
+  let isScrolling = false;
+  const scrollOffset = 50; // Minimum scroll before hiding
+
+  const handleScroll = () => {
+    const currentScrollY = window.pageYOffset;
+    
+    // Always show at the top
+    if (currentScrollY <= 0) {
+      header?.classList.remove('-translate-y-[150%]');
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    // Determine direction
+    const diff = Math.abs(currentScrollY - lastScrollY);
+    
+    if (diff > scrollOffset) {
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down - hide
+        header?.classList.add('-translate-y-[150%]');
+      } else {
+        // Scrolling up - show
+        header?.classList.remove('-translate-y-[150%]');
+      }
+      lastScrollY = currentScrollY;
+    }
+  };
+
+  // Efficient Throttling (approx 10 events per second)
+  window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      window.requestAnimationFrame(() => {
+        handleScroll();
+        setTimeout(() => {
+          isScrolling = false;
+        }, 100);
+      });
+      isScrolling = true;
+    }
+  }, { passive: true });
+</script>
