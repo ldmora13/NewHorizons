@@ -11,7 +11,7 @@ export interface HeadingSectionProps {
 const {
   title = "Page Heading",
   description,
-  backgroundImage = "/img/hero-sea.jpg",
+  backgroundImage = "/img/passport-european-map.jpg",
 } = Astro.props as HeadingSectionProps;
 ---
 
@@ -21,7 +21,7 @@ const {
   style={`background-image:url('${backgroundImage}');background-size:cover;background-position:center;`}
 >
   <!-- overlay -->
-  <div class="absolute inset-0 bg-linear-to-t from-slate-950/70 via-slate-950/50 to-slate-950/20"></div>
+  <div class="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/70 to-slate-950/40"></div>
 
   <div class="relative z-10 max-w-6xl mx-auto px-4 text-center">
     <h1 class="text-3xl md:text-4xl font-semibold text-white">

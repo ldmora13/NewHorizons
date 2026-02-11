@@ -1,6 +1,7 @@
 ---
 import TourCard from "@src/components/TourCard.astro";
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 
 /* =========================
    Types
@@ -55,11 +56,54 @@ const visibleCountries = sortedCountries.slice(0, maxCountries);
       )}
     </div>
 
+    <div class="grid grid-cols-1 mb-5 w-1/2 mx-auto">
+      <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur overflow-hidden">
+        <div class="relative aspect-video overflow-hidden">
+          <a href={`/countries/france`}>
+            <img src="/img/countries/france/3.jpg" alt=france loading="lazy"
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+            />
+            <span class="absolute top-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs text-white">
+              Permanent Resident
+            </span>
+          </a>
+        </div>
+
+        <div class="p-5">
+          <h3 class="text-lg font-semibold text-white hover:text-blue-400">
+            <a href={`/countries/france`}>France Golden Visa</a>
+          </h3>
+
+          <p class="mt-1 text-sm text-white/70">
+            France is a country in Western Europe. It is bordered by Germany to the north, Italy to the east, Switzerland to the south, and Spain to the west.
+          </p>
+
+          <div class="mt-3 flex justify-between text-sm text-white/80">
+            <span class="flex items-center gap-2">
+              <Icon name="bi:clock" />
+                Permanent Residency
+            </span>
+            <span class="font-semibold text-white">5.000.00</span>
+          </div>
+        </div>
+      </article>
+    </div>
+    
+    <h2 class="text-2xl font-semibold text-white text-center my-10">Coming Soon</h2>
     <!-- Countries Grid -->
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {visibleCountries.map((country) => (
         <TourCard country={country} />
       ))}
     </div>
+  </div>
+  <div class="flex-row h-20 w-screen bg-white/10 backdrop-blur-md flex items-center justify-around mt-50">
+    <h3 class="text-white/70">Sponsor By</h3>
+    <div class="flex flex-row">
+      <img src="/img/sponsors/France-Visas.png" alt="France-Visas" class="h-12 w-auto ml-4" />
+      <img src="/img/sponsors/Abeona.jpg" alt="Abeona" class="h-12 w-auto ml-4" />
+      <img src="/img/sponsors/Ofii-logo.jpg" alt="Offi-logo" class="h-12 w-auto ml-4" />
+    </div>
+    
   </div>
 </section>

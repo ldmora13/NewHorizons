@@ -1,0 +1,212 @@
+---
+import Button from "./Button.astro";
+
+export interface ImmigrationProgramOption { 
+  id: string;
+  label: string;
+  description: string;
+}
+
+export interface CheckoutFormProps {
+  programs?: ImmigrationProgramOption[];
+  className?: string;
+}
+
+const {
+  programs = [
+    { id: "EB-1", label: "People with Extraordinary Career", description: "$2.000.00" },
+    { id: "EB-2", label: "National Benefit", description: "5.000.00" },
+    { id: "EB-5", label: "Investment Program", description: "8.000.00" },
+  ],
+  className = "",
+} = Astro.props as CheckoutFormProps;
+---
+
+<section class={`relative py-16 md:py-20 ${className}`}>
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+      <!-- LEFT: FORM -->
+      <form id="bookingForm" class="lg:col-span-2 rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-8 space-y-6">
+        <h2 class="text-2xl font-semibold text-white">
+          Immigration Checkout
+        </h2>
+
+        <!-- Package -->
+        <div>
+          <label class="block text-sm text-white/70 mb-2">Package Option</label>
+
+          <div class="space-y-3">
+            {programs.map((program, index) => (
+              <div>
+                <input
+                  name="program"
+                  value={program.id}
+                  data-label={program.label}
+                  data-price={program.description.replace(/[^\d.]/g, "")}
+                  checked={index === 0}
+                  class="peer hidden"
+                  id={`program-${program.id}`}
+                />
+                <label
+                  for={`program-${program.id}`}
+                  class="flex items-center justify-between rounded-xl bg-black/30 border border-white/20 peer-checked:border-blue-500 peer-checked:bg-blue-500/10 px-4 py-3 cursor-pointer transition"
+                >
+                  <span class="text-white">{program.id} - {program.label}</span>
+                  <span class="text-white/60 text-sm">{program.description}</span>
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Date -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm text-white/70 mb-2">Preferred Start Date</label>
+            <input
+              type="date"
+              name="date"
+              required
+              class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition"
+            />
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm text-white/70 mb-2">Full Name</label>
+            <input
+              type="text"
+              name="fullName"
+              placeholder="John Doe"
+              required
+              class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm text-white/70 mb-2">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="email@example.com"
+              required
+              class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm text-white/70 mb-2">Phone Number</label>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="+1 234 3456 7890"
+            required
+            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
+          />
+        </div>
+
+        <!-- Notes -->
+        <div>
+          <label class="block text-sm text-white/70 mb-2">Special Requests</label>
+          <textarea
+            name="notes"
+            rows="4"
+            placeholder="Share your goals, background, and any important details for your case"
+            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition resize-none"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full rounded-xl bg-white px-6 py-3 font-semibold text-black hover:bg-white/90 hover:scale-105 transition"
+        >
+          Confirm Checkout
+        </button>
+      </form>
+
+      <!-- RIGHT: SUMMARY -->
+      <div class="rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-6 space-y-4 lg:sticky lg:top-24">
+        <h3 class="text-xl font-semibold text-white">
+          Checkout Summary
+        </h3>
+
+        <div class="flex justify-between text-white/70">
+          <span>Program</span>
+          <span id="summaryProgram">{programs[0].id}</span>
+        </div>
+
+        <div class="flex justify-between text-white/70">
+          <span>Description</span>
+          <span id="summaryProgramLabel" class="text-right ml-4">{programs[0].label}</span>
+        </div>
+
+       <div class="border-t border-white/10 pt-4 flex justify-between text-white font-semibold text-lg">
+          <span>Plan Fee</span>
+          <span id="summaryTotal">{programs[0].description}</span>
+        </div>
+
+        <div class="pt-2 flex justify-end">
+          <button
+            type="button"
+            class="rounded-xl bg-white px-6 py-3 font-semibold text-black hover:bg-white/90 hover:scale-105 transition"
+          >
+            Pay now
+          </button>
+        </div>
+
+
+        <p class="text-sm text-white/50">
+          Transparent pricing • Personalized legal strategy • Secure process
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const form = document.getElementById('bookingForm') as HTMLFormElement;
+    const programInputs = document.querySelectorAll('input[name="program"]') as NodeListOf<HTMLInputElement>;
+
+    const summaryProgram = document.getElementById('summaryProgram');
+    const summaryProgramLabel = document.getElementById('summaryProgramLabel');
+    const summaryTotal = document.getElementById('summaryTotal');
+
+    function updateSummary() {
+      const selectedProgram = Array.from(programInputs).find((input) => input.checked);
+      const programId = selectedProgram?.value || 'EB-1';
+      const programLabel = selectedProgram?.dataset.label || 'People with Extraordinary Career';
+      const programPrice = Number.parseFloat(selectedProgram?.dataset.price || '0');
+
+      // Update summary
+      if (summaryProgram) summaryProgram.textContent = programId;
+      if (summaryProgramLabel) summaryProgramLabel.textContent = programLabel;
+      if (summaryTotal) summaryTotal.textContent = `$${programPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    programInputs.forEach((input) => input.addEventListener('change', updateSummary));
+
+    // Form submission
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      
+      console.log('Booking submitted:', data);
+      
+      // Here you can send data to your API
+      alert('Booking submitted successfully! Check console for details.');
+      
+      // Optional: Reset form
+      // form.reset();
+      // updateSummary();
+    });
+
+    // Initial update
+    updateSummary();
+  })();
+</script>
