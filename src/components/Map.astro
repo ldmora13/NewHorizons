@@ -1,7 +1,21 @@
 <section class="map__section">
 	<div class="map__background">
 		<div class="stars"></div>
+		<div class="stars stars-layer-2"></div>
+		<div class="shooting-stars">
+			<div class="shooting-star"></div>
+			<div class="shooting-star"></div>
+			<div class="shooting-star"></div>
+		</div>
 		<div class="clouds"></div>
+		<div class="nebula nebula-1"></div>
+		<div class="nebula nebula-2"></div>
+	</div>
+	
+	<!-- Título Superior -->
+	<div class="map__title">
+		<h2 class="title-main">Your Journey to New Horizons</h2>
+		<p class="title-subtitle">From the USA to Europe & UAE</p>
 	</div>
 	
 	<div class="map__container">
@@ -133,7 +147,7 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+		background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2a3150 100%);
 		overflow: hidden;
 	}
 	
@@ -143,7 +157,41 @@
 		pointer-events: none;
 	}
 	
-	/* Estrellas animadas mejoradas */
+	/* Título Superior */
+	.map__title {
+		position: absolute;
+		top: 8%;
+		left: 50%;
+		transform: translateX(-50%);
+		text-align: center;
+		z-index: 10;
+		animation: titleFloat 3s ease-in-out infinite;
+	}
+	
+	.title-main {
+		font-size: clamp(1.5rem, 4vw, 2.5rem);
+		font-weight: 800;
+		color: white;
+		margin: 0;
+		text-shadow: 0 0 20px rgba(96, 165, 250, 0.5),
+		             0 0 40px rgba(167, 139, 250, 0.3);
+		letter-spacing: 1px;
+	}
+	
+	.title-subtitle {
+		font-size: clamp(0.875rem, 2vw, 1.125rem);
+		color: rgba(255, 255, 255, 0.7);
+		margin: 0.5rem 0 0 0;
+		font-weight: 500;
+		text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+	}
+	
+	@keyframes titleFloat {
+		0%, 100% { transform: translate(-50%, 0); }
+		50% { transform: translate(-50%, -8px); }
+	}
+	
+	/* Estrellas - Capa 1 (más grandes) */
 	.stars {
 		position: absolute;
 		inset: 0;
@@ -167,15 +215,134 @@
 			radial-gradient(1px 1px at 12% 40%, white, transparent),
 			radial-gradient(2px 2px at 55% 95%, white, transparent),
 			radial-gradient(1px 1px at 75% 50%, white, transparent),
-			radial-gradient(2px 2px at 30% 75%, white, transparent);
-		background-size: 200% 200%;
-		animation: twinkle 6s ease-in-out infinite;
-		opacity: 0.7;
+			radial-gradient(2px 2px at 30% 75%, white, transparent),
+			radial-gradient(3px 3px at 88% 48%, rgba(96, 165, 250, 0.8), transparent),
+			radial-gradient(2px 2px at 22% 68%, rgba(167, 139, 250, 0.8), transparent),
+			radial-gradient(2px 2px at 78% 22%, rgba(244, 114, 182, 0.8), transparent);
+		background-size: 250% 250%;
+		animation: twinkle 8s ease-in-out infinite;
+		opacity: 0.9;
+	}
+	
+	/* Estrellas - Capa 2 (más pequeñas y numerosas) */
+	.stars-layer-2 {
+		background-image: 
+			radial-gradient(1px 1px at 18% 25%, white, transparent),
+			radial-gradient(1px 1px at 42% 55%, white, transparent),
+			radial-gradient(1px 1px at 67% 38%, white, transparent),
+			radial-gradient(1px 1px at 31% 72%, white, transparent),
+			radial-gradient(1px 1px at 89% 83%, white, transparent),
+			radial-gradient(1px 1px at 14% 47%, white, transparent),
+			radial-gradient(1px 1px at 53% 19%, white, transparent),
+			radial-gradient(1px 1px at 76% 91%, white, transparent),
+			radial-gradient(1px 1px at 38% 8%, white, transparent),
+			radial-gradient(1px 1px at 92% 34%, white, transparent),
+			radial-gradient(1px 1px at 27% 62%, white, transparent),
+			radial-gradient(1px 1px at 61% 77%, white, transparent),
+			radial-gradient(1px 1px at 8% 88%, white, transparent),
+			radial-gradient(1px 1px at 94% 12%, white, transparent),
+			radial-gradient(1px 1px at 48% 43%, white, transparent),
+			radial-gradient(1px 1px at 71% 58%, white, transparent),
+			radial-gradient(1px 1px at 19% 33%, white, transparent),
+			radial-gradient(1px 1px at 83% 69%, white, transparent),
+			radial-gradient(1px 1px at 36% 94%, white, transparent),
+			radial-gradient(1px 1px at 58% 6%, white, transparent);
+		animation: twinkle 10s ease-in-out infinite reverse;
+		opacity: 0.6;
 	}
 	
 	@keyframes twinkle {
-		0%, 100% { opacity: 0.5; }
-		50% { opacity: 0.8; }
+		0%, 100% { opacity: 0.4; }
+		50% { opacity: 1; }
+	}
+	
+	/* Estrellas Fugaces */
+	.shooting-stars {
+		position: absolute;
+		inset: 0;
+	}
+	
+	.shooting-star {
+		position: absolute;
+		width: 2px;
+		height: 2px;
+		background: white;
+		border-radius: 50%;
+		box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1),
+		            0 0 0 4px rgba(255, 255, 255, 0.05),
+		            0 0 10px rgba(255, 255, 255, 0.5);
+		animation: shootingStar 3s linear infinite;
+	}
+	
+	.shooting-star:nth-child(1) {
+		top: 10%;
+		left: 80%;
+		animation-delay: 0s;
+	}
+	
+	.shooting-star:nth-child(2) {
+		top: 30%;
+		left: 60%;
+		animation-delay: 4s;
+	}
+	
+	.shooting-star:nth-child(3) {
+		top: 50%;
+		left: 90%;
+		animation-delay: 7s;
+	}
+	
+	@keyframes shootingStar {
+		0% {
+			transform: translateX(0) translateY(0);
+			opacity: 1;
+		}
+		70% {
+			opacity: 1;
+		}
+		100% {
+			transform: translateX(-300px) translateY(300px);
+			opacity: 0;
+		}
+	}
+	
+	/* Nebulosas de Fondo */
+	.nebula {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(60px);
+		opacity: 0.15;
+		animation: nebulaFloat 20s ease-in-out infinite;
+	}
+	
+	.nebula-1 {
+		width: 400px;
+		height: 400px;
+		background: radial-gradient(circle, rgba(96, 165, 250, 0.4) 0%, transparent 70%);
+		top: 10%;
+		left: 10%;
+		animation-delay: 0s;
+	}
+	
+	.nebula-2 {
+		width: 350px;
+		height: 350px;
+		background: radial-gradient(circle, rgba(167, 139, 250, 0.3) 0%, transparent 70%);
+		bottom: 15%;
+		right: 15%;
+		animation-delay: 5s;
+	}
+	
+	@keyframes nebulaFloat {
+		0%, 100% {
+			transform: translate(0, 0) scale(1);
+		}
+		33% {
+			transform: translate(30px, -20px) scale(1.1);
+		}
+		66% {
+			transform: translate(-20px, 30px) scale(0.95);
+		}
 	}
 	
 	/* Nubes sutiles */
@@ -183,8 +350,8 @@
 		position: absolute;
 		inset: 0;
 		background: 
-			radial-gradient(ellipse at 30% 40%, rgba(148, 163, 184, 0.08) 0%, transparent 50%),
-			radial-gradient(ellipse at 70% 60%, rgba(148, 163, 184, 0.06) 0%, transparent 50%);
+			radial-gradient(ellipse at 30% 40%, rgba(148, 163, 184, 0.05) 0%, transparent 50%),
+			radial-gradient(ellipse at 70% 60%, rgba(148, 163, 184, 0.03) 0%, transparent 50%);
 		animation: cloudMove 15s ease-in-out infinite;
 	}
 	
@@ -263,6 +430,18 @@
 	
 	/* Responsive */
 	@media (max-width: 768px) {
+		.map__title {
+			top: 5%;
+		}
+		
+		.title-main {
+			font-size: 1.25rem;
+		}
+		
+		.title-subtitle {
+			font-size: 0.75rem;
+		}
+		
 		.map-text-title {
 			font-size: 11px;
 		}
@@ -275,6 +454,12 @@
 		.map-text-dream-emphasis {
 			font-size: 18px;
 		}
+		
+		.nebula-1,
+		.nebula-2 {
+			width: 250px;
+			height: 250px;
+		}
 	}
 </style>
 
@@ -284,69 +469,57 @@
 
 	gsap.registerPlugin(MotionPathPlugin);
 
-	// Configuración inicial del avión
-	gsap.set("#plane", { 
-		motionPath: {
-			path: "#flight-path",
-			align: "#flight-path",
-			alignOrigin: [0.5, 0.5],
-			start: 0,
-			end: 0
-		}
-	});
+	// Configuración inicial - Estado de reposo
+	const resetToInitialState = () => {
+		gsap.set("#plane", { 
+			motionPath: {
+				path: "#flight-path",
+				align: "#flight-path",
+				alignOrigin: [0.5, 0.5],
+				start: 0,
+				end: 0
+			},
+			scale: 1,
+			rotate: 0
+		});
 
-	// Timeline automático optimizado
+		gsap.set("#location-usa", { opacity: 1, scale: 1 });
+		gsap.set("#location-europe", { opacity: 1, scale: 1 });
+		gsap.set("#text-usa-group", { opacity: 0, y: 0 });
+		gsap.set("#text-europe-group", { opacity: 0, y: 0 });
+		gsap.set("#flight-path", { opacity: 0 });
+		gsap.set("#map-world", { scale: 1, x: 0, y: 0 });
+		gsap.set(".trail-particle", { opacity: 0, scale: 1 });
+	};
+
+	// Timeline con loop infinito
 	const createMapAnimation = () => {
 		const tl = gsap.timeline({
-			defaults: { ease: "power2.inOut" }
+			defaults: { ease: "power2.inOut" },
 		});
 
 		return tl
-			// === FASE 1: INTRO USA (1.8s) ===
-			.to("#location-usa", { 
-				opacity: 1, 
-				scale: 1.15,
-				duration: 0.5,
-				ease: "back.out(1.5)"
-			})
-			.to("#location-usa", { 
-				scale: 1,
-				duration: 0.3
-			})
+
 			.to("#text-usa-group", { 
 				opacity: 1, 
 				y: -10,
 				duration: 0.6
 			}, "-=0.4")
-			
-			// Pausa breve (0.6s)
-			.to({}, { duration: 0.6 })
-			
-			// === FASE 2: TRANSICIÓN (1.5s) ===
-			.to("#text-usa-group", { 
-				opacity: 0, 
-				y: 10,
-				duration: 0.5
-			})
-			.to("#map-world", { 
-				scale: 1, 
-				x: 0, 
-				y: 0,
-				duration: 1.2
-			}, "-=0.1")
-			
+
 			// === FASE 3: VUELO (2.5s) ===
 			.to("#flight-path", {
 				opacity: 0.75,
-				duration: 0.6
-			}, "-=0.4")
+				duration: 0.5
+			}, "-=0.2")
 			.to("#plane", {
 				motionPath: {
 					path: "#flight-path",
 					align: "#flight-path",
 					alignOrigin: [0.5, 0.5],
+					start: 0,
+					end: 1
 				},
-				duration: 2,
+				duration: 2.5,
 				ease: "power1.inOut",
 				onUpdate: function() {
 					const progress = this.progress();
@@ -357,70 +530,82 @@
 						duration: 0.2
 					});
 				}
-			}, "-=0.2")
+			}, "-=0.3")
+			
+			// Efecto de vuelo del avión
 			.to("#plane", {
 				scale: 1.1,
 				duration: 0.25,
 				yoyo: true,
-				repeat: 2,
+				repeat: 3,
 				ease: "sine.inOut",
 				rotate: 6
-			}, "-=1.5")
-			
-			// === FASE 4: DESTINO EUROPA (2s) ===
-			.to("#location-europe", { 
-				opacity: 1,
-				scale: 1.15,
-				duration: 0.5,
-				ease: "back.out(1.5)"
-			}, "-=0.8")
-			.to("#location-europe", { 
-				scale: 1,
-				duration: 0.3
-			})
+			}, "-=2")
+
 			.to("#text-europe-group", { 
 				opacity: 1, 
 				y: -10,
 				duration: 0.6
 			}, "-=0.6")
+
+			// Desvanecer ruta
 			.to("#flight-path", {
-				opacity: 0.3,
+				opacity: 0.2,
 				duration: 0.8
-			}, "-=0.8")
+			}, "-=1")
 			
-			// Pausa final (0.8s)
-			.to({}, { duration: 0.8 })
+			// === FASE 5: PAUSA EN DESTINO (1s) ===
+			.to({}, { duration: 1 })
 			
+			// === FASE 6: RESET SUAVE A VISTA GLOBAL (1.2s) ===
+			.to("#map-world", { 
+				scale: 1, 
+				x: 0, 
+				y: 0,
+				duration: 1.2
+			})
+			.to("#flight-path", {
+				opacity: 0,
+				duration: 0.6
+			}, "-=1.2")
+			.to(".trail-particle", {
+				opacity: 0,
+				duration: 0.4
+			}, "-=1");
 	};
 
-	// Intersection Observer para detectar visibilidad
+	// Inicializar cuando la página carga
 	const mapSection = document.querySelector('.map__section');
-	let hasPlayed = false;
-
-	const observer = new IntersectionObserver(
-		(entries) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting && !hasPlayed) {
-					hasPlayed = true;
-					const animation = createMapAnimation();
-					animation.play();
-					
-					// Opcional: permitir replay al salir y volver a entrar
-					// hasPlayed = false después de que la animación termine
-					//animation.eventCallback("onComplete", () => {
-					//	setTimeout(() => {
-					//		hasPlayed = false;
-					//	}, 2000);
-					//});
-				}
-			});
-		},
-		{
-			threshold: 0.25 // Inicia cuando el 25% de la sección es visible
-		}
-	);
 
 	if (mapSection) {
+		// Establecer estado inicial
+		resetToInitialState();
+		
+		// Intersection Observer para iniciar cuando sea visible
+		let animation: gsap.core.Timeline | null = null;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						if (!animation) {
+							animation = createMapAnimation();
+							}
+						animation.restart();
+						} else {
+							if (animation) {
+								animation.pause(0);
+							}
+							resetToInitialState();
+						}
+
+					});
+				},
+			{
+				threshold: 0.2
+			}
+		);
+
 		observer.observe(mapSection);
 	}
 </script>
