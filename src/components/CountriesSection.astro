@@ -89,21 +89,12 @@ const visibleCountries = sortedCountries.slice(0, maxCountries);
       </article>
     </div>
     
-    <h2 class="text-2xl font-semibold text-white text-center my-10">Coming Soon</h2>
+    <h2 class="text-2xl font-semibold text-white text-center mt-20 mb-5">Coming Soon</h2>
     <!-- Countries Grid -->
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {visibleCountries.map((country) => (
         <TourCard country={country} />
       ))}
     </div>
-  </div>
-  <div class="flex-row h-20 w-screen bg-white/10 backdrop-blur-md flex items-center justify-around mt-30 p-5">
-    <h3 class="text-white/70">Sponsor By</h3>
-    <div class="flex flex-row">
-      <img src="/img/sponsors/France-Visas.png" alt="France-Visas" class="h-8 md:h-12 w-auto ml-4" />
-      <img src="/img/sponsors/Abeona.jpg" alt="Abeona" class="h-8 md:h-12 w-auto ml-4" />
-      <img src="/img/sponsors/Ofii-logo.jpg" alt="Offi-logo" class="h-8 md:h-12 w-auto ml-4" />
-    </div>
-    
   </div>
 </section>
