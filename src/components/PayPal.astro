@@ -1,0 +1,53 @@
+---
+
+---
+<div id="paypal-container-wrapper" class="hidden space-y-4">
+  <div id="paypal-button-container" class="pt-4 min-h-37.5">
+    <!-- PayPal Buttons will be rendered here -->
+    <div class="text-center text-white/50 text-sm animate-pulse">Initializing PayPal...</div>
+  </div>
+  <p class="text-xs text-white/40 text-center">
+    Secure payment processed by PayPal. All transactions are encrypted.
+  </p>
+</div>
+
+<script is:inline src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
+<script>
+  // This script will be handled by the parent component or via custom events
+  window.addEventListener('init-paypal', (e: any) => {
+    const { amount, onApprove, onError } = e.detail;
+    const wrapper = document.getElementById('paypal-container-wrapper');
+    const container = document.getElementById('paypal-button-container');
+    
+    if (!wrapper || !container) return;
+    
+    wrapper.classList.remove('hidden');
+    container.innerHTML = ''; // Clear previous
+
+    // @ts-ignore
+    if (window.paypal) {
+      // @ts-ignore
+      window.paypal.Buttons({
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: amount.toFixed(2)
+              }
+            }]
+          });
+        },
+        onApprove: onApprove,
+        onError: onError
+      }).render('#paypal-button-container');
+    }
+  });
+
+  window.addEventListener('reset-paypal', () => {
+    const wrapper = document.getElementById('paypal-container-wrapper');
+    const container = document.getElementById('paypal-button-container');
+    if (wrapper) wrapper.classList.add('hidden');
+    if (container) container.innerHTML = '<div class="text-center text-white/50 text-sm animate-pulse">Initializing PayPal...</div>';
+  });
+</script>

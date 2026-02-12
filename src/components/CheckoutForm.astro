@@ -1,10 +1,11 @@
 ---
 import Button from "./Button.astro";
+import PayPal from "./PayPal.astro";
 
 export interface ImmigrationProgramOption { 
   id: string;
   label: string;
-  description: string;
+  description: string; // Used as price string
 }
 
 export interface CheckoutFormProps {
@@ -14,9 +15,9 @@ export interface CheckoutFormProps {
 
 const {
   programs = [
-    { id: "EB-1", label: "People with Extraordinary Career", description: "$2.000.00" },
-    { id: "EB-2", label: "National Benefit", description: "5.000.00" },
-    { id: "EB-5", label: "Investment Program", description: "8.000.00" },
+    { id: "EB-1", label: "People with Extraordinary Career", description: "$2000.00" },
+    { id: "EB-2", label: "National Benefit", description: "$5000.00" },
+    { id: "EB-5", label: "Investment Program", description: "$8000.00" },
   ],
   className = "",
 } = Astro.props as CheckoutFormProps;
@@ -24,189 +25,427 @@ const {
 
 <section class={`relative py-16 md:py-20 ${className}`}>
   <div class="max-w-6xl mx-auto px-4">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+    <!-- Success Message Container (Initially Hidden) -->
+    <div id="success-section" class="hidden text-center py-20 space-y-6 bg-white/5 border border-white/10 rounded-3xl backdrop-blur">
+      <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h2 class="text-4xl font-bold text-white">Payment Successful!</h2>
+      <p class="text-xl text-white/70">Thank you for your trust. Your immigration process has started.</p>
+      <div class="bg-black/30 p-6 rounded-2xl max-w-md mx-auto border border-white/10">
+        <p class="text-white/50 text-sm mb-1">Order Number</p>
+        <p id="order-id" class="text-2xl font-mono text-blue-400 font-bold tracking-wider"></p>
+      </div>
+      <p class="text-white/50">A confirmation email has been sent to your inbox.</p>
+      <a href="/" class="inline-block rounded-xl bg-white px-8 py-3 font-semibold text-black hover:bg-white/90 transition">
+        Return to Home
+      </a>
+    </div>
+
+    <div id="checkout-main-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+      
       <!-- LEFT: FORM -->
-      <form id="bookingForm" class="lg:col-span-2 rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-8 space-y-6">
+      <form id="checkoutForm" class="lg:col-span-2 rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-8 space-y-6">
         <h2 class="text-2xl font-semibold text-white">
           Immigration Checkout
         </h2>
 
-        <!-- Package -->
-        <div>
-          <label class="block text-sm text-white/70 mb-2">Package Option</label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Destination -->
+          <div>
+            <label class="block text-sm text-white/70 mb-2">Destination</label>
+            <input
+              type="text"
+              value="France"
+              readonly
+              disabled
+              class="w-full rounded-xl bg-black/50 border border-white/10 px-4 py-3 text-white/50 cursor-not-allowed"
+            />
+          </div>
 
-          <div class="space-y-3">
-            {programs.map((program, index) => (
-              <div>
-                <input
-                  name="program"
-                  value={program.id}
-                  data-label={program.label}
-                  data-price={program.description.replace(/[^\d.]/g, "")}
-                  checked={index === 0}
-                  class="peer hidden"
-                  id={`program-${program.id}`}
-                />
-                <label
-                  for={`program-${program.id}`}
-                  class="flex items-center justify-between rounded-xl bg-black/30 border border-white/20 peer-checked:border-blue-500 peer-checked:bg-blue-500/10 px-4 py-3 cursor-pointer transition"
-                >
-                  <span class="text-white">{program.id} - {program.label}</span>
-                  <span class="text-white/60 text-sm">{program.description}</span>
-                </label>
-              </div>
-            ))}
+          <!-- Program Option -->
+          <div>
+            <label class="block text-sm text-white/70 mb-2">Program Option</label>
+            <select
+              name="program"
+              id="programSelector"
+              required
+              class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition appearance-none"
+            >
+              {programs.map((program) => (
+                <option value={program.id} data-price={program.description.replace(/[^\d.]/g, "")} data-label={program.label}>
+                  {program.id} - {program.label} ({program.description})
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
-        <!-- Date -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Family Numbers -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-2xl bg-white/5 border border-white/10">
+          <div class="col-span-full mb-2">
+            <h3 class="text-white font-medium">Family Numbers</h3>
+          </div>
           <div>
-            <label class="block text-sm text-white/70 mb-2">Preferred Start Date</label>
+            <label class="block text-sm text-white/70 mb-2">Adults (Min. 1)</label>
             <input
-              type="date"
-              name="date"
+              type="number"
+              name="adults"
+              min="1"
+              value="1"
+              required
+              class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition"
+            />
+          </div>
+          <div>
+            <label class="block text-sm text-white/70 mb-2">Children</label>
+            <input
+              type="number"
+              name="children"
+              min="0"
+              value="0"
               required
               class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition"
             />
           </div>
         </div>
 
-        <!-- Contact -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Billing Details -->
+        <div class="space-y-4 pt-4 border-t border-white/10">
+          <h3 class="text-white font-medium">Billing Information</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm text-white/70 mb-2">Full Name</label>
+              <input
+                type="text"
+                name="fullName"
+                required
+                class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
+              />
+            </div>
+            <div>
+              <label class="block text-sm text-white/70 mb-2">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                required
+                class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
+              />
+            </div>
+          </div>
+
           <div>
-            <label class="block text-sm text-white/70 mb-2">Full Name</label>
+            <label class="block text-sm text-white/70 mb-2">Address</label>
             <input
               type="text"
-              name="fullName"
-              placeholder="John Doe"
+              name="address"
               required
               class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
             />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-sm text-white/70 mb-2">City</label>
+              <input
+                type="text"
+                name="city"
+                required
+                class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
+              />
+            </div>
+            <div>
+              <label class="block text-sm text-white/70 mb-2">Zip Code</label>
+              <input
+                type="text"
+                name="zip"
+                required
+                class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
+              />
+            </div>
+            <div>
+              <label class="block text-sm text-white/70 mb-2">Country</label>
+              <input
+                type="text"
+                name="country"
+                required
+                class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
+              />
+            </div>
           </div>
 
           <div>
-            <label class="block text-sm text-white/70 mb-2">Email Address</label>
+            <label class="block text-sm text-white/70 mb-2">Phone Number</label>
             <input
-              type="email"
-              name="email"
-              placeholder="email@example.com"
+              type="tel"
+              name="phone"
               required
               class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
             />
           </div>
-        </div>
-
-        <div>
-          <label class="block text-sm text-white/70 mb-2">Phone Number</label>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="+1 234 3456 7890"
-            required
-            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition"
-          />
-        </div>
-
-        <!-- Notes -->
-        <div>
-          <label class="block text-sm text-white/70 mb-2">Special Requests</label>
-          <textarea
-            name="notes"
-            rows="4"
-            placeholder="Share your goals, background, and any important details for your case"
-            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-blue-500 transition resize-none"
-          ></textarea>
         </div>
 
         <button
           type="submit"
-          class="w-full rounded-xl bg-white px-6 py-3 font-semibold text-black hover:bg-white/90 hover:scale-105 transition"
+          class="w-full rounded-xl bg-white px-6 py-4 font-bold text-black hover:bg-white/90 hover:scale-[1.02] transition active:scale-95"
         >
           Confirm Checkout
         </button>
       </form>
 
-      <!-- RIGHT: SUMMARY -->
-      <div class="rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-6 space-y-4 lg:sticky lg:top-24">
+      <!-- RIGHT: SUMMARY (Visible in Parallel) -->
+      <div id="summary-section" class="rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-6 space-y-6 lg:sticky lg:top-24">
         <h3 class="text-xl font-semibold text-white">
-          Checkout Summary
+          Order Summary
         </h3>
 
-        <div class="flex justify-between text-white/70">
-          <span>Program</span>
-          <span id="summaryProgram">{programs[0].id}</span>
+        <div id="summary-content" class="space-y-4 opacity-30 transition-opacity duration-500">
+          <div class="flex justify-between text-white/70">
+            <span>Destination</span>
+            <span class="text-white">France</span>
+          </div>
+          <div class="flex justify-between text-white/70">
+            <span>Program</span>
+            <span id="summary-program-id" class="text-white">—</span>
+          </div>
+          <div class="text-sm text-white/50 text-right italic" id="summary-program-label">Please confirm your details</div>
+          
+          <div class="flex justify-between text-white/70 border-t border-white/10 pt-4">
+            <span>Family Members</span>
+            <span id="summary-family" class="text-white">—</span>
+          </div>
+
+          <div class="border-t border-white/10 pt-4 flex justify-between text-white font-bold text-2xl">
+            <span>Total</span>
+            <span id="summary-total" class="text-blue-400">$0.00</span>
+          </div>
         </div>
 
-        <div class="flex justify-between text-white/70">
-          <span>Description</span>
-          <span id="summaryProgramLabel" class="text-right ml-4">{programs[0].label}</span>
+        <!-- PayPal Component Anidado -->
+        <PayPal />
+
+        <div id="summary-placeholder" class="text-center text-white/40 text-sm py-4 italic">
+          Complete the form and click "Confirm Checkout" to proceed with payment.
         </div>
-
-       <div class="border-t border-white/10 pt-4 flex justify-between text-white font-semibold text-lg">
-          <span>Plan Fee</span>
-          <span id="summaryTotal">{programs[0].description}</span>
-        </div>
-
-        <div class="pt-2 flex justify-end">
-          <button
-            type="button"
-            class="rounded-xl bg-white px-6 py-3 font-semibold text-black hover:bg-white/90 hover:scale-105 transition"
-          >
-            Pay now
-          </button>
-        </div>
-
-
-        <p class="text-sm text-white/50">
-          Transparent pricing • Personalized legal strategy • Secure process
-        </p>
       </div>
+
     </div>
   </div>
 </section>
 
 <script>
+  interface TransactionData {
+    client: {
+      fullName: string;
+      email: string;
+      address: string;
+      city: string;
+      zip: string;
+      country: string;
+      phone: string;
+    };
+    program: {
+      id: string;
+      label: string;
+      price: number;
+    };
+    family: {
+      adults: number;
+      children: number;
+      total: number;
+    };
+    payment: {
+      totalPaid: number;
+      date: string;
+      transactionId: string;
+    };
+  }
+
   (() => {
-    const form = document.getElementById('bookingForm') as HTMLFormElement;
-    const programInputs = document.querySelectorAll('input[name="program"]') as NodeListOf<HTMLInputElement>;
+    const form = document.getElementById('checkoutForm') as HTMLFormElement;
+    const summarySection = document.getElementById('summary-section');
+    const summaryContent = document.getElementById('summary-content');
+    const summaryPlaceholder = document.getElementById('summary-placeholder');
+    const mainGrid = document.getElementById('checkout-main-grid');
+    const successSection = document.getElementById('success-section');
+    
+    const summaryProgramId = document.getElementById('summary-program-id');
+    const summaryProgramLabel = document.getElementById('summary-program-label');
+    const summaryFamily = document.getElementById('summary-family');
+    const summaryTotal = document.getElementById('summary-total');
+    const orderIdDisplay = document.getElementById('order-id');
 
-    const summaryProgram = document.getElementById('summaryProgram');
-    const summaryProgramLabel = document.getElementById('summaryProgramLabel');
-    const summaryTotal = document.getElementById('summaryTotal');
+    let currentTransaction: Partial<TransactionData> = {};
 
-    function updateSummary() {
-      const selectedProgram = Array.from(programInputs).find((input) => input.checked);
-      const programId = selectedProgram?.value || 'EB-1';
-      const programLabel = selectedProgram?.dataset.label || 'People with Extraordinary Career';
-      const programPrice = Number.parseFloat(selectedProgram?.dataset.price || '0');
-
-      // Update summary
-      if (summaryProgram) summaryProgram.textContent = programId;
-      if (summaryProgramLabel) summaryProgramLabel.textContent = programLabel;
-      if (summaryTotal) summaryTotal.textContent = `$${programPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    function validateEmail(email: string) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    programInputs.forEach((input) => input.addEventListener('change', updateSummary));
+    function calculateTotal() {
+      const formData = new FormData(form);
+      const programId = formData.get('program') as string;
+      const selector = document.getElementById('programSelector') as HTMLSelectElement;
+      const selectedOption = selector.options[selector.selectedIndex];
+      const basePrice = parseFloat(selectedOption.dataset.price || '0');
+      
+      const adults = parseInt(formData.get('adults') as string) || 1;
+      const children = parseInt(formData.get('children') as string) || 0;
+      const totalMembers = adults + children;
 
-    // Form submission
+      const total = basePrice * totalMembers;
+
+      return {
+        total,
+        basePrice,
+        programId,
+        programLabel: selectedOption.dataset.label || '',
+        adults,
+        children,
+        totalMembers
+      };
+    }
+
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
       
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
+
+      // Validation
+      const errors = [];
+      if (!data.fullName) errors.push('El nombre completo es obligatorio');
+      if (!data.email || !validateEmail(data.email as string)) errors.push('Ingrese un email válido');
+      if (!data.address) errors.push('La dirección es obligatoria');
+      if (!data.city) errors.push('La ciudad es obligatoria');
+      if (!data.zip) errors.push('El código postal es obligatorio');
+      if (!data.country) errors.push('El país es obligatorio');
+      if (!data.phone) errors.push('El teléfono es obligatorio');
       
-      console.log('Booking submitted:', data);
+      const adults = parseInt(data.adults as string);
+      const children = parseInt(data.children as string);
       
-      // Here you can send data to your API
-      alert('Booking submitted successfully! Check console for details.');
+      if (isNaN(adults) || adults < 1) errors.push('Debe haber al menos un adulto');
+      if (isNaN(children) || children < 0) errors.push('La cantidad de niños no puede ser negativa');
+
+      if (errors.length > 0) {
+        alert('Errores detectados:\n\n- ' + errors.join('\n- '));
+        return;
+      }
+
+      const calc = calculateTotal();
+
+      // Store data temporarily
+      currentTransaction = {
+        client: {
+          fullName: data.fullName as string,
+          email: data.email as string,
+          address: data.address as string,
+          city: data.city as string,
+          zip: data.zip as string,
+          country: data.country as string,
+          phone: data.phone as string,
+        },
+        program: {
+          id: calc.programId,
+          label: calc.programLabel,
+          price: calc.basePrice
+        },
+        family: {
+          adults: calc.adults,
+          children: calc.children,
+          total: calc.totalMembers
+        }
+      };
+
+      // Update UI for Summary
+      if (summaryProgramId) summaryProgramId.textContent = calc.programId;
+      if (summaryProgramLabel) summaryProgramLabel.textContent = calc.programLabel;
+      if (summaryFamily) summaryFamily.textContent = `${calc.adults} Adults, ${calc.children} Children`;
+      if (summaryTotal) summaryTotal.textContent = `$${calc.total.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+
+      // Visual state update
+      if (summaryContent) summaryContent.style.opacity = '1';
+      if (summaryPlaceholder) summaryPlaceholder.classList.add('hidden');
       
-      // Optional: Reset form
-      // form.reset();
-      // updateSummary();
+      // Initialize PayPal via Custom Event
+      window.dispatchEvent(new CustomEvent('init-paypal', {
+        detail: {
+          amount: calc.total,
+          onApprove: async (data: any, actions: any) => {
+            const details = await actions.order.capture();
+            
+            const finalData: TransactionData = {
+              ...currentTransaction as any,
+              payment: {
+                totalPaid: calc.total,
+                date: new Date().toISOString(),
+                transactionId: details.id
+              }
+            };
+            
+            try {
+              console.log('Simulando persistencia local de la transacción...');
+              
+              // Guardar en localStorage para persistencia en el navegador del usuario (opcional)
+              const transactions = JSON.parse(localStorage.getItem('nh_transactions') || '[]');
+              transactions.push({
+                ...finalData,
+                timestamp: new Date().toISOString()
+              });
+              localStorage.setItem('nh_transactions', JSON.stringify(transactions));
+
+              // Construir URL de éxito con datos mockeados para el ticket
+              const successUrl = new URL('/payment-success', window.location.origin);
+              successUrl.searchParams.set('id', details.id);
+              successUrl.searchParams.set('amount', details.purchase_units[0].amount.value);
+              successUrl.searchParams.set('date', new Date().toISOString());
+              successUrl.searchParams.set('client', finalData.client.fullName);
+              successUrl.searchParams.set('service', finalData.program.id);
+              
+              // Simular un pequeño retraso de procesamiento para mejor UX
+              setTimeout(() => {
+                window.location.href = successUrl.toString();
+              }, 1500);
+
+            } catch (err) {
+              console.error('Error en simulación estática:', err);
+              // Si falla el localStorage, redirigimos de todos modos ya que el pago en PayPal fue exitoso
+              window.location.href = `/payment-success?id=${details.id}&amount=${details.purchase_units[0].amount.value}&client=${finalData.client.name}`;
+            }
+          },
+          onError: (err: any) => {
+            console.error('PayPal Error:', err);
+            alert('Ocurrió un error con el proceso de pago de PayPal.');
+          }
+        }
+      }));
     });
 
-    // Initial update
-    updateSummary();
+    // Reset Summary when inputs change (optional, but good for UX)
+    form.addEventListener('input', () => {
+      if (summaryContent && summaryContent.style.opacity === '1') {
+        summaryContent.style.opacity = '0.3';
+        if (summaryPlaceholder) summaryPlaceholder.classList.remove('hidden');
+        window.dispatchEvent(new CustomEvent('reset-paypal'));
+      }
+    });
   })();
 </script>
+
+<style>
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+  
+  option {
+    background-color: #1a1a1a;
+    color: white;
+  }
+</style>
