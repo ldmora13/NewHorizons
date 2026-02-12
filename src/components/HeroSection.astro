@@ -43,10 +43,13 @@ const {
 
 <section
   id={id}
-  class="relative flex min-h-screen items-center overflow-hidden py-16 bg-[#0f172a]"
-  style={`background-image:url('${backgroundImage}');background-size:cover;background-position:center;`}
+  class="relative flex min-h-screen items-center overflow-hidden py-16 bg-black"
+  style={`background-image:url('${backgroundImage}');background-size:cover;background-position: 20% center; 
+  @media (max-width: 768px) {
+    background-position: top center;
+  }`}
 >
-  <div class="absolute inset-0 bg-[#0f172a]/40"></div>
+  <div class="absolute inset-0 bg-black/70"></div>
   <!-- Content -->
   <div class="relative z-20 w-full">
     <div class="mx-auto max-w-6xl px-4 py-16 lg:py-24">
