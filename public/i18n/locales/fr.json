@@ -114,6 +114,9 @@
     "permanentResident": "Résident permanent",
     "permanentResidency": "Résidence permanente"
   },
+  "sponsor": {
+    "title": "Patrociné par"
+  },
   "checkout": {
     "title": "Checkout d'immigration",
     "destination": "Destination",

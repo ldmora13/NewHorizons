@@ -1,6 +1,17 @@
+---
+export interface SponsorSectionProps {
+  title: string;
+}
+
+const props = Astro.props as SponsorSectionProps;
+
+const {
+  title,
+} = props;
+---
 <section class="w-full flex flex-col items-center mt-20 px-5">
-    <h2 class="text-3xl md:text-4xl font-semibold text-white">
-        Sponsor by
+    <h2 class="text-3xl md:text-4xl font-semibold text-white" data-i18n="sponsor.title">
+        {title}
     </h2>
 
     <div class="relative w-full max-w-6xl mt-8 flex items-center">
