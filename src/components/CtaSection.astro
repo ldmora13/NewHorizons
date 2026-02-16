@@ -52,23 +52,27 @@ const {
   <div class="max-w-6xl mx-auto px-4 relative">
     <div class="rounded-3xl border border-white/10 bg-black/30 backdrop-blur-md p-10 text-center">
       
-      <h2 class="text-3xl md:text-4xl font-semibold text-white">
+      <h2 class="text-3xl md:text-4xl font-semibold text-white" data-i18n="cta.title">
         {title}
       </h2>
 
-      <p class="mt-4 text-white/80 max-w-2xl mx-auto">
+      <p class="mt-4 text-white/80 max-w-2xl mx-auto" data-i18n="cta.description">
         {description}
       </p>
 
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-        {buttons.map((btn) => (
-          <Button
-            href={btn.href}
-            label={btn.label}
-            variant={btn.variant}
-            className="max-sm:w-full"
-          />
-        ))}
+        {buttons.map((btn, index) => {
+          const buttonKeys = ['cta.getStartNow', 'cta.contactUs'];
+          return (
+            <Button
+              href={btn.href}
+              label={btn.label}
+              variant={btn.variant}
+              className="max-sm:w-full"
+              i18nKey={buttonKeys[index]}
+            />
+          );
+        })}
       </div>
 
     </div>

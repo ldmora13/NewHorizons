@@ -80,24 +80,36 @@ const {
 
   <!-- Content -->
   <div class="relative w-full max-w-6xl mx-auto px-4 z-20">
-    <h2 class="text-2xl md:text-3xl font-semibold text-white mb-6">
+    <h2 class="text-2xl md:text-3xl font-semibold text-white mb-6" data-i18n="why.title">
       {title}
     </h2>
 
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {cards.map((card) => (
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
-          <div class="flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-              <Icon name={card.icon} class="text-white text-lg w-5 h-5" />
+      {cards.map((card, index) => {
+        const cardKeys = [
+          'why.cards.peopleAccompanied',
+          'why.cards.teamMembers',
+          'why.cards.experience',
+          'why.cards.successRate',
+          'why.cards.successfulCases',
+          'why.cards.countriesRepresented'
+        ];
+        const titleKey = cardKeys[index] + '.title';
+        const descKey = cardKeys[index] + '.description';
+        return (
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
+                <Icon name={card.icon} class="text-white text-lg w-5 h-5" />
+              </div>
+              <div class="text-lg font-semibold text-white" data-i18n={titleKey}>{card.title}</div>
             </div>
-            <div class="text-lg font-semibold text-white">{card.title}</div>
+            <div class="mt-2 text-base text-white/70" data-i18n={descKey}>
+              {card.description}
+            </div>
           </div>
-          <div class="mt-2 text-base text-white/70">
-            {card.description}
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 

@@ -8,6 +8,8 @@ export interface ContactSectionProps {
   id?: string;
   title?: string;
   description?: string;
+  i18nTitle?: string;
+  i18nDescription?: string;
 
   address?: string;
   email?: string;
@@ -37,12 +39,12 @@ const {
         LEFT: CONTACT INFO
       ========================= -->
       <div>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white">
+        <h2 class="text-3xl md:text-4xl font-semibold text-white" data-i18n={Astro.props.i18nTitle}>
           {title}
         </h2>
 
         {description && (
-          <p class="mt-4 text-white/70 leading-relaxed">
+          <p class="mt-4 text-white/70 leading-relaxed" data-i18n={Astro.props.i18nDescription}>
             {description}
           </p>
         )}
@@ -54,7 +56,7 @@ const {
               <Icon name="bi:geo-alt" />
             </div>
             <div>
-              <div class="font-semibold text-white">Address</div>
+              <div class="font-semibold text-white" data-i18n="pages.contact.address">Address</div>
               <div class="text-sm text-white/70">{address}</div>
             </div>
           </div>
@@ -64,7 +66,7 @@ const {
               <Icon name="bi:envelope" />
             </div>
             <div>
-              <div class="font-semibold text-white">Email</div>
+              <div class="font-semibold text-white" data-i18n="pages.contact.email">Email</div>
               <a href={`mailto:${email}`} class="text-sm text-white/70 hover:text-white">
                 {email}
               </a>
@@ -76,7 +78,7 @@ const {
               <Icon name="bi:telephone" />
             </div>
             <div>
-              <div class="font-semibold text-white">Phone</div>
+              <div class="font-semibold text-white" data-i18n="pages.contact.phone">Phone</div>
               <a href={`tel:${phone}`} class="text-sm text-white/70 hover:text-white">
                 {phone}
               </a>
@@ -92,43 +94,47 @@ const {
         method="post"
         class="rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-8 space-y-6"
       >
-        <h3 class="text-2xl font-semibold text-white">
+        <h3 class="text-2xl font-semibold text-white" data-i18n="pages.contact.sendMessage">
           Send Us a Message
         </h3>
 
         <div>
-          <label class="block text-sm text-white/70 mb-2">Full Name</label>
+          <label class="block text-sm text-white/70 mb-2" data-i18n="pages.contact.fullName">Full Name</label>
           <input
             type="text"
             required
             placeholder="Your name"
             class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none"
+            data-i18n-attr='{"placeholder": "pages.contact.fullName"}'
           />
         </div>
 
         <div>
-          <label class="block text-sm text-white/70 mb-2">Email Address</label>
+          <label class="block text-sm text-white/70 mb-2" data-i18n="pages.contact.emailAddress">Email Address</label>
           <input
             type="email"
             required
             placeholder="email@example.com"
             class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none"
+            data-i18n-attr='{"placeholder": "pages.contact.emailAddress"}'
           />
         </div>
 
         <div>
-          <label class="block text-sm text-white/70 mb-2">Message</label>
+          <label class="block text-sm text-white/70 mb-2" data-i18n="pages.contact.message">Message</label>
           <textarea
             rows="4"
             required
             placeholder="Write your message..."
             class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none"
+            data-i18n-attr='{"placeholder": "pages.contact.message"}'
           ></textarea>
         </div>
 
         <button
           type="submit"
           class="w-full rounded-xl bg-white px-6 py-3 font-semibold text-black hover:bg-white/90 transition"
+          data-i18n="pages.contact.sendButton"
         >
           Send Message
         </button>

@@ -45,12 +45,12 @@ const visibleCountries = sortedCountries.slice(0, maxCountries);
 
     <!-- Heading -->
     <div class="mb-12 text-center">
-      <h2 class="text-3xl md:text-4xl font-semibold text-white">
+      <h2 class="text-3xl md:text-4xl font-semibold text-white" data-i18n="countries.title">
         {title}
       </h2>
 
       {description && (
-        <p class="mt-3 text-white/70 max-w-2xl mx-auto">
+        <p class="mt-3 text-white/70 max-w-2xl mx-auto" data-i18n="countries.description">
           {description}
         </p>
       )}
@@ -63,7 +63,7 @@ const visibleCountries = sortedCountries.slice(0, maxCountries);
             <img src="/img/countries/france/3.jpg" alt=france loading="lazy"
               class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
             />
-            <span class="absolute top-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs text-white">
+            <span class="absolute top-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs text-white" data-i18n="countries.permanentResident">
               Permanent Resident
             </span>
           </a>
@@ -79,7 +79,7 @@ const visibleCountries = sortedCountries.slice(0, maxCountries);
           </p>
 
           <div class="mt-3 flex justify-between text-sm text-white/80">
-            <span class="flex items-center gap-2">
+            <span class="flex items-center gap-2" data-i18n="countries.permanentResidency">
               <Icon name="bi:clock" />
                 Permanent Residency
             </span>
@@ -89,7 +89,7 @@ const visibleCountries = sortedCountries.slice(0, maxCountries);
       </article>
     </div>
     
-    <h2 class="text-2xl font-semibold text-white text-center mt-20 mb-5">Coming Soon</h2>
+    <h2 class="text-2xl font-semibold text-white text-center mt-20 mb-5" data-i18n="countries.comingSoon">Coming Soon</h2>
     <!-- Countries Grid -->
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {visibleCountries.map((country) => (

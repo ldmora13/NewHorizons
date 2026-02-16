@@ -1,3 +1,29 @@
+---
+export interface MapSectionProps {
+  id?: string;
+  title: string;
+  description: string;
+  usa_top: string;
+  usa_text: string;
+  europe_top: string;
+  europe_mid: string;
+  europe_bot: string;
+}
+
+const props = Astro.props as MapSectionProps;
+
+const {
+  id = "map",
+  title,
+  description,
+  usa_top,
+  usa_text,
+  europe_top,
+  europe_mid,
+  europe_bot
+} = props;
+---
+
 <section class="map__section">
 	<div class="map__background">
 		<div class="stars"></div>
@@ -14,8 +40,8 @@
 	
 	<!-- Título Superior -->
 	<div class="map__title">
-		<h2 class="title-main">Your Journey to New Horizons</h2>
-		<p class="title-subtitle">From the USA to Europe & UAE</p>
+		<h2 class="title-main" data-i18n="map.title">{title}</h2>
+		<p class="title-subtitle" data-i18n="map.description">{description}</p>
 	</div>
 	
 	<div class="map__container">
@@ -121,8 +147,8 @@
 						fill="url(#usaFlagPattern)" 
 						filter="url(#softShadow)"
 					/>
-					<text x="220" y="430" text-anchor="middle" class="map-text map-text-title">FROM</text>
-					<text x="220" y="450" text-anchor="middle" class="map-text map-text-location">USA</text>
+					<text x="220" y="430" text-anchor="middle" class="map-text map-text-title" data-i18n="map.usa_top">{usa_top}</text>
+					<text x="220" y="450" text-anchor="middle" class="map-text map-text-location" data-i18n="map.usa_text">{usa_text}</text>
 				</g>
 
 				<defs>
@@ -141,9 +167,9 @@
 						fill="url(#franceFlagPattern)" 
 						filter="url(#softShadow)"
 					/>
-					<text x="500" y="375" text-anchor="middle" class="map-text map-text-title">DESTINATION</text>
-					<text x="500" y="393" text-anchor="middle" class="map-text map-text-dream">To Fulfill Your</text>
-					<text x="500" y="415" text-anchor="middle" class="map-text map-text-dream-emphasis">Dreams</text>
+					<text x="500" y="375" text-anchor="middle" class="map-text map-text-title" data-i18n="map.europe_top">{europe_top}</text>
+					<text x="500" y="393" text-anchor="middle" class="map-text map-text-dream" data-i18n="map.europe_mid">{europe_mid}</text>
+					<text x="500" y="415" text-anchor="middle" class="map-text map-text-dream-emphasis" data-i18n="map.europe_bot">{europe_bot}</text>
 				</g>
 			</g>
 		</svg>

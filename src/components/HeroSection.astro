@@ -12,6 +12,7 @@ export interface HeroCTA {
   href: string;
   className?: string;
   variant?: string;
+  i18nKey?: string;
 }
 
 export interface HeroSectionProps {
@@ -58,6 +59,7 @@ const {
         <!-- Badge -->
         <span
           class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/50 px-6 py-2 text-sm text-black"
+          data-i18n="hero.badge"
         >
           {badgeText}
         </span>
@@ -65,12 +67,13 @@ const {
         <!-- Title -->
         <h1
           class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl text-shadow-lg"
+          data-i18n="hero.title"
         >
           {title}
         </h1>
 
         <!-- Description -->
-        <p class="mt-4 text-base leading-relaxed text-white sm:text-lg text-shadow-md">
+        <p class="mt-4 text-base leading-relaxed text-white sm:text-lg text-shadow-md" data-i18n="hero.description">
           {description}
         </p>
 
@@ -90,7 +93,7 @@ const {
 
           <!-- Rating -->
           <div class="flex flex-col ml-5 md:ml-0">
-            <div class="mb-0.5 font-semibold text-white">
+            <div class="mb-0.5 font-semibold text-white" data-i18n="hero.reviewText">
               {reviewText}
             </div>
             <div class="flex items-center gap-1 text-xl text-yellow-500">
@@ -108,6 +111,7 @@ const {
               href={cta.href}
               label={cta.label}
               variant={cta.variant}
+              i18nKey={cta.i18nKey}
             />
           ))}
         </div>

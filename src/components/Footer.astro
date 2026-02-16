@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 export interface FooterLink {
   label: string;
   href?: string;
+  i18nKey?: string;
 }
 
 export interface FooterSection {
@@ -19,10 +20,19 @@ export interface FooterProps {
   about: {
     title: string;
     description: string;
+    titleI18n?: string;
+    descriptionI18n?: string;
   };
   navigation: FooterLink[];
-  programs: string[];
+  programs: Array<string | { label: string; i18nKey?: string }>;
   copyright: string;
+  copyrightI18n?: string;
+  address?: string;
+  addressI18n?: string;
+  phone?: string;
+  phoneI18n?: string;
+  email?: string;
+  emailI18n?: string;
 }
 
 const props = Astro.props as FooterProps;
@@ -32,6 +42,13 @@ const {
   navigation,
   programs,
   copyright,
+  copyrightI18n,
+  address = "Washington/Wells, Chicago, IL 60602, USA",
+  addressI18n,
+  phone = "+1 (909) 547-3238",
+  phoneI18n,
+  email = "info@newhorizonsimmigrationlaw.org",
+  emailI18n,
 } = props;
 ---
 
@@ -48,21 +65,21 @@ const {
       <div class="relative grid grid-cols-1 gap-10 md:grid-cols-5">
         <!-- About -->
         <div class="md:col-span-2 md:pe-12">
-          <h3 class="mb-4 text-lg font-semibold">
+          <h3 class="mb-4 text-lg font-semibold" data-i18n={about.titleI18n}>
             {about.title}
           </h3>
-          <p class="leading-relaxed text-white/70">
+          <p class="leading-relaxed text-white/70" data-i18n={about.descriptionI18n}>
             {about.description}
           </p>
           <div class="flex flex-col mt-5 gap-y-5 items-start">
             <p class="flex flex-row items-start gap-x-5 text-sm md:text-lg"> <Icon name="bi:geo-alt-fill" class="text-2xl" /> 
-              Washington/Wells, Chicago, IL 60602, USA
+              <span data-i18n={addressI18n}>{address}</span>
             </p>
             <p class="flex flex-row items-start gap-x-5 text-sm md:text-lg"> <Icon name="bi:telephone" class="text-2xl" /> 
-              +1 (909) 547-3238
+              <span data-i18n={phoneI18n}>{phone}</span>
             </p>
             <p class="flex flex-row items-start gap-x-5 text-sm md:text-lg"> <Icon name="bi:envelope" class="text-2xl" /> 
-              info@newhorizonsimmigrationlaw.org
+              <span data-i18n={emailI18n}>{email}</span>
             </p>
           </div>
         </div>
@@ -70,19 +87,20 @@ const {
         
         <!-- Navigation -->
         <div>
-          <h3 class="mb-4 font-semibold">Navigation</h3>
+          <h3 class="mb-4 font-semibold" data-i18n="footer.navigation.title">Navigation</h3>
           <ul class="space-y-2 text-white/80">
             {navigation.map((item) => (
               <li>
                 {item.href ? (
                   <a
                     href={item.href}
+                    data-i18n={item.i18nKey}
                     class="transition hover:text-white"
                   >
                     {item.label}
                   </a>
                 ) : (
-                  <span>{item.label}</span>
+                  <span data-i18n={item.i18nKey}>{item.label}</span>
                 )}
               </li>
             ))}
@@ -92,14 +110,18 @@ const {
         <!-- Popular Destinations -->
         <div>
           <h3 class="mb-4 text-lg font-semibold">
-            <a href="/programs" class="transition hover:text-white">
+            <a href="/programs" class="transition hover:text-white" data-i18n="footer.programs.title">
               Programs
             </a>
           </h3>
           <ul class="space-y-2 text-white/80">
-            {programs.map((place) => (
-              <li>{place}</li>
-            ))}
+            {programs.map((place) => {
+              const placeLabel = typeof place === 'string' ? place : place.label;
+              const placeI18n = typeof place === 'string' ? undefined : place.i18nKey;
+              return (
+                <li data-i18n={placeI18n}>{placeLabel}</li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -107,7 +129,7 @@ const {
       <!-- Copyright -->
       <div class="relative mt-8 w-full py-4">
         <div class="mx-auto max-w-6xl px-4 text-center text-sm text-white">
-          <p>{copyright}</p>
+          <p data-i18n={copyrightI18n}>{copyright}</p>
         </div>
       </div>
     </div>

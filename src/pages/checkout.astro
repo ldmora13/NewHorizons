@@ -4,10 +4,12 @@ import HeadingSection from "@src/components/HeadingSection.astro";
 import MainLayout from "@src/layouts/MainLayout.astro";
 ---
 
-<MainLayout title="New Horizons Immigration Law Checkout" description="Select your immigration plan, review your summary, and complete your checkout securely.">
+<MainLayout>
   <HeadingSection 
     title="Start Your Immigration Plan"
-    description="Choose the right immigration program for your profile, complete your details, and continue to payment" />
+    description="Choose the right immigration program for your profile, complete your details, and continue to payment"
+    i18nTitle="pages.checkout.title"
+    i18nDescription="pages.checkout.description" />
   <!-- Booking form component would go here -->
   <CheckoutForm />
 </MainLayout>

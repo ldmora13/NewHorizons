@@ -1,0 +1,204 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "faq": "FAQ",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "getStart": "Get Start",
+    "learnMore": "Learn More",
+    "returnToHome": "Return to Home"
+  },
+  "header": {
+    "mobileMenu": "mobile menu"
+  },
+  "footer": {
+    "about": {
+      "title": "About Us",
+      "description": "At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad. Our main focus is on the United States, Europe and the United Arab Emirates."
+    },
+    "navigation": {
+      "title": "Navigation",
+      "immigrationPrograms": "Immigrations Programs",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "programs": {
+      "title": "Programs",
+      "eb1": "EB-1 - Outstanding Career",
+      "eb2": "EB-2 NIW - National Benefit",
+      "eb5": "EB-5 - Investment Programs",
+      "permanentResidence": "Permanent Residence",
+      "newHorizonsClub": "NewHorizons Club"
+    },
+    "copyright": "© 2026 New Horizons Immigration Law. All rights reserved.",
+    "address": "Washington/Wells, Chicago, IL 60602, USA",
+    "phone": "+1 (909) 547-3238",
+    "email": "info@newhorizonsimmigrationlaw.org"
+  },
+  "hero": {
+    "badge": "Trust our experience and let us be your guide in the complex world of international migration.",
+    "title": "Get a Consultation for Your International Project",
+    "description": "Ready to take the next step towards your international project? Contact us today to schedule a consultation. We'll help you navigate the complexities of the immigration process and ensure a smooth and successful outcome.",
+    "reviewText": "16000+ People Accompanied",
+    "cta": {
+      "programs": "Programs",
+      "aboutUs": "About Us"
+    }
+  },
+  "map": {
+    "title": "Your Journey to New Horizons",
+    "description": "From the USA to Europe & UAE",
+    "usa_top": "FROM",
+    "usa_text": "USA",
+    "europe_top": "DESTINATION",
+    "europe_mid": "To fulfill Your",
+    "europe_bot": "DREAMS"
+  },
+  "why": {
+    "title": "What Have We Achieved?",
+    "cards": {
+      "peopleAccompanied": {
+        "title": "16000+ People Accompanied",
+        "description": "With over 16,000 cases successfully handled, our experience is backed by tangible results."
+      },
+      "teamMembers": {
+        "title": "2k Team Members",
+        "description": "We have a multidisciplinary team of highly qualified professionals specialized in different migration categories."
+      },
+      "experience": {
+        "title": "+15 Years of Experience",
+        "description": "Over 15 years of experience in the migration industry, we have helped thousands of people achieve their dreams."
+      },
+      "successRate": {
+        "title": "91% Success Rate",
+        "description": "Over 91% of our clients have successfully completed their migration journey."
+      },
+      "successfulCases": {
+        "title": "52k Successful Cases",
+        "description": "Over 52,000 successful cases, representing a diverse range of cultures, languages, and traditions."
+      },
+      "countriesRepresented": {
+        "title": "100+ Countries Represented",
+        "description": "Successful cases in more than 100 countries, representing a diverse range of cultures, languages, and traditions."
+      }
+    }
+  },
+  "about": {
+    "title": "Programs We Offer",
+    "description": "We work with permanent residence projects and visas based on professional career, merits or investment. More than 16,000 people accompanied with 91% success rate.",
+    "features": {
+      "globalDestinations": "Global Destinations",
+      "certificateSpecialists": "Certificate Specialists"
+    },
+    "programs": {
+      "eb1": {
+        "title": "EB-1",
+        "description": "For people with outstanding career in sciences, arts, education, business or sports. Permanent residence based on exceptional merits and international recognition. No job offer required and has priority processing available."
+      },
+      "eb2": {
+        "title": "EB-2 NIW",
+        "description": "For professionals whose work generates national benefit or significant impact. Job offer exemption required, ideal for researchers, academics and outstanding professionals. Requires demonstrating that the applicant provides substantial benefit to the United States."
+      },
+      "eb5": {
+        "title": "EB-5",
+        "description": "Investment programs with permanent residence possibility for investors and their families. Different investment levels available according to project and location. Requires creating at least 10 jobs in the United States through the investment made."
+      }
+    }
+  },
+  "countries": {
+    "title": "Popular Countries to Live In",
+    "description": "Discover our most loved countries to live in, carefully curated for international inmigrants.",
+    "comingSoon": "Coming Soon",
+    "permanentResident": "Permanent Resident",
+    "permanentResidency": "Permanent Residency"
+  },
+  "checkout": {
+    "title": "Immigration Checkout",
+    "destination": "Destination",
+    "programOption": "Program Option",
+    "familyNumbers": "Family Numbers",
+    "adults": "Adults (Min. 1)",
+    "children": "Children",
+    "billingInformation": "Billing Information",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "address": "Address",
+    "city": "City",
+    "zipCode": "Zip Code",
+    "country": "Country",
+    "phoneNumber": "Phone Number",
+    "confirmCheckout": "Confirm Checkout",
+    "orderSummary": "Order Summary",
+    "program": "Program",
+    "familyMembers": "Family Members",
+    "total": "Total",
+    "pleaseConfirmDetails": "Please confirm your details",
+    "completeFormMessage": "Complete the form and click \"Confirm Checkout\" to proceed with payment.",
+    "paymentSuccessful": "Payment Successful!",
+    "thankYouMessage": "Thank you for your trust. Your immigration process has started.",
+    "orderNumber": "Order Number",
+    "confirmationEmailSent": "A confirmation email has been sent to your inbox.",
+    "programs": {
+      "eb1": "People with Extraordinary Career",
+      "eb2": "National Benefit",
+      "eb5": "Investment Program"
+    },
+    "validation": {
+      "fullNameRequired": "Full name is required",
+      "validEmailRequired": "Please enter a valid email",
+      "addressRequired": "Address is required",
+      "cityRequired": "City is required",
+      "zipRequired": "Zip code is required",
+      "countryRequired": "Country is required",
+      "phoneRequired": "Phone number is required",
+      "atLeastOneAdult": "There must be at least one adult",
+      "childrenCannotBeNegative": "Number of children cannot be negative"
+    }
+  },
+  "cta": {
+    "title": "Contact Us Now!",
+    "description": "We'll help you navigate the complexities of the immigration process and ensure a smooth and successful outcome.",
+    "getStartNow": "Get Start Now!",
+    "contactUs": "Contact Us"
+  },
+  "meta": {
+    "defaultTitle": "New Horizons Immigration Law | Internacional Migration Experts",
+    "defaultDescription": "At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad"
+  },
+  "pages": {
+    "checkout": {
+      "title": "Start Your Immigration Plan",
+      "description": "Choose the right immigration program for your profile, complete your details, and continue to payment"
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "description": "We're here to help! Reach out to us for any inquiries or assistance regarding your immigration process.",
+      "sendMessage": "Send Us a Message",
+      "fullName": "Full Name",
+      "emailAddress": "Email Address",
+      "message": "Message",
+      "sendButton": "Send Message",
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "description": "Find answers to common questions about our immigration programs, process, and services."
+    },
+    "reviews": {
+      "title": "Customer Reviews",
+      "description": "Hear from our satisfied clients who have successfully completed their immigration journey."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Learn more about our mission, values, and commitment to helping you achieve your immigration goals."
+    }
+  },
+  "validation": {
+    "errorsDetected": "Errors detected",
+    "paypalError": "An error occurred with the PayPal payment process."
+  }
+}

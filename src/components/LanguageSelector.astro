@@ -1,0 +1,133 @@
+---
+// Componente selector de idioma para proyectos estáticos
+---
+
+<div 
+  id="language-selector"
+  x-data="{ open: false, currentLang: 'en' }"
+  class="relative inline-block"
+>
+  <!-- Language Button -->
+  <button
+    @click="open = !open"
+    @click.outside="open = false"
+    class="flex items-center gap-2 rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white hover:bg-black/50 transition"
+    aria-label="Select language"
+  >
+    <span x-text="currentLang.toUpperCase()"></span>
+    <svg 
+      class="w-4 h-4 transition-transform"
+      :class="{ 'rotate-180': open }"
+      fill="none" 
+      stroke="currentColor" 
+      viewBox="0 0 24 24"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    x-show="open"
+    x-transition
+    style="display: none;"
+    class="absolute right-0 mt-2 w-48 rounded-lg border border-white/10 bg-black/90 backdrop-blur-md shadow-lg z-50"
+  >
+    <div class="py-1">
+      <button
+        data-lang="en"
+        class="w-full flex items-center gap-3 px-4 py-2 text-sm text-white hover:bg-white/10 transition text-left"
+      >
+        <span class="text-xl">🇺🇸</span>
+        <span>English</span>
+      </button>
+      <button
+        data-lang="es"
+        class="w-full flex items-center gap-3 px-4 py-2 text-sm text-white hover:bg-white/10 transition text-left"
+      >
+        <span class="text-xl">🇪🇸</span>
+        <span>Español</span>
+      </button>
+      <button
+        data-lang="fr"
+        class="w-full flex items-center gap-3 px-4 py-2 text-sm text-white hover:bg-white/10 transition text-left"
+      >
+        <span class="text-xl">🇫🇷</span>
+        <span>Français</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function initLanguageSelector() {
+    function waitForDependencies(callback, maxAttempts = 50) {
+      let attempts = 0;
+      const check = () => {
+        attempts++;
+        if (window.i18n && window.Alpine) {
+          callback();
+        } else if (attempts < maxAttempts) {
+          setTimeout(check, 100);
+        }
+      };
+      check();
+    }
+
+    waitForDependencies(() => {
+      const selector = document.getElementById('language-selector');
+      if (!selector) return;
+
+      // Función para actualizar el idioma mostrado
+      function updateDisplay() {
+        try {
+          if (window.i18n && window.i18n.getCurrentLanguage) {
+            const currentLang = window.i18n.getCurrentLanguage();
+            const alpineData = window.Alpine?.$data(selector);
+            if (alpineData) {
+              alpineData.currentLang = currentLang;
+            }
+          }
+        } catch (e) {
+          console.warn('Error updating language display:', e);
+        }
+      }
+
+      // Inicializar display
+      updateDisplay();
+      
+      // Escuchar cambios de idioma
+      if (window.i18n && window.i18n.onLanguageChange) {
+        window.i18n.onLanguageChange(() => {
+          updateDisplay();
+        });
+      }
+
+      // Manejar selección de idioma
+      const buttons = selector.querySelectorAll('button[data-lang]');
+      buttons.forEach((button) => {
+        button.addEventListener('click', async (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const lang = button.getAttribute('data-lang');
+          if (lang && ['en', 'es', 'fr'].includes(lang) && window.i18n) {
+            try {
+              if (window.i18n.changeLanguage) {
+                await window.i18n.changeLanguage(lang);
+              }
+              
+              // Cerrar dropdown
+              const alpineData = window.Alpine?.$data(selector);
+              if (alpineData) {
+                alpineData.open = false;
+              }
+            } catch (err) {
+              console.error('Error changing language:', err);
+            }
+          }
+        });
+      });
+    });
+  })();
+</script>

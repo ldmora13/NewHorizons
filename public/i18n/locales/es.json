@@ -1,0 +1,204 @@
+{
+  "common": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "programs": "Programas",
+    "faq": "Preguntas Frecuentes",
+    "reviews": "Reseñas",
+    "contact": "Contacto",
+    "getStart": "Comenzar",
+    "learnMore": "Saber Más",
+    "returnToHome": "Volver al Inicio"
+  },
+  "header": {
+    "mobileMenu": "menú móvil"
+  },
+  "footer": {
+    "about": {
+      "title": "Acerca de Nosotros",
+      "description": "En NewHorizons Immigrations Law, nos especializamos en ayudar a personas que desean vivir, trabajar o invertir en el extranjero. Nuestro enfoque principal está en Estados Unidos, Europa y los Emiratos Árabes Unidos."
+    },
+    "navigation": {
+      "title": "Navegación",
+      "immigrationPrograms": "Programas de Inmigración",
+      "privacyPolicy": "Política de Privacidad",
+      "termsOfService": "Términos de Servicio"
+    },
+    "programs": {
+      "title": "Programas",
+      "eb1": "EB-1 - Carrera Excepcional",
+      "eb2": "EB-2 NIW - Beneficio Nacional",
+      "eb5": "EB-5 - Programas de Inversión",
+      "permanentResidence": "Residencia Permanente",
+      "newHorizonsClub": "Club NewHorizons"
+    },
+    "copyright": "© 2026 New Horizons Immigration Law. Todos los derechos reservados.",
+    "address": "Washington/Wells, Chicago, IL 60602, USA",
+    "phone": "+1 (909) 547-3238",
+    "email": "info@newhorizonsimmigrationlaw.org"
+  },
+  "hero": {
+    "badge": "Confíe en nuestra experiencia y permítanos ser su guía en el complejo mundo de la migración internacional.",
+    "title": "Obtenga una Consulta para Su Proyecto Internacional",
+    "description": "¿Listo para dar el siguiente paso hacia su proyecto internacional? Contáctenos hoy para programar una consulta. Le ayudaremos a navegar las complejidades del proceso de inmigración y garantizar un resultado exitoso.",
+    "reviewText": "Más de 16000 Personas Acompañadas",
+    "cta": {
+      "programs": "Programas",
+      "aboutUs": "Acerca de Nosotros"
+    }
+  },
+  "map": {
+    "title": "Su Viaje en New Horizons",
+    "description": "De los Estados Unidos a Europa y los Emiratos Árabes Unidos",
+    "usa_top": "DE",
+    "usa_text": "USA",
+    "europe_top": "DESTINO",
+    "europe_mid": "Cumplir Sus",
+    "europe_bot": "SUEÑOS"
+  },
+  "why": {
+    "title": "¿Qué Hemos Logrado?",
+    "cards": {
+      "peopleAccompanied": {
+        "title": "Más de 16000 Personas Acompañadas",
+        "description": "Con más de 16,000 casos manejados exitosamente, nuestra experiencia está respaldada por resultados tangibles."
+      },
+      "teamMembers": {
+        "title": "2k Miembros del Equipo",
+        "description": "Contamos con un equipo multidisciplinario de profesionales altamente calificados especializados en diferentes categorías migratorias."
+      },
+      "experience": {
+        "title": "+15 Años de Experiencia",
+        "description": "Con más de 15 años de experiencia en la industria migratoria, hemos ayudado a miles de personas a alcanzar sus sueños."
+      },
+      "successRate": {
+        "title": "91% de Tasa de Éxito",
+        "description": "Más del 91% de nuestros clientes han completado exitosamente su proceso migratorio."
+      },
+      "successfulCases": {
+        "title": "52k Casos Exitosos",
+        "description": "Más de 52,000 casos exitosos, representando una amplia gama de culturas, idiomas y tradiciones."
+      },
+      "countriesRepresented": {
+        "title": "Más de 100 Países Representados",
+        "description": "Casos exitosos en más de 100 países, representando una amplia gama de culturas, idiomas y tradiciones."
+      }
+    }
+  },
+  "about": {
+    "title": "Programas que Ofrecemos",
+    "description": "Trabajamos con proyectos de residencia permanente y visas basadas en carrera profesional, méritos o inversión. Más de 16,000 personas acompañadas con una tasa de éxito del 91%.",
+    "features": {
+      "globalDestinations": "Destinos Globales",
+      "certificateSpecialists": "Especialistas Certificados"
+    },
+    "programs": {
+      "eb1": {
+        "title": "EB-1",
+        "description": "Para personas con carrera excepcional en ciencias, artes, educación, negocios o deportes. Residencia permanente basada en méritos excepcionales y reconocimiento internacional. No se requiere oferta de trabajo y tiene procesamiento prioritario disponible."
+      },
+      "eb2": {
+        "title": "EB-2 NIW",
+        "description": "Para profesionales cuyo trabajo genera beneficio nacional o impacto significativo. Se requiere exención de oferta de trabajo, ideal para investigadores, académicos y profesionales destacados. Requiere demostrar que el solicitante proporciona un beneficio sustancial a Estados Unidos."
+      },
+      "eb5": {
+        "title": "EB-5",
+        "description": "Programas de inversión con posibilidad de residencia permanente para inversionistas y sus familias. Diferentes niveles de inversión disponibles según el proyecto y la ubicación. Requiere crear al menos 10 empleos en Estados Unidos a través de la inversión realizada."
+      }
+    }
+  },
+  "countries": {
+    "title": "Países Populares para Vivir",
+    "description": "Descubra nuestros países más amados para vivir, cuidadosamente seleccionados para inmigrantes internacionales.",
+    "comingSoon": "Próximamente",
+    "permanentResident": "Residente Permanente",
+    "permanentResidency": "Residencia Permanente"
+  },
+  "checkout": {
+    "title": "Checkout de Inmigración",
+    "destination": "Destino",
+    "programOption": "Opción de Programa",
+    "familyNumbers": "Miembros de la Familia",
+    "adults": "Adultos (Mín. 1)",
+    "children": "Niños",
+    "billingInformation": "Información de Facturación",
+    "fullName": "Nombre Completo",
+    "emailAddress": "Dirección de Correo Electrónico",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "zipCode": "Código Postal",
+    "country": "País",
+    "phoneNumber": "Número de Teléfono",
+    "confirmCheckout": "Confirmar Checkout",
+    "orderSummary": "Resumen del Pedido",
+    "program": "Programa",
+    "familyMembers": "Miembros de la Familia",
+    "total": "Total",
+    "pleaseConfirmDetails": "Por favor confirme sus datos",
+    "completeFormMessage": "Complete el formulario y haga clic en \"Confirmar Checkout\" para proceder con el pago.",
+    "paymentSuccessful": "¡Pago Exitoso!",
+    "thankYouMessage": "Gracias por su confianza. Su proceso de inmigración ha comenzado.",
+    "orderNumber": "Número de Pedido",
+    "confirmationEmailSent": "Se ha enviado un correo electrónico de confirmación a su bandeja de entrada.",
+    "programs": {
+      "eb1": "Personas con Carrera Extraordinaria",
+      "eb2": "Beneficio Nacional",
+      "eb5": "Programa de Inversión"
+    },
+    "validation": {
+      "fullNameRequired": "El nombre completo es obligatorio",
+      "validEmailRequired": "Ingrese un correo electrónico válido",
+      "addressRequired": "La dirección es obligatoria",
+      "cityRequired": "La ciudad es obligatoria",
+      "zipRequired": "El código postal es obligatorio",
+      "countryRequired": "El país es obligatorio",
+      "phoneRequired": "El número de teléfono es obligatorio",
+      "atLeastOneAdult": "Debe haber al menos un adulto",
+      "childrenCannotBeNegative": "La cantidad de niños no puede ser negativa"
+    }
+  },
+  "cta": {
+    "title": "¡Contáctenos Ahora!",
+    "description": "Le ayudaremos a navegar las complejidades del proceso de inmigración y garantizar un resultado exitoso.",
+    "getStartNow": "¡Comenzar Ahora!",
+    "contactUs": "Contáctenos"
+  },
+  "meta": {
+    "defaultTitle": "New Horizons Immigration Law | Expertos en Migración Internacional",
+    "defaultDescription": "En NewHorizons Immigrations Law, nos especializamos en ayudar a personas que desean vivir, trabajar o invertir en el extranjero"
+  },
+  "pages": {
+    "checkout": {
+      "title": "Inicie Su Plan de Inmigración",
+      "description": "Elija el programa de inmigración adecuado para su perfil, complete sus datos y continúe con el pago"
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "description": "¡Estamos aquí para ayudar! Contáctenos para cualquier consulta o asistencia sobre su proceso de inmigración.",
+      "sendMessage": "Envíenos un Mensaje",
+      "fullName": "Nombre Completo",
+      "emailAddress": "Dirección de Correo Electrónico",
+      "message": "Mensaje",
+      "sendButton": "Enviar Mensaje",
+      "address": "Dirección",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono"
+    },
+    "faqs": {
+      "title": "Preguntas Frecuentes",
+      "description": "Encuentre respuestas a preguntas comunes sobre nuestros programas de inmigración, proceso y servicios."
+    },
+    "reviews": {
+      "title": "Reseñas de Clientes",
+      "description": "Escuche a nuestros clientes satisfechos que han completado exitosamente su proceso de inmigración."
+    },
+    "about": {
+      "title": "Acerca de Nosotros",
+      "description": "Conozca más sobre nuestra misión, valores y compromiso para ayudarle a alcanzar sus objetivos de inmigración."
+    }
+  },
+  "validation": {
+    "errorsDetected": "Errores detectados",
+    "paypalError": "Ocurrió un error con el proceso de pago de PayPal."
+  }
+}

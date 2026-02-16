@@ -32,14 +32,14 @@ const {
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
         </svg>
       </div>
-      <h2 class="text-4xl font-bold text-white">Payment Successful!</h2>
-      <p class="text-xl text-white/70">Thank you for your trust. Your immigration process has started.</p>
+      <h2 class="text-4xl font-bold text-white" data-i18n="checkout.paymentSuccessful">Payment Successful!</h2>
+      <p class="text-xl text-white/70" data-i18n="checkout.thankYouMessage">Thank you for your trust. Your immigration process has started.</p>
       <div class="bg-black/30 p-6 rounded-2xl max-w-md mx-auto border border-white/10">
-        <p class="text-white/50 text-sm mb-1">Order Number</p>
+        <p class="text-white/50 text-sm mb-1" data-i18n="checkout.orderNumber">Order Number</p>
         <p id="order-id" class="text-2xl font-mono text-blue-400 font-bold tracking-wider"></p>
       </div>
-      <p class="text-white/50">A confirmation email has been sent to your inbox.</p>
-      <a href="/" class="inline-block rounded-xl bg-white px-8 py-3 font-semibold text-black hover:bg-white/90 transition">
+      <p class="text-white/50" data-i18n="checkout.confirmationEmailSent">A confirmation email has been sent to your inbox.</p>
+      <a href="/" class="inline-block rounded-xl bg-white px-8 py-3 font-semibold text-black hover:bg-white/90 transition" data-i18n="common.returnToHome">
         Return to Home
       </a>
     </div>
@@ -48,14 +48,14 @@ const {
       
       <!-- LEFT: FORM -->
       <form id="checkoutForm" class="lg:col-span-2 rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-8 space-y-6">
-        <h2 class="text-2xl font-semibold text-white">
+        <h2 class="text-2xl font-semibold text-white" data-i18n="checkout.title">
           Immigration Checkout
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Destination -->
           <div>
-            <label class="block text-sm text-white/70 mb-2">Destination</label>
+            <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.destination">Destination</label>
             <input
               type="text"
               value="France"
@@ -67,7 +67,7 @@ const {
 
           <!-- Program Option -->
           <div>
-            <label class="block text-sm text-white/70 mb-2">Program Option</label>
+            <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.programOption">Program Option</label>
             <select
               name="program"
               id="programSelector"
@@ -86,10 +86,10 @@ const {
         <!-- Family Numbers -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-2xl bg-white/5 border border-white/10">
           <div class="col-span-full mb-2">
-            <h3 class="text-white font-medium">Family Numbers</h3>
+            <h3 class="text-white font-medium" data-i18n="checkout.familyNumbers">Family Numbers</h3>
           </div>
           <div>
-            <label class="block text-sm text-white/70 mb-2">Adults (Min. 1)</label>
+            <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.adults">Adults (Min. 1)</label>
             <input
               type="number"
               name="adults"
@@ -100,7 +100,7 @@ const {
             />
           </div>
           <div>
-            <label class="block text-sm text-white/70 mb-2">Children</label>
+            <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.children">Children</label>
             <input
               type="number"
               name="children"
@@ -114,11 +114,11 @@ const {
 
         <!-- Billing Details -->
         <div class="space-y-4 pt-4 border-t border-white/10">
-          <h3 class="text-white font-medium">Billing Information</h3>
+          <h3 class="text-white font-medium" data-i18n="checkout.billingInformation">Billing Information</h3>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm text-white/70 mb-2">Full Name</label>
+              <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.fullName">Full Name</label>
               <input
                 type="text"
                 name="fullName"
@@ -127,7 +127,7 @@ const {
               />
             </div>
             <div>
-              <label class="block text-sm text-white/70 mb-2">Email Address</label>
+              <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.emailAddress">Email Address</label>
               <input
                 type="email"
                 name="email"
@@ -138,7 +138,7 @@ const {
           </div>
 
           <div>
-            <label class="block text-sm text-white/70 mb-2">Address</label>
+            <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.address">Address</label>
             <input
               type="text"
               name="address"
@@ -149,7 +149,7 @@ const {
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label class="block text-sm text-white/70 mb-2">City</label>
+              <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.city">City</label>
               <input
                 type="text"
                 name="city"
@@ -158,7 +158,7 @@ const {
               />
             </div>
             <div>
-              <label class="block text-sm text-white/70 mb-2">Zip Code</label>
+              <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.zipCode">Zip Code</label>
               <input
                 type="text"
                 name="zip"
@@ -167,7 +167,7 @@ const {
               />
             </div>
             <div>
-              <label class="block text-sm text-white/70 mb-2">Country</label>
+              <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.country">Country</label>
               <input
                 type="text"
                 name="country"
@@ -178,7 +178,7 @@ const {
           </div>
 
           <div>
-            <label class="block text-sm text-white/70 mb-2">Phone Number</label>
+            <label class="block text-sm text-white/70 mb-2" data-i18n="checkout.phoneNumber">Phone Number</label>
             <input
               type="tel"
               name="phone"
@@ -191,6 +191,7 @@ const {
         <button
           type="submit"
           class="w-full rounded-xl bg-white px-6 py-4 font-bold text-black hover:bg-white/90 hover:scale-[1.02] transition active:scale-95"
+          data-i18n="checkout.confirmCheckout"
         >
           Confirm Checkout
         </button>
@@ -198,28 +199,28 @@ const {
 
       <!-- RIGHT: SUMMARY (Visible in Parallel) -->
       <div id="summary-section" class="rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-6 space-y-6 lg:sticky lg:top-24">
-        <h3 class="text-xl font-semibold text-white">
+        <h3 class="text-xl font-semibold text-white" data-i18n="checkout.orderSummary">
           Order Summary
         </h3>
 
         <div id="summary-content" class="space-y-4 opacity-30 transition-opacity duration-500">
           <div class="flex justify-between text-white/70">
-            <span>Destination</span>
+            <span data-i18n="checkout.destination">Destination</span>
             <span class="text-white">France</span>
           </div>
           <div class="flex justify-between text-white/70">
-            <span>Program</span>
+            <span data-i18n="checkout.program">Program</span>
             <span id="summary-program-id" class="text-white">—</span>
           </div>
-          <div class="text-sm text-white/50 text-right italic" id="summary-program-label">Please confirm your details</div>
+          <div class="text-sm text-white/50 text-right italic" id="summary-program-label" data-i18n="checkout.pleaseConfirmDetails">Please confirm your details</div>
           
           <div class="flex justify-between text-white/70 border-t border-white/10 pt-4">
-            <span>Family Members</span>
+            <span data-i18n="checkout.familyMembers">Family Members</span>
             <span id="summary-family" class="text-white">—</span>
           </div>
 
           <div class="border-t border-white/10 pt-4 flex justify-between text-white font-bold text-2xl">
-            <span>Total</span>
+            <span data-i18n="checkout.total">Total</span>
             <span id="summary-total" class="text-blue-400">$0.00</span>
           </div>
         </div>
@@ -227,7 +228,7 @@ const {
         <!-- PayPal Component Anidado -->
         <PayPal />
 
-        <div id="summary-placeholder" class="text-center text-white/40 text-sm py-4 italic">
+        <div id="summary-placeholder" class="text-center text-white/40 text-sm py-4 italic" data-i18n="checkout.completeFormMessage">
           Complete the form and click "Confirm Checkout" to proceed with payment.
         </div>
       </div>
@@ -280,6 +281,14 @@ const {
 
     let currentTransaction: Partial<TransactionData> = {};
 
+    // Helper function for translations
+    function getTranslation(key: string): string {
+      if ((window as any).i18n && (window as any).i18n.getTranslation) {
+        return (window as any).i18n.getTranslation(key);
+      }
+      return key;
+    }
+
     function validateEmail(email: string) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
@@ -316,22 +325,24 @@ const {
 
       // Validation
       const errors = [];
-      if (!data.fullName) errors.push('El nombre completo es obligatorio');
-      if (!data.email || !validateEmail(data.email as string)) errors.push('Ingrese un email válido');
-      if (!data.address) errors.push('La dirección es obligatoria');
-      if (!data.city) errors.push('La ciudad es obligatoria');
-      if (!data.zip) errors.push('El código postal es obligatorio');
-      if (!data.country) errors.push('El país es obligatorio');
-      if (!data.phone) errors.push('El teléfono es obligatorio');
+      
+      if (!data.fullName) errors.push(getTranslation('checkout.validation.fullNameRequired'));
+      if (!data.email || !validateEmail(data.email as string)) errors.push(getTranslation('checkout.validation.validEmailRequired'));
+      if (!data.address) errors.push(getTranslation('checkout.validation.addressRequired'));
+      if (!data.city) errors.push(getTranslation('checkout.validation.cityRequired'));
+      if (!data.zip) errors.push(getTranslation('checkout.validation.zipRequired'));
+      if (!data.country) errors.push(getTranslation('checkout.validation.countryRequired'));
+      if (!data.phone) errors.push(getTranslation('checkout.validation.phoneRequired'));
       
       const adults = parseInt(data.adults as string);
       const children = parseInt(data.children as string);
       
-      if (isNaN(adults) || adults < 1) errors.push('Debe haber al menos un adulto');
-      if (isNaN(children) || children < 0) errors.push('La cantidad de niños no puede ser negativa');
+      if (isNaN(adults) || adults < 1) errors.push(getTranslation('checkout.validation.atLeastOneAdult'));
+      if (isNaN(children) || children < 0) errors.push(getTranslation('checkout.validation.childrenCannotBeNegative'));
 
       if (errors.length > 0) {
-        alert('Errores detectados:\n\n- ' + errors.join('\n- '));
+        const errorTitle = getTranslation('validation.errorsDetected') || 'Errors detected:';
+        alert(errorTitle + '\n\n- ' + errors.join('\n- '));
         return;
       }
 
@@ -363,8 +374,15 @@ const {
       // Update UI for Summary
       if (summaryProgramId) summaryProgramId.textContent = calc.programId;
       if (summaryProgramLabel) summaryProgramLabel.textContent = calc.programLabel;
-      if (summaryFamily) summaryFamily.textContent = `${calc.adults} Adults, ${calc.children} Children`;
-      if (summaryTotal) summaryTotal.textContent = `$${calc.total.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+      const adultsText = getTranslation('checkout.adults').split('(')[0].trim();
+      const childrenText = getTranslation('checkout.children');
+      if (summaryFamily) summaryFamily.textContent = `${calc.adults} ${adultsText}, ${calc.children} ${childrenText}`;
+      if (summaryTotal) {
+        const formattedTotal = (window as any).i18n && (window as any).i18n.formatCurrency 
+          ? (window as any).i18n.formatCurrency(calc.total)
+          : `$${calc.total.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+        summaryTotal.textContent = formattedTotal;
+      }
 
       // Visual state update
       if (summaryContent) summaryContent.style.opacity = '1';
@@ -418,7 +436,8 @@ const {
           },
           onError: (err: any) => {
             console.error('PayPal Error:', err);
-            alert('Ocurrió un error con el proceso de pago de PayPal.');
+            const errorMsg = getTranslation('validation.paypalError') || 'An error occurred with the PayPal payment process.';
+            alert(errorMsg);
           }
         }
       }));

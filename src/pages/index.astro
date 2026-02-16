@@ -9,7 +9,7 @@ import Map from "@src/components/Map.astro";
 import Sponsors from "@src/components/Sponsors.astro";
 ---
 
-<MainLayout title="New Horizons Immigration Law | Internacional Migration Experts" description="At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad">
+<MainLayout  title="New Horizons Immigration Law | Internacional Migration Experts" description="At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad">
   <HeroSection
       backgroundImage="/img/countries/france/0.jpg"
       badgeText="Trust our experience and let us be your guide in the complex world of international migration."
@@ -29,11 +29,13 @@ import Sponsors from "@src/components/Sponsors.astro";
           label: "Programs",
           href: "/programs",
           variant: "white",
+          i18nKey: "hero.cta.programs"
         },
         {
           label: "About Us",
           href: "/about",
           variant: "outline",
+          i18nKey: "hero.cta.aboutUs"
         },
       ]}
   />

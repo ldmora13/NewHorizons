@@ -7,12 +7,12 @@ import '@src/styles/style.css';
 import BackToTop from '@src/components/BackToTop.astro';
 
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Programs", href: "/countries" },
-  { label: "FAQ", href: "/faqs" },
-  { label: "Reviews", href: "/reviews" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/", i18nKey: "common.home" },
+  { label: "About", href: "/about", i18nKey: "common.about" },
+  { label: "Programs", href: "/countries", i18nKey: "common.programs" },
+  { label: "FAQ", href: "/faqs", i18nKey: "common.faq" },
+  { label: "Reviews", href: "/reviews", i18nKey: "common.reviews" },
+  { label: "Contact", href: "/contact", i18nKey: "common.contact" },
 ];
 
 interface Props {
@@ -34,6 +34,8 @@ const {
 
     <!-- Primary Meta -->
     <meta name="description" content={description} />
+    <meta name="i18n-title" content="meta.defaultTitle" />
+    <meta name="i18n-description" content="meta.defaultDescription" />
     <meta name="author" content="Author Name" />
     <meta name="robots" content="index, follow" />
 
@@ -53,7 +55,8 @@ const {
       cta={{
         label: "Get Start",
         href: "/checkout",
-      }}
+        i18nKey: "common.getStart"
+      } as any}
     />
     <main>
       <slot />
@@ -64,20 +67,29 @@ const {
         title: "About Us",
         description:
           "At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad. Our main focus is on the United States, Europe and the United Arab Emirates.",
+        titleI18n: "footer.about.title",
+        descriptionI18n: "footer.about.description"
       }}
       navigation={[
-        { label: "Immigrations Programs", href: "/programs" },
-        { label: "Privacy Policy", href: "/privacy" },
-        { label: "Terms of Service", href: "/terms" },
+        { label: "Immigrations Programs", href: "/programs", i18nKey: "footer.navigation.immigrationPrograms" },
+        { label: "Privacy Policy", href: "/privacy", i18nKey: "footer.navigation.privacyPolicy" },
+        { label: "Terms of Service", href: "/terms", i18nKey: "footer.navigation.termsOfService" },
       ]}
       programs={[
-        "EB-1 - Outstanding Career",
-        "EB-2 NIW - National Benefit",
-        "EB-5 - Investment Programs",
-        "Permanent Residence",
-        "NewHorizons Club",
+        { label: "EB-1 - Outstanding Career", i18nKey: "footer.programs.eb1" },
+        { label: "EB-2 NIW - National Benefit", i18nKey: "footer.programs.eb2" },
+        { label: "EB-5 - Investment Programs", i18nKey: "footer.programs.eb5" },
+        { label: "Permanent Residence", i18nKey: "footer.programs.permanentResidence" },
+        { label: "NewHorizons Club", i18nKey: "footer.programs.newHorizonsClub" },
       ]}
       copyright="© 2026 New Horizons Immigration Law. All rights reserved."
+      copyrightI18n="footer.copyright"
+      address="Washington/Wells, Chicago, IL 60602, USA"
+      addressI18n="footer.address"
+      phone="+1 (909) 547-3238"
+      phoneI18n="footer.phone"
+      email="info@newhorizonsimmigrationlaw.org"
+      emailI18n="footer.email"
     />
     <BackToTop />
 
@@ -106,5 +118,8 @@ const {
         });
       }
     </script>
+
+    <!-- i18n Client - Sistema de Internacionalización Estático -->
+    <script is:inline src="/i18n/client.js"></script>
   </body>
 </html>

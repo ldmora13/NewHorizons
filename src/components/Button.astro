@@ -6,6 +6,7 @@ export interface ButtonProps {
   label?: string;       // ⬅️ sekarang OPTIONAL
   variant?: ButtonVariant;
   className?: string;
+  i18nKey?: string;
 }
 
 const props = Astro.props as ButtonProps;
@@ -30,6 +31,7 @@ const variants: Record<ButtonVariant, string> = {
 {props.href ? (
   <a
     href={props.href}
+    data-i18n={props.i18nKey}
     class={`${base} ${variants[variant]} ${props.className ?? ""}`}
   >
     <slot>{props.label}</slot>
@@ -37,6 +39,7 @@ const variants: Record<ButtonVariant, string> = {
 ) : (
   <button
     type="button"
+    data-i18n={props.i18nKey}
     class={`${base} ${variants[variant]} ${props.className ?? ""}`}
   >
     <slot>{props.label}</slot>
