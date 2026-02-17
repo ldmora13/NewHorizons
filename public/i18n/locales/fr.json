@@ -200,6 +200,19 @@
       "description": "En savoir plus sur notre mission, nos valeurs et notre engagement à vous aider à atteindre vos objectifs d'immigration."
     }
   },
+  "payment": {
+    "title": "Paiement réussi",
+    "description": "New Horizons Immigration Law",
+    "amount": "Montant",
+    "customer": "Client",
+    "service": "Service",
+    "transactionID": "ID de transaction",
+    "date": "Date",
+    "paymentMethod": "Méthode de paiement",
+    "status": "Statut",
+    "btnPrint": "Imprimer",
+    "btnBack": "Retour à l'accueil"
+  },
   "validation": {
     "errorsDetected": "Erreurs détectées",
     "paypalError": "Une erreur s'est produite lors du processus de paiement PayPal."
