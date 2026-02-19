@@ -17,11 +17,11 @@ const {
   id = "brands",
   title = "Trusted by Global Partners",
   brands = [
-    { name: "Brand 1", logo: "/img/brand1.png" },
-    { name: "Brand 2", logo: "/img/brand2.png" },
-    { name: "Brand 3", logo: "/img/brand3.png" },
-    { name: "Brand 4", logo: "/img/brand4.png" },
-    { name: "Brand 5", logo: "/img/brand5.png" },
+    { name: "Brand 1", logo: "/img/sponsors/Abeona.jpg" },
+    { name: "Brand 2", logo: "/img/sponsors/Administra-vie.webp" },
+    { name: "Brand 3", logo: "/img/sponsors/eu-comission.svg" },
+    { name: "Brand 4", logo: "/img/sponsors/France-Visas.png" },
+    { name: "Brand 5", logo: "/img/sponsors/Ofii-logo.jpg" },
   ],
 } = Astro.props as BrandSectionProps;
 ---
@@ -41,7 +41,7 @@ const {
         <img
           src={brand.logo}
           alt={brand.name}
-          class="mx-auto w-4/5 opacity-90 hover:opacity-100 transition grayscale"
+          class="mx-auto w-4/5 opacity-90 hover:opacity-100 transition grayscale max-w-30"
           loading="lazy"
         />
       ))}

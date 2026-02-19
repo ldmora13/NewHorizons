@@ -10,7 +10,7 @@ const programs = [
     titleKey: "about.programs.eb1.title",
     descriptionKey: "about.programs.eb1.description",
     price: "$2,000.00",
-    image: "/img/countries/france/0.jpg",
+    image: "/img/countries/france/0.webp",
     features: [
       { icon: "bi:calendar-check", labelKey: "programs.talent.f1", label: "Permiso de 4 años renovable" },
       { icon: "bi:people",         labelKey: "programs.talent.f2", label: "Incluye cónyuge e hijos" },
@@ -25,7 +25,7 @@ const programs = [
     titleKey: "about.programs.eb2.title",
     descriptionKey: "about.programs.eb2.description",
     price: "$5,000.00",
-    image: "/img/countries/france/1.jpg",
+    image: "/img/countries/france/1.webp",
     features: [
       { icon: "bi:clock",          labelKey: "programs.vlsts.f1", label: "Estancia +3 meses" },
       { icon: "bi:shield-check",   labelKey: "programs.vlsts.f2", label: "Validación OFII incluida" },
@@ -40,7 +40,7 @@ const programs = [
     titleKey: "about.programs.eb5.title",
     descriptionKey: "about.programs.eb5.description",
     price: "$8,000.00",
-    image: "/img/countries/france/2.jpg",
+    image: "/img/countries/france/4.webp",
     features: [
       { icon: "bi:graph-up-arrow", labelKey: "programs.investor.f1", label: "Creación o compra de empresa" },
       { icon: "bi:bank",           labelKey: "programs.investor.f2", label: "Apertura cuenta bancaria francesa" },
@@ -67,7 +67,7 @@ const steps = [
     description="Nuestros programas están diseñados para llevarte desde tu primera consulta hasta vivir legalmente en Francia. France es nuestro destino estrella — conocemos cada Préfecture, cada formulario y cada plazo."
     i18nTitle="pages.programs.title"
     i18nDescription="pages.programs.description"
-    backgroundImage="/img/countries/france/2.jpg"
+    backgroundImage="/img/countries/france/2.webp"
   />
 
   <!-- ==============================
@@ -171,7 +171,7 @@ const steps = [
           {steps.map((step, i) => (
             <div class={`relative flex gap-6 items-start ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
               <!-- Step Circle -->
-              <div class="md:absolute md:left-1/2 md:-translate-x-1/2 flex-shrink-0 w-12 h-12 rounded-full bg-blue-600 border-4 border-slate-900 flex items-center justify-center text-white font-bold text-sm z-10">
+              <div class="md:absolute md:left-1/2 md:-translate-x-1/2 shrink-0 w-12 h-12 rounded-full bg-blue-600 border-4 border-slate-900 flex items-center justify-center text-white font-bold text-sm z-10">
                 {step.num}
               </div>
 
