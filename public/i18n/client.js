@@ -3,11 +3,11 @@
  * Funciona completamente en el cliente sin necesidad de servidor
  */
 
-(function() {
+(function () {
   'use strict';
 
   const SUPPORTED_LANGUAGES = ['en', 'es', 'fr'];
-  const DEFAULT_LANGUAGE = 'en';
+  const DEFAULT_LANGUAGE = 'es';
   const STORAGE_KEY = 'i18nextLng';
 
   const LANGUAGE_NAMES = {
@@ -97,7 +97,7 @@
      */
     getTranslation(key, lang = null) {
       if (!key) return '';
-      
+
       const targetLang = lang || this.currentLang;
       const translations = this.translations[targetLang] || this.translations[DEFAULT_LANGUAGE] || {};
 
@@ -147,7 +147,7 @@
       } catch (e) {
         console.warn('Error saving language to localStorage:', e);
       }
-      
+
       if (document.documentElement) {
         document.documentElement.lang = lang;
       }
@@ -155,7 +155,12 @@
       await this.loadTranslations(lang);
       this.applyTranslations();
 
-      // Notificar a los observadores
+      // Dispatch a custom event so Alpine and other components can react
+      try {
+        window.dispatchEvent(new CustomEvent('i18n:changed', { detail: { lang } }));
+      } catch (e) { }
+
+      // Notify observers (legacy)
       this.notifyObservers(lang);
     }
 
@@ -271,9 +276,24 @@
         } else if (element instanceof HTMLOptionElement) {
           element.textContent = translation;
         } else {
-          // Solo actualizar si el contenido es diferente para evitar bucles
-          if (element.textContent !== translation) {
-            element.textContent = translation;
+          // CRITICAL: Only update textContent if the element has NO child elements.
+          // Setting textContent would destroy any SVG icons or nested spans.
+          const hasChildElements = element.children.length > 0;
+          if (hasChildElements) {
+            // Try to find a direct text node to update instead
+            for (const child of element.childNodes) {
+              if (child.nodeType === Node.TEXT_NODE && child.textContent.trim()) {
+                child.textContent = translation;
+                return;
+              }
+            }
+            // No text node found — create one at the beginning
+            const textNode = document.createTextNode(translation);
+            element.insertBefore(textNode, element.firstChild);
+          } else {
+            if (element.textContent !== translation) {
+              element.textContent = translation;
+            }
           }
         }
       } catch (e) {
@@ -294,30 +314,24 @@
         }
 
         await this.loadTranslations(this.currentLang);
-        
-        // Esperar un poco para que el DOM esté completamente cargado
+
+        // Apply translations immediately — do NOT wait 100ms
+        // If DOM isn't ready yet, wait for it
+        const applyWhenReady = () => {
+          this.applyTranslations();
+          // Observe DOM for dynamically added elements
+          setTimeout(() => { this.observeDOM(); }, 300);
+          this.initialized = true;
+        };
+
         if (document.readyState === 'loading') {
-          await new Promise(resolve => {
-            if (document.readyState === 'loading') {
-              document.addEventListener('DOMContentLoaded', resolve, { once: true });
-            } else {
-              setTimeout(resolve, 100);
-            }
-          });
+          document.addEventListener('DOMContentLoaded', applyWhenReady, { once: true });
+        } else {
+          applyWhenReady();
         }
-
-        this.applyTranslations();
-
-        // Observar cambios en el DOM para aplicar traducciones a nuevos elementos
-        // Solo después de un pequeño delay para evitar problemas
-        setTimeout(() => {
-          this.observeDOM();
-        }, 500);
-
-        this.initialized = true;
       } catch (error) {
         console.error('Error initializing i18n:', error);
-        this.initialized = true; // Marcar como inicializado para evitar reintentos infinitos
+        this.initialized = true;
       }
     }
 
@@ -337,10 +351,10 @@
           mutations.forEach((mutation) => {
             mutation.addedNodes.forEach((node) => {
               if (node.nodeType === 1) { // Element node
-                if (node.hasAttribute('data-i18n') || 
-                    node.hasAttribute('data-i18n-html') ||
-                    node.hasAttribute('data-i18n-attr') ||
-                    node.querySelector('[data-i18n], [data-i18n-html], [data-i18n-attr]')) {
+                if (node.hasAttribute('data-i18n') ||
+                  node.hasAttribute('data-i18n-html') ||
+                  node.hasAttribute('data-i18n-attr') ||
+                  node.querySelector('[data-i18n], [data-i18n-html], [data-i18n-attr]')) {
                   hasNewI18nElements = true;
                 }
               }
@@ -465,38 +479,27 @@
 
   // Crear instancia global de forma segura
   let i18n;
-  
+
   function initializeI18n() {
     try {
       i18n = new I18nStatic();
-      
-      // Inicializar cuando el DOM esté listo
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-          i18n.init().catch(err => {
-            console.error('Error initializing i18n:', err);
-          });
-        });
-      } else {
-        // DOM ya está listo, inicializar después de un pequeño delay
-        setTimeout(() => {
-          i18n.init().catch(err => {
-            console.error('Error initializing i18n:', err);
-          });
-        }, 100);
-      }
 
-      // Exponer globalmente
+      // Expose globally before init so LanguageSelector can reference it
       window.i18n = i18n;
       window.I18nStatic = I18nStatic;
+
+      // Initialize immediately
+      i18n.init().catch(err => {
+        console.error('Error initializing i18n:', err);
+      });
     } catch (error) {
       console.error('Error creating i18n instance:', error);
-      // Crear una instancia mínima para evitar errores
+      // Minimal fallback to avoid crashes
       window.i18n = {
         getTranslation: (key) => key,
-        changeLanguage: async () => {},
+        changeLanguage: async () => { },
         getCurrentLanguage: () => 'en',
-        onLanguageChange: () => {}
+        onLanguageChange: () => { }
       };
     }
   }

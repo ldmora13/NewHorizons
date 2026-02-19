@@ -9,7 +9,7 @@ import BackToTop from '@src/components/BackToTop.astro';
 const navItems = [
   { label: "Home", href: "/", i18nKey: "common.home" },
   { label: "About", href: "/about", i18nKey: "common.about" },
-  { label: "Programs", href: "/countries", i18nKey: "common.programs" },
+  { label: "Programs", href: "/programs", i18nKey: "common.programs" },
   { label: "FAQ", href: "/faqs", i18nKey: "common.faq" },
   { label: "Reviews", href: "/reviews", i18nKey: "common.reviews" },
   { label: "Contact", href: "/contact", i18nKey: "common.contact" },
@@ -26,7 +26,7 @@ const {
 } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -64,27 +64,29 @@ const {
     <Footer
       backgroundImage="/img/jaydeep-visa.jpg"
       about={{
-        title: "About Us",
+        title: "New Horizons Immigration Law",
         description:
-          "At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad. Our main focus is on the United States, Europe and the United Arab Emirates.",
+          "Specialists in international mobility to France, Spain, Portugal, and the UAE. Over 15 years and 16,000 successful cases back us up. Your new life starts with a consultation.",
         titleI18n: "footer.about.title",
         descriptionI18n: "footer.about.description"
       }}
       navigation={[
-        { label: "Immigrations Programs", href: "/programs", i18nKey: "footer.navigation.immigrationPrograms" },
+        { label: "Visas & Programs", href: "/programs", i18nKey: "footer.navigation.immigrationPrograms" },
+        { label: "Success Stories", href: "/reviews", i18nKey: "footer.navigation.successStories" },
+        { label: "FAQ", href: "/faqs", i18nKey: "footer.navigation.faqs" },
         { label: "Privacy Policy", href: "/privacy", i18nKey: "footer.navigation.privacyPolicy" },
         { label: "Terms of Service", href: "/terms", i18nKey: "footer.navigation.termsOfService" },
       ]}
       programs={[
-        { label: "EB-1 - Outstanding Career", i18nKey: "footer.programs.eb1" },
-        { label: "EB-2 NIW - National Benefit", i18nKey: "footer.programs.eb2" },
-        { label: "EB-5 - Investment Programs", i18nKey: "footer.programs.eb5" },
-        { label: "Permanent Residence", i18nKey: "footer.programs.permanentResidence" },
-        { label: "NewHorizons Club", i18nKey: "footer.programs.newHorizonsClub" },
+        { label: "Passeport Talent (France)", i18nKey: "footer.programs.eb1" },
+        { label: "VLS-TS Salaré / Visitor", i18nKey: "footer.programs.eb2" },
+        { label: "Business Investor", i18nKey: "footer.programs.eb5" },
+        { label: "Titre de Séjour", i18nKey: "footer.programs.permanentResidence" },
+        { label: "Expat Advisory", i18nKey: "footer.programs.newHorizonsClub" },
       ]}
-      copyright="© 2026 New Horizons Immigration Law. All rights reserved."
+      copyright="© 2026 New Horizons Immigration Law. International Mobility Specialists."
       copyrightI18n="footer.copyright"
-      address="Washington/Wells, Chicago, IL 60602, USA"
+      address="Miami · Madrid · Paris"
       addressI18n="footer.address"
       phone="+1 (909) 547-3238"
       phoneI18n="footer.phone"

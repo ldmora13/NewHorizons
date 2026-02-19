@@ -21,65 +21,82 @@ export interface ContactSectionProps {
 ========================= */
 const {
   id = "contact",
-  title = "Get in Touch",
-  description = "Have questions or need assistance? Our team is ready to help you plan your perfect journey.",
+  title = "Speak with an Immigration Expert",
+  description = "Schedule a 30-minute consultation and find out in one call whether you qualify, which program fits your profile, and what the realistic timeline is. No commitments.",
 
-  address = "Tan Wei Ling, Blk 123 Ang Mo Kio Ave 4, #10-10, Singapore",
-  email = "hello@oceantravel.com",
-  phone = "+123 3456 7890",
+  address = "Miami · Madrid · Paris",
+  email = "info@newhorizonsimmigrationlaw.org",
+  phone = "+1 (909) 547-3238",
 } = Astro.props as ContactSectionProps;
+
+const trustSignals = [
+  { icon: "bi:shield-check", i18nKey: "pages.contact.trust1", label: "16,000+ Successful Cases" },
+  { icon: "bi:clock-history",  i18nKey: "pages.contact.trust2", label: "Response within 24h" },
+  { icon: "bi:translate",     i18nKey: "pages.contact.trust3", label: "Attention in ES · EN · FR" },
+  { icon: "bi:percent",       i18nKey: "pages.contact.trust4", label: "91% Approval Rate" },
+];
 ---
 
 <!-- Contact Section -->
 <section id={id} class="relative py-16 md:py-20 overflow-hidden">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
       <!-- =========================
         LEFT: CONTACT INFO
       ========================= -->
       <div>
-        <h2 class="text-3xl md:text-4xl font-semibold text-white" data-i18n={Astro.props.i18nTitle}>
+        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-tight" data-i18n={Astro.props.i18nTitle}>
           {title}
         </h2>
 
         {description && (
-          <p class="mt-4 text-white/70 leading-relaxed" data-i18n={Astro.props.i18nDescription}>
+          <p class="mt-4 text-white/70 leading-relaxed text-lg" data-i18n={Astro.props.i18nDescription}>
             {description}
           </p>
         )}
 
-        <div class="mt-8 space-y-5 text-white/80">
+        <!-- Trust Signals Grid -->
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          {trustSignals.map((signal) => (
+            <div class="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 px-4 py-3">
+              <Icon name={signal.icon} class="w-5 h-5 text-blue-400 shrink-0" />
+              <span class="text-sm text-white/80" data-i18n={signal.i18nKey}>{signal.label}</span>
+            </div>
+          ))}
+        </div>
 
-          <div class="flex items-start gap-4">
-            <div class="size-10 flex items-center justify-center rounded-xl bg-white/10">
+        <!-- Contact Details -->
+        <div class="mt-8 space-y-4 text-white/80">
+          <div class="flex items-center gap-4">
+            <div class="size-10 flex items-center justify-center rounded-xl bg-white/10 shrink-0">
               <Icon name="bi:geo-alt" />
             </div>
             <div>
-              <div class="font-semibold text-white" data-i18n="pages.contact.address">Address</div>
+              <div class="font-semibold text-white text-sm" data-i18n="pages.contact.address">Oficinas</div>
               <div class="text-sm text-white/70">{address}</div>
             </div>
           </div>
 
-          <div class="flex items-start gap-4">
-            <div class="size-10 flex items-center justify-center rounded-xl bg-white/10">
+          <div class="flex items-center gap-4">
+            <div class="size-10 flex items-center justify-center rounded-xl bg-white/10 shrink-0">
               <Icon name="bi:envelope" />
             </div>
             <div>
-              <div class="font-semibold text-white" data-i18n="pages.contact.email">Email</div>
-              <a href={`mailto:${email}`} class="text-sm text-white/70 hover:text-white">
+              <div class="font-semibold text-white text-sm" data-i18n="pages.contact.email">Email</div>
+              <a href={`mailto:${email}`} class="text-sm text-white/70 hover:text-white transition">
                 {email}
               </a>
             </div>
           </div>
 
-          <div class="flex items-start gap-4">
-            <div class="size-10 flex items-center justify-center rounded-xl bg-white/10">
+          <div class="flex items-center gap-4">
+            <div class="size-10 flex items-center justify-center rounded-xl bg-white/10 shrink-0">
               <Icon name="bi:telephone" />
             </div>
             <div>
-              <div class="font-semibold text-white" data-i18n="pages.contact.phone">Phone</div>
-              <a href={`tel:${phone}`} class="text-sm text-white/70 hover:text-white">
+              <div class="font-semibold text-white text-sm" data-i18n="pages.contact.phone">Teléfono</div>
+              <a href={`tel:${phone}`} class="text-sm text-white/70 hover:text-white transition">
                 {phone}
               </a>
             </div>
@@ -92,52 +109,83 @@ const {
       ========================= -->
       <form
         method="post"
-        class="rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-8 space-y-6"
+        class="rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-8 space-y-5"
       >
-        <h3 class="text-2xl font-semibold text-white" data-i18n="pages.contact.sendMessage">
-          Send Us a Message
-        </h3>
-
         <div>
-          <label class="block text-sm text-white/70 mb-2" data-i18n="pages.contact.fullName">Full Name</label>
-          <input
-            type="text"
-            required
-            placeholder="Your name"
-            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none"
-            data-i18n-attr='{"placeholder": "pages.contact.fullName"}'
-          />
+          <h3 class="text-2xl font-semibold text-white" data-i18n="pages.contact.sendMessage">
+            Solicita tu Consulta Gratuita
+          </h3>
+          <p class="mt-1 text-sm text-white/50" data-i18n="pages.contact.formSubtitle">
+            Te respondemos en menos de 24 horas · Sin compromiso
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-white/60 mb-1.5 uppercase tracking-wide" data-i18n="pages.contact.fullName">Nombre</label>
+            <input
+              type="text"
+              required
+              placeholder="Tu nombre completo"
+              class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/60 transition"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-white/60 mb-1.5 uppercase tracking-wide" data-i18n="pages.contact.phoneLabel">Teléfono</label>
+            <input
+              type="tel"
+              placeholder="+1 (000) 000-0000"
+              class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/60 transition"
+            />
+          </div>
         </div>
 
         <div>
-          <label class="block text-sm text-white/70 mb-2" data-i18n="pages.contact.emailAddress">Email Address</label>
+          <label class="block text-xs font-medium text-white/60 mb-1.5 uppercase tracking-wide" data-i18n="pages.contact.emailAddress">Correo Electrónico</label>
           <input
             type="email"
             required
-            placeholder="email@example.com"
-            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none"
-            data-i18n-attr='{"placeholder": "pages.contact.emailAddress"}'
+            placeholder="tu@correo.com"
+            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/60 transition"
           />
         </div>
 
         <div>
-          <label class="block text-sm text-white/70 mb-2" data-i18n="pages.contact.message">Message</label>
+          <label class="block text-xs font-medium text-white/60 mb-1.5 uppercase tracking-wide" data-i18n="pages.contact.destinationLabel">Destino de Interés</label>
+          <select
+            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white/70 focus:outline-none focus:border-blue-500/60 transition appearance-none"
+          >
+            <option value="" disabled selected data-i18n="pages.contact.destinationPlaceholder">Selecciona tu destino</option>
+            <option value="france">🇫🇷 Francia</option>
+            <option value="spain">🇪🇸 España</option>
+            <option value="portugal">🇵🇹 Portugal</option>
+            <option value="uae">🇦🇪 Emiratos Árabes Unidos</option>
+            <option value="other" data-i18n="pages.contact.destinationOther">Otro / No estoy seguro</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-white/60 mb-1.5 uppercase tracking-wide" data-i18n="pages.contact.message">Tu Situación</label>
           <textarea
             rows="4"
             required
-            placeholder="Write your message..."
-            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none"
-            data-i18n-attr='{"placeholder": "pages.contact.message"}'
+            placeholder="Cuéntanos brevemente tu perfil y objetivo (ej: tengo oferta de trabajo en París, busco residencia como inversor en Francia, etc.)"
+            class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/60 transition resize-none"
           ></textarea>
         </div>
 
         <button
           type="submit"
-          class="w-full rounded-xl bg-white px-6 py-3 font-semibold text-black hover:bg-white/90 transition"
+          class="w-full rounded-xl bg-white px-6 py-3.5 font-semibold text-black hover:bg-blue-50 transition text-base"
           data-i18n="pages.contact.sendButton"
         >
-          Send Message
+          Solicitar Consulta Gratuita →
         </button>
+
+        <p class="text-center text-xs text-white/30" data-i18n="pages.contact.privacyNote">
+          Tu información está protegida. No compartimos tus datos con terceros.
+        </p>
       </form>
 
     </div>

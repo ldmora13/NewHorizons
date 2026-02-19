@@ -10,6 +10,7 @@ export interface Review {
   avatar: string;
   rating: number;
   message: string;
+  tag?: string;
 }
 
 export interface ReviewSectionProps {
@@ -24,52 +25,58 @@ const {
   id = "reviews",
   reviews = [
     {
-      name: "Daniel R.",
-      country: "Australia",
+      name: "Alejandro V.",
+      country: "México → Lyon, Francia",
       avatar: "/img/male1.jpg",
       rating: 5,
+      tag: "Passeport Talent · Investigador",
       message:
-        "Absolutely unforgettable experience. The guides were professional, friendly, and truly cared about safety and marine life.",
+        "Había intentado hacer el trámite por mi cuenta y la Préfecture rechazó mi expediente dos veces. Con New Horizons lo preparamos juntos en 3 semanas y fue aprobado a la primera. Hoy vivo en Lyon con mi esposa y tenemos acceso pleno al sistema de salud francés. No tiene precio.",
     },
     {
-      name: "Sophie L.",
-      country: "France",
+      name: "Patricia M.",
+      country: "Colombia → París, Francia",
       avatar: "/img/female1.jpg",
       rating: 5,
+      tag: "VLS-TS Salarié · Ejecutiva",
       message:
-        "From booking to the actual trip, everything was seamless. Highly recommended for ocean lovers!",
+        "Tenía una oferta de trabajo en una empresa francesa pero el proceso de visa me tenía paralizada. New Horizons tomó el control de todo: la apostilla, los documentos del empleador, la cita consular. En 40 días estaba en París firmando el contrato. Increíble.",
     },
     {
-      name: "James T.",
-      country: "United States",
+      name: "Roberto K.",
+      country: "Brasil → Burdeos, Francia",
       avatar: "/img/male2.jpg",
-      rating: 4.5,
+      rating: 5,
+      tag: "Passeport Talent · Emprendedor",
       message:
-        "Small group experience made it feel exclusive. Definitely worth every dollar.",
+        "Lo que más me convenció fue su conocimiento del derecho administrativo francés. Sabían exactamente qué documentos exige cada Préfecture, cuáles son los tiempos reales y cómo anticipar cualquier problema. Mi visa salió sin un solo contratiempo. Los recomiendo sin dudarlo.",
     },
     {
-      name: "Emily K.",
-      country: "Canada",
+      name: "Isabelle T.",
+      country: "Canadá → Niza, Francia",
       avatar: "/img/female2.jpg",
       rating: 5,
+      tag: "VLS-TS Visiteur · Trabajadora Remota",
       message:
-        "Crystal-clear waters, stunning coral reefs, and an amazing crew. This was the highlight of our vacation.",
+        "Me mudé a Francia para trabajar de forma remota y no sabía por dónde empezar. El equipo me explicó exactamente qué visa necesitaba, cuánto dinero debía demostrar en cuenta bancaria y cómo estructurar mi dossier. Todo fue claro, sin sorpresas y con mucha tranquilidad.",
     },
     {
-      name: "Luca M.",
-      country: "Italy",
+      name: "Marco A.",
+      country: "Venezuela → Toulouse, Francia",
       avatar: "/img/male3.jpg",
-      rating: 4.8,
+      rating: 5,
+      tag: "Inversión · Empresario",
       message:
-        "Well-organized trip with breathtaking ocean views. The attention to detail and hospitality were outstanding.",
+        "Procesaron simultáneamente mi visa de inversión y el Passeport Talent de mi esposa. Coordinación perfecta. En 3 meses estábamos instalados en Toulouse con todos los permisos en regla y la empresa ya operando. Un servicio de un nivel que no esperaba encontrar.",
     },
     {
-      name: "Hannah W.",
-      country: "United Kingdom",
+      name: "Andrea F.",
+      country: "Argentina → Estrasburgo, Francia",
       avatar: "/img/female3.jpg",
       rating: 5,
+      tag: "Passeport Talent · Artista",
       message:
-        "A perfect balance of adventure and relaxation. I felt safe, inspired, and deeply connected to the ocean.",
+        "Como artista no sabía si calificaba para el Passeport Talent. New Horizons me explicó exactamente qué portafolio preparar y cómo argumentar mi caso ante el consulado. Mi permiso fue aprobado en 5 semanas. Hoy tengo mi estudio en Estrasburgo y no podría estar más feliz.",
     },
   ],
 } = Astro.props as ReviewSectionProps;

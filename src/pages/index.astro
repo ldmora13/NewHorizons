@@ -9,30 +9,33 @@ import Map from "@src/components/Map.astro";
 import Sponsors from "@src/components/Sponsors.astro";
 ---
 
-<MainLayout  title="New Horizons Immigration Law | Internacional Migration Experts" description="At NewHorizons Immigrations Law, we specialize in helping people who want to live, work or invest abroad">
+<MainLayout title="New Horizons Immigration Law | Expertos en Inmigración a Francia" description="En New Horizons, te ayudamos a iniciar tu nueva vida en Francia. Especialistas en VLS-TS, Passeport Talent e inversión.">
   <HeroSection
       backgroundImage="/img/countries/france/0.jpg"
-      badgeText="Trust our experience and let us be your guide in the complex world of international migration."
-      title="Get a Consultation for Your International Project"
-      description="Ready to take the next step towards your international project? Contact us today to schedule a consultation. 
-			We'll help you navigate the complexities of the immigration process and ensure a smooth and successful outcome."
+      badgeText="Guía experta para tu transición a Francia."
+      title="Tu Nueva Vida en Francia Comienza Aquí"
+      description="Asesoría legal especializada en VLS-TS y Pasaportes de Talento. Manejamos las complejidades de la administración francesa para que tú te enfoques en tus nuevos horizontes."
       avatars={[
         { src: "/img/male1.jpg", alt: "Traveler 1" },
         { src: "/img/male2.jpg", alt: "Traveler 2" },
         { src: "/img/female1.jpg", alt: "Traveler 3" },
         { src: "/img/female2.jpg", alt: "Traveler 4" },
       ]}
-      reviewText="16000+ People Accompanied"
+      reviewText="Más de 16,000 Integraciones Exitosas"
       rating={5}
+      badgeI18nKey="hero.badge"
+      titleI18nKey="hero.title"
+      descriptionI18nKey="hero.description"
+      reviewTextI18nKey="hero.reviewText"
       ctas={[
         {
-          label: "Programs",
+          label: "Nuestras Visas",
           href: "/programs",
           variant: "white",
           i18nKey: "hero.cta.programs"
         },
         {
-          label: "About Us",
+          label: "Nuestra Experiencia",
           href: "/about",
           variant: "outline",
           i18nKey: "hero.cta.aboutUs"
@@ -40,7 +43,7 @@ import Sponsors from "@src/components/Sponsors.astro";
       ]}
   />
   <Map />
-  <WhySection title="What Have We Achieved?" />
+  <WhySection title="¿Por qué confiar en nuestra experiencia en Francia?" />
   <CountriesSection />
   <Sponsors />
   <AboutSection />

@@ -16,7 +16,7 @@
 <script>
   // This script will be handled by the parent component or via custom events
   window.addEventListener('init-paypal', (e: any) => {
-    const { amount, onApprove, onError } = e.detail;
+    const { programId, adults, children, clientDetails, onApprove, onError } = e.detail;
     const wrapper = document.getElementById('paypal-container-wrapper');
     const container = document.getElementById('paypal-button-container');
     
@@ -25,20 +25,68 @@
     wrapper.classList.remove('hidden');
     container.innerHTML = ''; // Clear previous
 
+    const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3000/api';
+
     // @ts-ignore
     if (window.paypal) {
       // @ts-ignore
       window.paypal.Buttons({
-        createOrder: (data, actions) => {
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: amount.toFixed(2)
-              }
-            }]
-          });
+        createOrder: async () => {
+            try {
+                const response = await fetch(`${API_URL}/public/checkout/init`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        programId,
+                        adults,
+                        children
+                    })
+                });
+                
+                const orderData = await response.json();
+
+                if (orderData.id) {
+                    return orderData.id;
+                } else {
+                    const errorDetail = orderData?.details?.[0];
+                    const errorMessage = errorDetail? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})` : JSON.stringify(orderData);
+                    throw new Error(errorMessage);
+                }
+            } catch (error) {
+                console.error(error);
+                // onError(error); // Let PayPal handle generic error or call custom
+                throw error; // Rethrow to stop flow
+            }
         },
-        onApprove: onApprove,
+        onApprove: async (data, actions) => {
+            try {
+                const response = await fetch(`${API_URL}/public/checkout/capture`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID,
+                        clientDetails: clientDetails // Pass client info for user creation
+                    })
+                });
+
+                const transaction = await response.json();
+                
+                if (transaction.status === 'SUCCESS' || transaction.status === 'COMPLETED') {
+                    onApprove(transaction);
+                } else {
+                     const errorDetail = transaction?.details?.[0];
+                    const errorMessage = errorDetail? `${errorDetail.issue} ${errorDetail.description} (${transaction.debug_id})` : JSON.stringify(transaction);
+                    throw new Error(errorMessage);
+                }
+            } catch (error) {
+                console.error(error);
+                onError(error);
+            }
+        },
         onError: onError
       }).render('#paypal-button-container');
     }

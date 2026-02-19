@@ -15,9 +15,9 @@ export interface CheckoutFormProps {
 
 const {
   programs = [
-    { id: "EB-1", label: "People with Extraordinary Career", description: "$2000.00" },
-    { id: "EB-2", label: "National Benefit", description: "$5000.00" },
-    { id: "EB-5", label: "Investment Program", description: "$8000.00" },
+    { id: "TALENT", label: "Passeport Talent", description: "$2000.00" },
+    { id: "VLSTS", label: "VLS-TS Salarié / Visitor", description: "$5000.00" },
+    { id: "INVESTOR", label: "Business / Investor", description: "$8000.00" },
   ],
   className = "",
 } = Astro.props as CheckoutFormProps;
@@ -389,55 +389,39 @@ const {
       if (summaryPlaceholder) summaryPlaceholder.classList.add('hidden');
       
       // Initialize PayPal via Custom Event
+      // We pass the raw data so the backend can validate and calculate the total
       window.dispatchEvent(new CustomEvent('init-paypal', {
         detail: {
-          amount: calc.total,
-          onApprove: async (data: any, actions: any) => {
-            const details = await actions.order.capture();
-            
-            const finalData: TransactionData = {
-              ...currentTransaction as any,
-              payment: {
-                totalPaid: calc.total,
-                date: new Date().toISOString(),
-                transactionId: details.id
-              }
-            };
-            
-            try {
-              console.log('Simulando persistencia local de la transacción...');
-              
-              // Guardar en localStorage para persistencia en el navegador del usuario (opcional)
-              const transactions = JSON.parse(localStorage.getItem('nh_transactions') || '[]');
-              transactions.push({
-                ...finalData,
-                timestamp: new Date().toISOString()
-              });
-              localStorage.setItem('nh_transactions', JSON.stringify(transactions));
+          programId: calc.programId, // Backend uses this to calculate price
+          adults: calc.adults,
+          children: calc.children,
+          clientDetails: currentTransaction.client, // Backend needs this to create User/Ticket
+          
+          onApprove: (transaction: any) => {
+             // Transaction successful on backend
+             console.log('Backend Transaction Success:', transaction);
+             
+             // Update Success Screen with real data
+             if (orderIdDisplay) orderIdDisplay.textContent = transaction.ticketId ? `EXP-${transaction.ticketId}` : transaction.payment.id;
+             
+             const successMessage = document.querySelector('#success-section p[data-i18n="checkout.confirmationEmailSent"]');
+             if (successMessage) {
+                 if (transaction.isNewUser && transaction.tempPassword) {
+                     successMessage.innerHTML = `Your account has been created.<br><strong>Email:</strong> ${transaction.userEmail}<br><strong>Temp Password:</strong> ${transaction.tempPassword}<br><br>A confirmation email has been sent.`;
+                 } else {
+                     successMessage.textContent = `A confirmation email has been sent to ${transaction.userEmail}.`;
+                 }
+             }
 
-              // Construir URL de éxito con datos mockeados para el ticket
-              const successUrl = new URL('/payment-success', window.location.origin);
-              successUrl.searchParams.set('id', details.id);
-              successUrl.searchParams.set('amount', details.purchase_units[0].amount.value);
-              successUrl.searchParams.set('date', new Date().toISOString());
-              successUrl.searchParams.set('client', finalData.client.fullName);
-              successUrl.searchParams.set('service', finalData.program.id);
-              
-              // Simular un pequeño retraso de procesamiento para mejor UX
-              setTimeout(() => {
-                window.location.href = successUrl.toString();
-              }, 1500);
-
-            } catch (err) {
-              console.error('Error en simulación estática:', err);
-              // Si falla el localStorage, redirigimos de todos modos ya que el pago en PayPal fue exitoso
-              window.location.href = `/payment-success?id=${details.id}&amount=${details.purchase_units[0].amount.value}&client=${finalData.client.name}`;
-            }
+             // Show success section
+             if (mainGrid) mainGrid.classList.add('hidden');
+             if (successSection) successSection.classList.remove('hidden');
+             window.scrollTo({ top: 0, behavior: 'smooth' });
           },
           onError: (err: any) => {
-            console.error('PayPal Error:', err);
+            console.error('PayPal Integration Error:', err);
             const errorMsg = getTranslation('validation.paypalError') || 'An error occurred with the PayPal payment process.';
-            alert(errorMsg);
+            alert(errorMsg + ' ' + err.message);
           }
         }
       }));

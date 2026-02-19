@@ -5,14 +5,16 @@ import FaqItem from "@src/components/FaqItem.astro";
    Types
 ========================= */
 export interface Faq {
-  question: string;
-  answer: string;
+  question?: string;
+  answer?: string;
+  questionKey?: string;
+  answerKey?: string;
   open?: boolean;
 }
 
 export interface FaqSectionProps {
   id?: string;
-  items: Faq[];
+  items?: Faq[];
 }
 
 /* =========================
@@ -22,30 +24,25 @@ const {
   id = "faq",
   items = [
     {
-      question: "What types of ocean trips do you offer?",
-      answer:
-        "We offer snorkeling tours, scuba diving, island hopping, wildlife encounters, luxury liveaboard cruises, private yacht trips, surf adventures, and eco-kayaking experiences.",
+      questionKey: "faqs.items.q1.q",
+      answerKey: "faqs.items.q1.a",
       open: true,
     },
     {
-      question: "Do I need prior experience to join your tours?",
-      answer:
-        "Not at all. Many of our tours are beginner-friendly. Certified guides provide full briefings and assistance throughout the experience.",
+      questionKey: "faqs.items.q2.q",
+      answerKey: "faqs.items.q2.a",
     },
     {
-      question: "Are your trips safe and insured?",
-      answer:
-        "Yes. All trips follow international safety standards, operated by licensed partners and include insurance coverage where applicable.",
+      questionKey: "faqs.items.q3.q",
+      answerKey: "faqs.items.q3.a",
     },
     {
-      question: "Do you support sustainable tourism?",
-      answer:
-        "Absolutely. We prioritize eco-friendly operators, support marine conservation, and promote responsible travel practices.",
+      questionKey: "faqs.items.q4.q",
+      answerKey: "faqs.items.q4.a",
     },
     {
-      question: "Can I customize my trip?",
-      answer:
-        "Yes. We offer flexible and tailor-made itineraries designed to match your preferences.",
+      questionKey: "faqs.items.q5.q",
+      answerKey: "faqs.items.q5.a",
     },
   ],
 } = Astro.props as FaqSectionProps;
@@ -56,12 +53,14 @@ const {
   id={id}
   class="relative py-16 md:py-20 overflow-hidden"
 >
-  <div class="max-w-3xl mx-auto px-4">
+  <div class="max-w-3xl mx-auto px-4 relative z-10">
     <div class="space-y-4">
       {items.map((item) => (
         <FaqItem
           question={item.question}
           answer={item.answer}
+          questionKey={item.questionKey}
+          answerKey={item.answerKey}
           open={item.open}
         />
       ))}

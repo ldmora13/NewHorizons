@@ -4,11 +4,22 @@ import HeadingSection from "@src/components/HeadingSection.astro";
 import MainLayout from "@src/layouts/MainLayout.astro";
 ---
 
-<MainLayout>
+<MainLayout title="Preguntas Frecuentes - New Horizons">
   <HeadingSection
-    title="Frequently Asked Questions"
-    description="Find answers to common questions about our immigration programs, process, and services."
+    title="Preguntas Frecuentes"
+    description="Respuestas a las dudas más comunes sobre nuestros programas de inmigración, procesos y destinos disponibles."
     i18nTitle="pages.faqs.title"
-    i18nDescription="pages.faqs.description" />
-  <FaqSection />
+    i18nDescription="pages.faqs.description"
+    backgroundImage="/img/countries/france/1.jpg"
+  />
+  <FaqSection 
+    items={[
+      { questionKey: "pages.faqs.items.q1.q", answerKey: "pages.faqs.items.q1.a", open: true },
+      { questionKey: "pages.faqs.items.q2.q", answerKey: "pages.faqs.items.q2.a" },
+      { questionKey: "pages.faqs.items.q3.q", answerKey: "pages.faqs.items.q3.a" },
+      { questionKey: "pages.faqs.items.q4.q", answerKey: "pages.faqs.items.q4.a" },
+      { questionKey: "pages.faqs.items.q5.q", answerKey: "pages.faqs.items.q5.a" },
+      { questionKey: "pages.faqs.items.q6.q", answerKey: "pages.faqs.items.q6.a" },
+    ]}
+  />
 </MainLayout>

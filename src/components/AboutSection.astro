@@ -28,16 +28,16 @@ export interface AboutSectionProps {
 ========================= */
 const {
   id = "programs",
-  title = "Programs We Offer",
-  description = [" We work with permanent residence projects and visas based on professional career, merits or investment. More than 16,000 people accompanied with 91% success rate."],
+  title = "Nos Programmes Spécialisés",
+  description = ["Nous sommes spécialisés dans les visas de long séjour et les titres de séjour basés sur le talent, l'investissement ou la carrière professionnelle. Chaque étape, du consulat à la Préfecture."],
   features = [
-    { icon: "bi:globe2", label: "Global Destinations" },
-    { icon: "bi:award", label: "Certificate Specialists" },
+    { icon: "bi:globe2", label: "France Specialist" },
+    { icon: "bi:award", label: "Certified Legal Advisors" },
   ],
   stats = [
-    { value: "EB-1", label: "For people with outstanding career in sciences, arts, education, business or sports. Permanent residence based on exceptional merits and international recognition. No job offer required and has priority processing available."},
-    { value: "EB-2 NIW", label: "For professionals whose work generates national benefit or significant impact. Job offer exemption required, ideal for researchers, academics and outstanding professionals. Requires demonstrating that the applicant provides substantial benefit to the United States."},
-    { value: "EB-5", label: "Investment programs with permanent residence possibility for investors and their families. Different investment levels available according to project and location. Requires creating at least 10 jobs in the United States through the investment made." },
+    { value: "Passeport Talent", label: "For investors, founders, and highly qualified profiles. A 4-year permit to live and work in France with your family, without a separate work authorization."},
+    { value: "VLS-TS", label: "The standard long-stay visa for employed professionals or self-sufficient individuals who wish to reside in France for more than 3 months."},
+    { value: "Business / Investor", label: "For entrepreneurs creating or acquiring a business in France. Includes strategic consultation on meeting French administrative economic requirements." },
   ],
 } = Astro.props as AboutSectionProps;
 ---
@@ -82,14 +82,14 @@ const {
           const titleKey = programKeys[index] + '.title';
           const descKey = programKeys[index] + '.description';
           return (
-            <div class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur hover:scale-105 transition-transform duration-300 pb-20">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur hover:scale-105 transition-transform duration-300 flex flex-col gap-4">
               <div class="text-3xl font-semibold text-white" data-i18n={titleKey}>
                 {stat.value}
               </div>
-              <div class="mt-1 text-white/70" data-i18n={descKey}>
+              <div class="mt-1 text-white/70 flex-1" data-i18n={descKey}>
                 {stat.label}
               </div>
-             <Button label="Learn More" href="/programs" variant="white" className="fixed bottom-4 right-4" i18nKey="common.learnMore"></Button>
+             <Button label="Learn More" href="/programs" variant="white" className="mt-auto" i18nKey="common.learnMore"></Button>
             </div>
           );
         })}
