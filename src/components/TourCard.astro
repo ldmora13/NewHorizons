@@ -8,6 +8,13 @@ export interface Props {
 
 const { country } = Astro.props;
 const { data, id } = country;
+
+// Build i18n keys from the country's i18nKey base (e.g. "countries.portugal")
+const base = data.i18nKey ?? `countries.${id}`;
+const titleKey        = `${base}.title`;
+const descriptionKey  = `${base}.description`;
+const categoryKey     = `${base}.category`;
+const durationKey     = `${base}.duration`;
 ---
 
 <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur overflow-hidden">
@@ -19,7 +26,10 @@ const { data, id } = country;
         loading="lazy"
         class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
       />
-      <span class="absolute top-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs text-white">
+      <span
+        class="absolute top-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs text-white"
+        data-i18n={categoryKey}
+      >
         {data.category}
       </span>
     </a>
@@ -27,17 +37,17 @@ const { data, id } = country;
 
   <div class="p-5">
     <h3 class="text-lg font-semibold text-white hover:text-blue-400">
-      <a href={`/countries/${id}`}>{data.title}</a>
+      <a href={`/countries/${id}`} data-i18n={titleKey}>{data.title}</a>
     </h3>
 
-    <p class="mt-1 text-sm text-white/70">{data.description}</p>
+    <p class="mt-1 text-sm text-white/70" data-i18n={descriptionKey}>{data.description}</p>
 
     <div class="mt-3 flex justify-between text-sm text-white/80">
       <span class="flex items-center gap-2">
         <Icon name="bi:clock" />
-        {data.duration}
+        <span data-i18n={durationKey}>{data.duration}</span>
       </span>
-      <span class="font-semibold text-white">${data.investment.toLocaleString()}</span>
+      <span class="font-semibold text-white">${data.investment?.toLocaleString()}</span>
     </div>
   </div>
 </article>

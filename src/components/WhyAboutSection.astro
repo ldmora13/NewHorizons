@@ -22,44 +22,38 @@ export interface WhyAboutSectionProps {
 ========================= */
 const {
   id = "why-about",
-  title = "Why Choose Ocean Travel",
-  backgroundImage = "/img/about-sea.jpg",
+  titleKey = "about.why.title",
+  backgroundImage = "/img/countries/france/2.jpg",
   items = [
     {
-      icon: "bi:person-badge",
-      title: "Expert Local Guides",
-      description:
-        "Experienced professionals with deep knowledge of marine environments.",
+      icon: "bi:mortarboard",
+      titleKey: "about.why.expertTitle",
+      descriptionKey: "about.why.expertDesc",
+    },
+    {
+      icon: "bi:building-check",
+      titleKey: "about.why.adminTitle",
+      descriptionKey: "about.why.adminDesc",
+    },
+    {
+      icon: "bi:heart-pulse",
+      titleKey: "about.why.humanTitle",
+      descriptionKey: "about.why.humanDesc",
+    },
+    {
+      icon: "bi:lightning-charge",
+      titleKey: "about.why.speedTitle",
+      descriptionKey: "about.why.speedDesc",
     },
     {
       icon: "bi:shield-check",
-      title: "Safety & Trust",
-      description:
-        "International safety standards, insured trips, and certified operators.",
+      titleKey: "about.why.trustTitle",
+      descriptionKey: "about.why.trustDesc",
     },
     {
-      icon: "bi:leaf",
-      title: "Sustainable Travel",
-      description:
-        "Low-impact tourism supporting marine conservation and local communities.",
-    },
-    {
-      icon: "bi:people",
-      title: "Small Group Focus",
-      description:
-        "More personal, immersive, and relaxed travel experiences.",
-    },
-    {
-      icon: "bi:sliders",
-      title: "Flexible Itineraries",
-      description:
-        "Custom-designed journeys to match your travel style.",
-    },
-    {
-      icon: "bi:headset",
-      title: "24/7 Support",
-      description:
-        "Assistance before, during, and after your journey.",
+      icon: "bi:globe",
+      titleKey: "about.why.globalTitle",
+      descriptionKey: "about.why.globalDesc",
     },
   ],
 } = Astro.props as WhyAboutSectionProps;
@@ -75,19 +69,19 @@ const {
          background-attachment: fixed;`}
 >
   <!-- overlay -->
-  <div class="absolute inset-0 bg-linear-to-b from-slate-950/50 via-slate-950/30 to-slate-950/20"></div>
+  <div class="absolute inset-0 bg-linear-to-b from-slate-950/70 via-slate-950/50 to-slate-950/80"></div>
 
   <div class="relative z-10 max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-semibold text-white text-shadow mb-10">
-      {title}
+    <h2 class="text-3xl md:text-4xl font-semibold text-white text-shadow mb-10" data-i18n={titleKey}>
+      Why Choose New Horizons
     </h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((item) => (
         <WhyCard
           icon={item.icon}
-          title={item.title}
-          description={item.description}
+          titleKey={item.titleKey}
+          descriptionKey={item.descriptionKey}
         />
       ))}
     </div>

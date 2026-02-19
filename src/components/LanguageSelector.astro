@@ -4,7 +4,16 @@
 
 <div 
   class="relative inline-block language-selector-container"
-  x-data="{ open: false, currentLang: 'en' }"
+  x-data="{
+    open: false,
+    currentLang: localStorage.getItem('i18nextLng') || navigator.language?.split('-')[0] || 'es'
+  }"
+  x-init="
+    // Keep Alpine in sync when i18n changes language
+    window.addEventListener('i18n:changed', (e) => { currentLang = e.detail.lang; });
+    // Ensure currentLang is a supported language
+    if (!['en','es','fr'].includes(currentLang)) currentLang = 'es';
+  "
 >
   <!-- Language Button -->
   <button
@@ -35,21 +44,27 @@
     <div class="py-1">
       <button
         data-lang="en"
+        @click="open = false"
         class="w-full flex items-center gap-3 px-4 py-2 text-sm text-white hover:bg-white/10 transition text-left"
+        :class="{ 'bg-white/10 font-semibold': currentLang === 'en' }"
       >
         <span class="text-xl">🇺🇸</span>
         <span>English</span>
       </button>
       <button
         data-lang="es"
+        @click="open = false"
         class="w-full flex items-center gap-3 px-4 py-2 text-sm text-white hover:bg-white/10 transition text-left"
+        :class="{ 'bg-white/10 font-semibold': currentLang === 'es' }"
       >
         <span class="text-xl">🇪🇸</span>
         <span>Español</span>
       </button>
       <button
         data-lang="fr"
+        @click="open = false"
         class="w-full flex items-center gap-3 px-4 py-2 text-sm text-white hover:bg-white/10 transition text-left"
+        :class="{ 'bg-white/10 font-semibold': currentLang === 'fr' }"
       >
         <span class="text-xl">🇫🇷</span>
         <span>Français</span>
@@ -67,78 +82,48 @@
 
 <script is:inline>
   (function initLanguageSelector() {
-    function waitForDependencies(callback, maxAttempts = 50) {
-      let attempts = 0;
-      const check = () => {
-        attempts++;
-        if (window.i18n && window.Alpine) {
-          callback();
-        } else if (attempts < maxAttempts) {
-          setTimeout(check, 100);
-        }
-      };
-      check();
-    }
-
-    waitForDependencies(() => {
+    function setup() {
       const selectors = document.querySelectorAll('.language-selector-container');
       if (selectors.length === 0) return;
 
-      // Función para actualizar el idioma mostrado en todos los selectores
-      function updateDisplay() {
-        try {
-          if (window.i18n && window.i18n.getCurrentLanguage) {
-            const currentLang = window.i18n.getCurrentLanguage();
-            
-            selectors.forEach(selector => {
-                const alpineData = window.Alpine?.$data(selector);
-                if (alpineData) {
-                  alpineData.currentLang = currentLang;
-                }
-            });
-          }
-        } catch (e) {
-          console.warn('Error updating language display:', e);
-        }
-      }
-
-      // Inicializar display
-      updateDisplay();
-      
-      // Escuchar cambios de idioma
-      if (window.i18n && window.i18n.onLanguageChange) {
-        window.i18n.onLanguageChange(() => {
-          updateDisplay();
-        });
-      }
-
-      // Manejar selección de idioma para cada selector
+      // Handle language button clicks
       selectors.forEach(selector => {
-          const buttons = selector.querySelectorAll('button[data-lang]');
-          buttons.forEach((button) => {
-            button.addEventListener('click', async (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              
-              const lang = button.getAttribute('data-lang');
-              if (lang && ['en', 'es', 'fr', 'pt'].includes(lang) && window.i18n) {
-                try {
-                  if (window.i18n.changeLanguage) {
-                    await window.i18n.changeLanguage(lang);
-                  }
-                  
-                  // Cerrar dropdown de este selector específico
-                  const alpineData = window.Alpine?.$data(selector);
-                  if (alpineData) {
-                    alpineData.open = false;
-                  }
-                } catch (err) {
-                  console.error('Error changing language:', err);
-                }
+        const buttons = selector.querySelectorAll('button[data-lang]');
+        buttons.forEach((button) => {
+          button.addEventListener('click', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const lang = button.getAttribute('data-lang');
+            if (!lang || !['en', 'es', 'fr', 'pt'].includes(lang)) return;
+
+            try {
+              // Wait for i18n to be ready if not yet initialized
+              if (!window.i18n) {
+                await new Promise((resolve) => {
+                  const interval = setInterval(() => {
+                    if (window.i18n) { clearInterval(interval); resolve(); }
+                  }, 50);
+                  setTimeout(() => { clearInterval(interval); resolve(); }, 3000);
+                });
               }
-            });
+
+              if (window.i18n && window.i18n.changeLanguage) {
+                await window.i18n.changeLanguage(lang);
+              }
+            } catch (err) {
+              console.error('Error changing language:', err);
+            }
           });
+        });
       });
-    });
+    }
+
+    // Run immediately — buttons use event delegation so this is safe
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else {
+      setup();
+    }
   })();
 </script>

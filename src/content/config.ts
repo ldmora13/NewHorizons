@@ -52,6 +52,7 @@ const countries = defineCollection({
     rating: z.number().optional(),
     reviews: z.number().optional(),
     facilities: z.array(z.string()).optional(),
+    i18nKey: z.string().optional(),
   }),
 });
 

@@ -12,10 +12,10 @@ export interface HeroAboutProps {
 
 const {
   id = "heroabout",
-  badge = "Our Story & Vision",
-  title = "Crafting Meaningful Ocean Journeys",
-  description = "Ocean Travel was born from a deep passion for the sea — connecting people with extraordinary marine destinations through responsible, immersive, and carefully curated journeys.",
-  backgroundImage = "/img/about-sea.jpg",
+  badgeKey = "about.hero.badge",
+  titleKey = "about.hero.title",
+  descriptionKey = "about.hero.description",
+  backgroundImage = "/img/countries/france/2.jpg",
   minHeight = "78vh",
   className = "",
 } = Astro.props as HeroAboutProps;
@@ -37,24 +37,22 @@ const {
 
   <!-- Soft Light Rays -->
   <div class="pointer-events-none absolute inset-0 opacity-40 mix-blend-screen">
-    <div class="absolute -top-24 left-1/4 h-[140%] w-40 rotate-12 bg-linear-to-b from-cyan-200/20 via-cyan-200/0 to-transparent blur-2xl"></div>
-    <div class="absolute -top-24 left-2/3 h-[140%] w-56 -rotate-6 bg-linear-to-b from-sky-200/15 via-sky-200/0 to-transparent blur-2xl"></div>
+    <div class="absolute -top-24 left-1/4 h-[140%] w-40 rotate-12 bg-linear-to-b from-blue-200/20 via-blue-200/0 to-transparent blur-2xl"></div>
+    <div class="absolute -top-24 left-2/3 h-[140%] w-56 -rotate-6 bg-linear-to-b from-white/15 via-white/0 to-transparent blur-2xl"></div>
   </div>
 
   <!-- Content -->
   <div class="relative z-10 w-full">
     <div class="max-w-6xl mx-auto px-4 py-20">
       <div class="max-w-3xl">
-        {badge && (
-          <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/80 px-6 py-2 text-sm text-slate-800">
-            {badge}
-          </span>
-        )}
-        <h1 class="mt-5 text-4xl sm:text-5xl font-semibold tracking-tight text-white">
-          {title}
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/80 px-6 py-2 text-sm text-slate-800" data-i18n={badgeKey}>
+          Our Commitment
+        </span>
+        <h1 class="mt-5 text-4xl sm:text-5xl font-semibold tracking-tight text-white" data-i18n={titleKey}>
+          Leading Your Path to France
         </h1>
-        <p class="mt-5 text-lg text-white/70 leading-relaxed">
-          {description}
+        <p class="mt-5 text-lg text-white/70 leading-relaxed" data-i18n={descriptionKey}>
+          We combine years of legal experience with a passionate focus on helping global citizens settle in the heart of Europe.
         </p>
       </div>
     </div>

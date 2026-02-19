@@ -1,10 +1,10 @@
-{
+﻿{
   "common": {
     "home": "Accueil",
     "about": "À propos",
-    "programs": "Programmes",
+    "programs": "Visas & Programmes",
     "faq": "FAQ",
-    "reviews": "Avis",
+    "reviews": "Success Stories",
     "contact": "Contact",
     "getStart": "Commencer",
     "learnMore": "En savoir plus",
@@ -15,138 +15,218 @@
   },
   "footer": {
     "about": {
-      "title": "À propos de nous",
-      "description": "Chez NewHorizons Immigrations Law, nous nous spécialisons dans l'aide aux personnes qui souhaitent vivre, travailler ou investir à l'étranger. Notre principal objectif est les États-Unis, l'Europe et les Émirats arabes unis."
+      "title": "New Horizons Immigration Law",
+      "description": "Chez NewHorizons Immigration Law, nous sommes spécialistes de l'immigration française et de la mobilité administrative. Notre mission est de faciliter votre transition vers une nouvelle vie en France avec sécurité juridique et excellence professionnelle."
     },
     "navigation": {
       "title": "Navigation",
-      "immigrationPrograms": "Programmes d'immigration",
+      "immigrationPrograms": "Visas et Programmes",
+      "successStories": "Histoires de Succès",
+      "faqs": "Questions Fréquentes",
       "privacyPolicy": "Politique de confidentialité",
       "termsOfService": "Conditions d'utilisation"
     },
     "programs": {
-      "title": "Programmes",
-      "eb1": "EB-1 - Carrière exceptionnelle",
-      "eb2": "EB-2 NIW - Bénéfice national",
-      "eb5": "EB-5 - Programmes d'investissement",
-      "permanentResidence": "Résidence permanente",
-      "newHorizonsClub": "Club NewHorizons"
+      "title": "Services",
+      "eb1": "Passeport Talent",
+      "eb2": "VLS-TS Salarié / Visiteur",
+      "eb5": "Business / Investisseur",
+      "permanentResidence": "Titre de Séjour",
+      "newHorizonsClub": "Services Expat"
     },
-    "copyright": "© 2026 New Horizons Immigration Law. Tous droits réservés.",
-    "address": "Washington/Wells, Chicago, IL 60602, USA",
+    "copyright": "© 2026 New Horizons Immigration Law. Experts en droit français.",
+    "address": "Support spécialisé pour les Préfectures et Consulats",
     "phone": "+1 (909) 547-3238",
     "email": "info@newhorizonsimmigrationlaw.org"
   },
   "hero": {
-    "badge": "Faites confiance à notre expérience et laissez-nous être votre guide dans le monde complexe de la migration internationale.",
-    "title": "Obtenez une consultation pour votre projet international",
-    "description": "Prêt à franchir l'étape suivante vers votre projet international ? Contactez-nous dès aujourd'hui pour planifier une consultation. Nous vous aiderons à naviguer dans les complexités du processus d'immigration et à garantir un résultat réussi.",
-    "reviewText": "Plus de 16000 personnes accompagnées",
-    "cta": {
-      "programs": "Programmes",
-      "aboutUs": "À propos de nous"
+    "badge": "Conseils d'experts pour votre transition vers la France. Naviguez dans le système administratif français en toute confiance.",
+    "title": "Votre Nouvelle Vie en France Commence Aujourd'hui",
+    "description": "Conseils juridiques spécialisés pour les VLS-TS et les Passeports Talent. Nous gérons les complexités de l'administration française pour que vous puissiez vous concentrer sur vos nouveaux horizons.",
+    "reviewText": "Plus de 16 000 intégrations réussies",
+      "programs": {
+    "flagLabel": "Destination Principale",
+    "flagTitle": "Programmes Actifs en France",
+    "processTitle": "Comment fonctionne le processus",
+    "processDesc": "De la consultation initiale jusqu'a votre Titre de Sejour en France  nous gerons chaque etape.",
+    "talent": {
+      "f1": "Titre de 4 ans renouvelable",
+      "f2": "Inclut conjoint et enfants",
+      "f3": "Autorisation de travail incluse",
+      "f4": "Acces au marche de l'UE",
+      "profile": "Chercheurs, artistes, entrepreneurs et investisseurs a profil qualifie."
+    },
+    "vlsts": {
+      "f1": "Sejour superieur a 3 mois",
+      "f2": "Validation OFII incluse",
+      "f3": "Pour salaries et teletravaileurs",
+      "f4": "Renouvelable en Titre de Sejour",
+      "profile": "Professionnels avec contrat francais ou personnes disposant de ressources propres."
+    },
+    "investor": {
+      "f1": "Creation ou acquisition d'entreprise",
+      "f2": "Ouverture de compte bancaire francais",
+      "f3": "Conseil juridique et fiscal complet",
+      "f4": "Voie rapide vers la residence permanente",
+      "profile": "Entrepreneurs et investisseurs souhaitant creer ou acquerir une entreprise en France."
+    },
+    "step1": { "title": "Consultation Initiale", "desc": "Nous evaluons votre profil en 30 minutes et vous indiquons le programme optimal." },
+    "step2": { "title": "Preparation du Dossier", "desc": "Nous compilons et verifions chaque document avec notre processus de verification en 3 couches." },
+    "step3": { "title": "Rendez-vous Consulaire", "desc": "Nous vous accompagnons lors de la presentation au consulat de votre pays." },
+    "step4": { "title": "Arrivee en France", "desc": "Nous gerons la validation OFII et toutes les demarches d'arrivee pour vous." },
+    "step5": { "title": "Titre de Sejour", "desc": "Nous traitons votre Titre de Sejour et vous conseillons sur le renouvellement." }
+  },"cta": {
+      "programs": "Nos Visas",
+      "aboutUs": "Notre Expertise"
     }
   },
   "map": {
-    "title": "Votre Voyage vers New Horizons",
-    "description": "Des États-Unis à l'Europe et aux Émirats arabes unis",
-    "usa_top": "DES",
-    "usa_text": "ÉTATS-UNIS",
+    "title": "Votre Route Directe vers la France",
+    "description": "Soutien mondial vers le territoire français",
+    "usa_top": "DANS LE MONDE",
+    "usa_text": "ORIGINE",
     "europe_top": "DESTINATION",
-    "europe_mid": "Pour réaliser Vos",
-    "europe_bot": "RÊVES"
+    "europe_mid": "S'installer en",
+    "europe_bot": "FRANCE"
   },
   "why": {
-    "title": "Qu'avons-nous accompli ?",
+    "title": "Pourquoi nous faire confiance pour la France ?",
     "cards": {
       "peopleAccompanied": {
-        "title": "Plus de 16000 personnes accompagnées",
-        "description": "Avec plus de 16 000 cas traités avec succès, notre expérience est soutenue par des résultats tangibles."
+        "title": "+16 000 familles installées",
+        "description": "Avec plus de 16 000 familles établies avec succès en France, notre expérience est votre meilleure garantie."
       },
       "teamMembers": {
-        "title": "2k membres de l'équipe",
-        "description": "Nous avons une équipe multidisciplinaire de professionnels hautement qualifiés spécialisés dans différentes catégories de migration."
+        "title": "Spécialistes Juridiques",
+        "description": "Une équipe multidisciplinaire spécialisée en droit administratif français et procédures consulaires."
       },
       "experience": {
-        "title": "+15 ans d'expérience",
-        "description": "Avec plus de 15 ans d'expérience dans l'industrie de la migration, nous avons aidé des milliers de personnes à réaliser leurs rêves."
+        "title": "+15 Ans en France",
+        "description": "Plus de 15 ans à naviguer dans les complexités des Préfectures françaises et de l'OFII."
       },
       "successRate": {
-        "title": "91% de taux de réussite",
-        "description": "Plus de 91% de nos clients ont réussi leur parcours migratoire."
+        "title": "91% de Taux d'Approbation",
+        "description": "Notre préparation méticuleuse assure un taux de réussite de 91% pour les demandes de visa et de résidence."
       },
       "successfulCases": {
-        "title": "52k cas réussis",
-        "description": "Plus de 52 000 cas réussis, représentant une diversité de cultures, de langues et de traditions."
+        "title": "52k Dossiers Réussis",
+        "description": "Des milliers de renouvellements et de changements de statut gérés avec une précision absolue."
       },
       "countriesRepresented": {
-        "title": "Plus de 100 pays représentés",
-        "description": "Cas réussis dans plus de 100 pays, représentant une diversité de cultures, de langues et de traditions."
+        "title": "Expertise Profils Mondiaux",
+        "description": "Vaste expérience pour aider les citoyens du monde entier à obtenir la résidence française."
       }
     }
   },
   "about": {
-    "title": "Programmes que nous offrons",
-    "description": "Nous travaillons avec des projets de résidence permanente et des visas basés sur la carrière professionnelle, les mérites ou l'investissement. Plus de 16 000 personnes accompagnées avec un taux de réussite de 91%.",
+    "title": "Nos Programmes d'Immigration en France",
+    "description": "Nous sommes spécialisés dans les visas de long séjour et les titres de séjour basés sur le talent, l’investissement ou la carrière professionnelle. Chaque étape, du consulat à la Préfecture.",
     "features": {
-      "globalDestinations": "Destinations mondiales",
-      "certificateSpecialists": "Spécialistes certifiés"
+      "globalDestinations": "Spécialiste France",
+      "certificateSpecialists": "Conseillers Juridiques Certifiés"
     },
     "programs": {
       "eb1": {
-        "title": "EB-1",
-        "description": "Pour les personnes ayant une carrière exceptionnelle dans les sciences, les arts, l'éducation, les affaires ou le sport. Résidence permanente basée sur des mérites exceptionnels et une reconnaissance internationale. Aucune offre d'emploi requise et traitement prioritaire disponible."
+        "title": "Passeport Talent",
+        "description": "Pour les investisseurs, fondateurs et profils hautement qualifiés. Un titre de séjour de 4 ans qui vous permet de vivre et travailler en France avec votre famille."
       },
       "eb2": {
-        "title": "EB-2 NIW",
-        "description": "Pour les professionnels dont le travail génère un bénéfice national ou un impact significatif. Exemption d'offre d'emploi requise, idéal pour les chercheurs, les universitaires et les professionnels exceptionnels. Nécessite de démontrer que le candidat apporte un bénéfice substantiel aux États-Unis."
+        "title": "VLS-TS (Salarié / Visiteur)",
+        "description": "La visa de long séjour standard pour les professionnels avec un contrat de travail local ou les personnes disposant de ressources propres."
       },
       "eb5": {
-        "title": "EB-5",
-        "description": "Programmes d'investissement avec possibilité de résidence permanente pour les investisseurs et leurs familles. Différents niveaux d'investissement disponibles selon le projet et l'emplacement. Nécessite la création d'au moins 10 emplois aux États-Unis grâce à l'investissement réalisé."
+        "title": "Investisseur & Business",
+        "description": "Pour les entrepreneurs souhaitant créer ou reprendre une entreprise en France. Comprend des conseils stratégiques sur les exigences administratives."
       }
+    },
+    "hero": {
+      "badge": "Notre Engagement",
+      "title": "Vos Experts en Mobilité Internationale",
+      "description": "Depuis plus de 15 ans, nous avons accompagné plus de 16 000 familles, professionnels et investisseurs à s’installer avec succès en France. Nous connaissons chaque Préfecture, chaque formulaire et chaque délai."
+    },
+    "story": {
+      "title": "Notre Histoire",
+      "paragraph1": "New Horizons Immigration Law a été fondée en 2009 à Miami par une équipe d’avocats franco-américains ayant une expérience directe du système administratif français. Notre mission fondatrice était claire : supprimer les barrières bureaucratiques qui empêchent les talents mondiaux de saisir les opportunités qu’offre la France.",
+      "paragraph2": "Au fil des années, nous avons construit des relations de confiance avec des consuls, des agents de l’OFII et des fonctionnaires de Préfecture dans toute la France. Ce réseau nous permet d’anticiper les évolutions réglementaires et d’offrir à nos clients un avantage stratégique déterminant pour chaque dossier.",
+      "paragraph3": "Aujourd’hui, avec des bureaux à Miami, Madrid et Paris, nous sommes le pont le plus solide entre le monde et la France. Nous ne sommes pas seulement des conseillers : nous sommes vos alliés sur le terrain, présents à chaque étape de votre parcours migratoire."
+    },
+    "why": {
+      "title": "Pourquoi Nous Choisir ?",
+      "expertTitle": "Spécialistes Multi-Destinations",
+      "expertDesc": "Nous nous concentrons exclusivement sur l’immigration en France. Nous ne sommes pas des généralistes : chaque membre de l’équipe a une formation spécifique en droit administratif français et en procédures consulaires.",
+      "adminTitle": "Gestion Administrative Complète",
+      "adminDesc": "De la préparation du dossier à l’accompagnement lors du rendez-vous OFII, nous gérons chaque phase du processus afin que vous puissiez vous concentrer sur votre nouvelle vie.",
+      "humanTitle": "Service Humain et Personnalisé",
+      "humanDesc": "Chaque client a une situation unique. Nous affectons un conseiller dédié à chaque dossier, avec une communication directe en espagnol, anglais et français — sans intermédiaires ni robots.",
+      "speedTitle": "Rapidité et Précision",
+      "speedDesc": "Les délais consulaires sont stricts et les erreurs coûteuses. Notre système de vérification en trois couches garantit que chaque dossier est irréprochable avant sa soumission.",
+      "trustTitle": "Transparence Totale",
+      "trustDesc": "Pas de surprise. Nous vous expliquons exactement ce que comprend votre forfait, combien de temps cela prendra et ce qu’il faut attendre à chaque étape, avec des mises à jour en temps réel.",
+      "globalTitle": "Présence Internationale",
+      "globalDesc": "Nous accompagnons des clients depuis plus de 40 pays. Avec des bureaux à Miami, Madrid et Paris, nous comprenons votre contexte culturel et juridique d’origine, facilitant toute la logistique transfrontière."
     }
   },
   "countries": {
-    "title": "Pays populaires où vivre",
-    "description": "Découvrez nos pays les plus appréciés pour vivre, soigneusement sélectionnés pour les immigrants internationaux.",
-    "comingSoon": "Bientôt disponible",
-    "permanentResident": "Résident permanent",
-    "permanentResidency": "Résidence permanente"
+    "title": "Notre Destination Principale",
+    "description": "Nous sommes spécialistes de l’immigration en France. Découvrez nos programmes actifs et les destinations que nous ouvrirons prochainement.",
+        "portugal": {
+      "title": "Résidence par Investissement · Portugal",
+      "category": "Visa d'Investissement",
+      "description": "Le programme Golden Visa du Portugal est l'un des programmes de résidence par investissement les plus populaires d'Europe.",
+      "duration": "Résidence Permanente"
+    },
+    "spain": {
+      "title": "Visa Non-Lucratif · Espagne",
+      "category": "Visa d'Investissement",
+      "description": "Le programme Golden Visa d'Espagne offre la résidence aux ressortissants non européens qui réalisent un investissement significatif dans le pays.",
+      "duration": "Résidence Permanente"
+    },
+    "uae": {
+      "title": "Résidence Talent · EAU",
+      "category": "Visa d'Investissement",
+      "description": "La Golden Visa des Émirats est un visa de longue durée permettant aux talents étrangers de vivre, travailler ou étudier aux EAU.",
+      "duration": "5-10 Ans"
+    },"comingSoon": "Prochainement",
+    "permanentResident": "Visa Long Séjour",
+    "permanentResidency": "Titre de Séjour",
+    "mainBadge": "Destination Principale",
+    "mainTitle": "Programmes d’Immigration en France",
+    "mainDescription": "La France, au cœur de l’Europe occidentale, offre une qualité de vie exceptionnelle, un accès au marché européen et un système social de référence mondiale.",
+    "titreDeSeJour": "Titre de Séjour"
   },
   "sponsor": {
-    "title": "Patrociné par"
+    "title": "Reconnu par"
   },
   "checkout": {
-    "title": "Checkout d'immigration",
-    "destination": "Destination",
-    "programOption": "Option de programme",
-    "familyNumbers": "Nombre de membres de la famille",
-    "adults": "Adultes (Min. 1)",
+    "title": "Démarrez votre Projet Français",
+    "destination": "Destination Cible",
+    "programOption": "Catégorie de Visa",
+    "familyNumbers": "Composition Familiale",
+    "adults": "Adultes",
     "children": "Enfants",
-    "billingInformation": "Informations de facturation",
-    "fullName": "Nom complet",
-    "emailAddress": "Adresse e-mail",
-    "address": "Adresse",
+    "billingInformation": "Informations Personnelles",
+    "fullName": "Nom Complet",
+    "emailAddress": "E-mail",
+    "address": "Adresse Actuelle",
     "city": "Ville",
-    "zipCode": "Code postal",
+    "zipCode": "Code Postal",
     "country": "Pays",
-    "phoneNumber": "Numéro de téléphone",
-    "confirmCheckout": "Confirmer le checkout",
-    "orderSummary": "Résumé de la commande",
-    "program": "Programme",
-    "familyMembers": "Membres de la famille",
-    "total": "Total",
+    "phoneNumber": "Téléphone",
+    "confirmCheckout": "Confirmer et Payer",
+    "orderSummary": "Résumé du Service",
+    "program": "Type de Visa",
+    "familyMembers": "Membres de la Famille",
+    "total": "Total des Honoraires",
     "pleaseConfirmDetails": "Veuillez confirmer vos informations",
-    "completeFormMessage": "Remplissez le formulaire et cliquez sur \"Confirmer le checkout\" pour procéder au paiement.",
-    "paymentSuccessful": "Paiement réussi !",
-    "thankYouMessage": "Merci pour votre confiance. Votre processus d'immigration a commencé.",
-    "orderNumber": "Numéro de commande",
-    "confirmationEmailSent": "Un e-mail de confirmation a été envoyé à votre boîte de réception.",
+    "completeFormMessage": "Remplissez le formulaire et cliquez sur \"Confirmer\" pour lancer votre procédure.",
+    "paymentSuccessful": "Transaction Approuvée !",
+    "thankYouMessage": "Merci de votre confiance. Votre procédure pour la France a officiellement commencé.",
+    "orderNumber": "Référence du Dossier",
+    "confirmationEmailSent": "Un e-mail de confirmation avec l'accès à votre bureau virtuel a été envoyé.",
     "programs": {
-      "eb1": "Personnes avec carrière extraordinaire",
-      "eb2": "Bénéfice national",
-      "eb5": "Programme d'investissement"
+      "eb1": "Passeport Talent",
+      "eb2": "VLS-TS Salarié / Visiteur",
+      "eb5": "Business / Investisseur"
     },
     "validation": {
       "fullNameRequired": "Le nom complet est requis",
@@ -156,65 +236,162 @@
       "zipRequired": "Le code postal est requis",
       "countryRequired": "Le pays est requis",
       "phoneRequired": "Le numéro de téléphone est requis",
-      "atLeastOneAdult": "Il doit y avoir au moins un adulte",
+      "atLeastOneAdult": "Au moins un adulte est requis",
       "childrenCannotBeNegative": "Le nombre d'enfants ne peut pas être négatif"
     }
   },
-  "cta": {
-    "title": "Contactez-nous maintenant !",
-    "description": "Nous vous aiderons à naviguer dans les complexités du processus d'immigration et à garantir un résultat réussi.",
-    "getStartNow": "Commencer maintenant !",
-    "contactUs": "Contactez-nous"
+    "programs": {
+    "flagLabel": "Destination Principale",
+    "flagTitle": "Programmes Actifs en France",
+    "processTitle": "Comment fonctionne le processus",
+    "processDesc": "De la consultation initiale jusqu'a votre Titre de Sejour en France  nous gerons chaque etape.",
+    "talent": {
+      "f1": "Titre de 4 ans renouvelable",
+      "f2": "Inclut conjoint et enfants",
+      "f3": "Autorisation de travail incluse",
+      "f4": "Acces au marche de l'UE",
+      "profile": "Chercheurs, artistes, entrepreneurs et investisseurs a profil qualifie."
+    },
+    "vlsts": {
+      "f1": "Sejour superieur a 3 mois",
+      "f2": "Validation OFII incluse",
+      "f3": "Pour salaries et teletravaileurs",
+      "f4": "Renouvelable en Titre de Sejour",
+      "profile": "Professionnels avec contrat francais ou personnes disposant de ressources propres."
+    },
+    "investor": {
+      "f1": "Creation ou acquisition d'entreprise",
+      "f2": "Ouverture de compte bancaire francais",
+      "f3": "Conseil juridique et fiscal complet",
+      "f4": "Voie rapide vers la residence permanente",
+      "profile": "Entrepreneurs et investisseurs souhaitant creer ou acquerir une entreprise en France."
+    },
+    "step1": { "title": "Consultation Initiale", "desc": "Nous evaluons votre profil en 30 minutes et vous indiquons le programme optimal." },
+    "step2": { "title": "Preparation du Dossier", "desc": "Nous compilons et verifions chaque document avec notre processus de verification en 3 couches." },
+    "step3": { "title": "Rendez-vous Consulaire", "desc": "Nous vous accompagnons lors de la presentation au consulat de votre pays." },
+    "step4": { "title": "Arrivee en France", "desc": "Nous gerons la validation OFII et toutes les demarches d'arrivee pour vous." },
+    "step5": { "title": "Titre de Sejour", "desc": "Nous traitons votre Titre de Sejour et vous conseillons sur le renouvellement." }
+  },"cta": {
+    "title": "Parlez à un Expert en Immigration Française",
+    "description": "Plus de 16 000 familles se sont installées en France grâce à notre accompagnement. Prenez rendez-vous et découvrez en 30 minutes si vous êtes éligible.",
+    "getStartNow": "Commencez Aujourd'hui !",
+    "contactUs": "Prendre Rendez-vous"
   },
   "meta": {
-    "defaultTitle": "New Horizons Immigration Law | Experts en migration internationale",
-    "defaultDescription": "Chez NewHorizons Immigrations Law, nous nous spécialisons dans l'aide aux personnes qui souhaitent vivre, travailler ou investir à l'étranger"
+    "defaultTitle": "New Horizons | Experts en Droit de l'Immigration Française",
+    "defaultDescription": "Conseils juridiques spécialisés pour les visas, passeports talent et titres de séjour en France."
   },
   "pages": {
+    "programs": {
+      "title": "Programmes d'Immigration en France",
+      "description": "Explorez nos catégories de visas spécialisés pour la France. Du talent professionnel à l'investissement stratégique, nous vous guidons à chaque étape du processus administratif français."
+    },
     "checkout": {
-      "title": "Démarrez votre plan d'immigration",
-      "description": "Choisissez le bon programme d'immigration pour votre profil, complétez vos informations et passez au paiement"
+      "title": "Sécurisez votre Visa Français",
+      "description": "Choisissez la catégorie qui correspond à votre profil et laissez-nous gérer la bureaucratie."
     },
     "contact": {
-      "title": "Contactez-nous",
-      "description": "Nous sommes là pour vous aider ! Contactez-nous pour toute question ou assistance concernant votre processus d'immigration.",
+      "title": "Parlez à nos Experts en Immigration Française",
+      "description": "Nous proposons un accompagnement personnalisé en anglais, espagnol et français. Partagez votre situation et nous vous indiquerons quel programme vous correspond et dans quel délai vous pourriez vous installer en France.",
       "sendMessage": "Envoyez-nous un message",
-      "fullName": "Nom complet",
-      "emailAddress": "Adresse e-mail",
-      "message": "Message",
+      "fullName": "Nom",
+      "emailAddress": "E-mail",
+      "message": "Votre Situation",
+      "formSubtitle": "Nous répondons en moins de 24h · Sans engagement",
+      "phoneLabel": "Téléphone",
+      "destinationLabel": "Destination Souhaitée",
+      "destinationPlaceholder": "Sélectionnez votre destination",
+      "destinationOther": "Autre / Je ne sais pas encore",
+      "privacyNote": "Vos informations sont protégées. Nous ne partageons pas vos données avec des tiers.",
+      "trust1": "16 000+ Dossiers Réussis",
+      "trust2": "Réponse en moins de 24h",
+      "trust3": "Conseil en ES · EN · FR",
+      "trust4": "91% de Taux d'Approbation",
       "sendButton": "Envoyer le message",
-      "address": "Adresse",
+      "address": "Bureaux",
       "email": "E-mail",
       "phone": "Téléphone"
     },
     "faqs": {
-      "title": "Questions fréquemment posées",
-      "description": "Trouvez des réponses aux questions courantes sur nos programmes d'immigration, processus et services."
+      "title": "Questions Fréquentes",
+      "description": "Réponses aux questions les plus fréquentes sur nos programmes d'immigration, nos processus et les destinations disponibles.",
+      "items": {
+        "q1": {
+          "q": "Dans quels pays disposez-vous de programmes actifs ?",
+          "a": "Nous disposons actuellement de programmes actifs en France, notre destination phare. Nous sommes en cours de lancement de programmes formels pour l'Espagne, le Portugal et les Émirats Arabes Unis. Vous pouvez enregistrer votre intérêt et nous vous notifierons dès leur disponibilité."
+        },
+        "q2": {
+          "q": "Qu'est-ce que le Passeport Talent et pour qui est-il fait ?",
+          "a": "C'est un titre de séjour pluriannuel (jusqu'à 4 ans) exclusif à la France, conçu pour les profils à haut potentiel : chercheurs, artistes, entrepreneurs et investisseurs. Il permet de travailler sans permis supplémentaire et facilite le regroupement familial immédiat."
+        },
+        "q3": {
+          "q": "Combien de temps prend le processus de visa ?",
+          "a": "Les délais varient selon la destination et le consulat. Pour la France, le traitement prend généralement entre 2 et 6 semaines après le rendez-vous consulaire. New Horizons accélère ce processus grâce à un audit technique du dossier avant dépôt."
+        },
+        "q4": {
+          "q": "Est-il obligatoire de parler la langue du pays de destination ?",
+          "a": "Cela dépend du programme. En France, il n'y a pas d'exigence linguistique initiale pour les visas d'investissement et Passeport Talent ; la résidence permanente après 5 ans exige un niveau A2/B1 en français. L'Espagne et le Portugal ont également des exigences progressives. Nos conseillers vous expliqueront exactement ce qui s'applique à votre cas."
+        },
+        "q5": {
+          "q": "Que dois-je faire en arrivant à destination avec mon visa ?",
+          "a": "En France, la plupart des visas VLS-TS doivent être validés auprès de l'OFII (Office Français de l'Immigration et de l'Intégration) dans les 3 premiers mois. Chaque pays a ses propres démarches à l'arrivée ; nous vous accompagnons et gérons ces formalités en votre nom."
+        },
+        "q6": {
+          "q": "Que se passe-t-il si mon visa est refusé ?",
+          "a": "Nous disposons d'une équipe juridique spécialisée dans les recours administratifs. En France, nous intervenons devant la CRRV (Commission de Recours contre les Décisions de Refus de Visa) à Nantes. Notre système de vérification en 3 couches réduit significativement le risque de rejet avant le dépôt."
+        }
+      }
     },
     "reviews": {
-      "title": "Avis clients",
-      "description": "Découvrez les témoignages de nos clients satisfaits qui ont réussi leur parcours d'immigration."
+      "title": "Histoires Réelles, Vies Transformées",
+      "description": "Plus de 16 000 personnes ont déjà construit leur nouvelle vie en France avec New Horizons. Lisez leurs histoires et découvrez ce qui est possible pour vous."
     },
     "about": {
-      "title": "À propos de nous",
-      "description": "En savoir plus sur notre mission, nos valeurs et notre engagement à vous aider à atteindre vos objectifs d'immigration."
+      "title": "Notre Expertise Française",
+      "description": "Découvrez notre équipe spécialisée et notre engagement pour votre réussite en France.",
+      "hero": {
+        "badge": "Notre Engagement",
+        "title": "Guider Votre Chemin vers la France",
+        "description": "Nous combinons des années d'expérience juridique avec un engagement passionné pour aider les citoyens du monde à s'installer au cœur de l'Europe."
+      },
+      "story": {
+        "title": "Notre Histoire",
+        "paragraph1": "Ce qui a commencé comme un cabinet de conseil juridique international est devenu l'autorité de référence en matière de mobilité vers la France.",
+        "paragraph2": "Nous comprenons que déménager dans un autre pays n'est pas seulement un processus administratif, c'est un projet de vie. C'est pourquoi nous avons perfectionné notre méthodologie pour gérer les visas et les titres de séjour avec un taux de réussite inégalé.",
+        "paragraph3": "Notre présence constante dans les Préfectures et nos relations avec les autorités consulaires nous permettent d'offrir un avantage stratégique à nos clients."
+      },
+      "why": {
+        "title": "Ce qui nous rend différents",
+        "expertTitle": "Experts Juridiques",
+        "expertDesc": "Spécialisés exclusivement dans le Code de l'Entrée et du Séjour des Étrangers en France (CESEDA).",
+        "adminTitle": "Relations Administratives",
+        "adminDesc": "Gestion directe et fluide avec les Préfectures et le Ministère de l'Intérieur.",
+        "humanTitle": "Accompagnement Humain",
+        "humanDesc": "Vous n'êtes pas un simple numéro de dossier. Nous traitons votre cas avec l'importance que mérite votre avenir.",
+        "speedTitle": "Agilité Procédurale",
+        "speedDesc": "Nous maximisons les temps de réponse grâce à une préparation documentaire impeccable.",
+        "trustTitle": "Confiance Transparente",
+        "trustDesc": "Clarté totale sur les honoraires et les chances réelles de succès dès la première consultation.",
+        "globalTitle": "Vision Globale",
+        "globalDesc": "Nous comprenons les besoins uniques des expatriés du monde entier."
+      }
     }
   },
   "payment": {
-    "title": "Paiement réussi",
-    "description": "New Horizons Immigration Law",
+    "title": "Service Confirmé",
+    "description": "New Horizons France",
     "amount": "Montant",
     "customer": "Client",
-    "service": "Service",
+    "service": "Catégorie de Visa",
     "transactionID": "ID de transaction",
     "date": "Date",
-    "paymentMethod": "Méthode de paiement",
+    "paymentMethod": "Méthode",
     "status": "Statut",
-    "btnPrint": "Imprimer",
+    "btnPrint": "Imprimer le Reçu",
     "btnBack": "Retour à l'accueil"
   },
   "validation": {
-    "errorsDetected": "Erreurs détectées",
-    "paypalError": "Une erreur s'est produite lors du processus de paiement PayPal."
+    "errorsDetected": "Erreurs de Validation",
+    "paypalError": "Une erreur est survenue lors du paiement PayPal."
   }
 }
