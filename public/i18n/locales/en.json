@@ -169,7 +169,24 @@
   "countries": {
     "title": "Our Main Destination",
     "description": "We specialize in immigration to France. Explore our active programs and the destinations we’ll be enabling soon.",
-    "comingSoon": "Coming Soon",
+        "portugal": {
+      "title": "Investment Residency · Portugal",
+      "category": "Investment Visa",
+      "description": "Portugal's Golden Visa program is one of the most popular residency-by-investment programs in Europe.",
+      "duration": "Permanent Residency"
+    },
+    "spain": {
+      "title": "Non-Lucrative Visa · Spain",
+      "category": "Investment Visa",
+      "description": "Spain's Golden Visa program offers residency to non-EU nationals who make a significant investment in the country.",
+      "duration": "Permanent Residency"
+    },
+    "uae": {
+      "title": "Talent Residency · UAE",
+      "category": "Investment Visa",
+      "description": "The UAE's Golden Visa is a long-term residence visa that enables foreign talents to live, work, or study in the UAE while enjoying exclusive benefits.",
+      "duration": "5-10 Years"
+    },"comingSoon": "Coming Soon",
     "permanentResident": "Long-Stay Visa",
     "permanentResidency": "Titre de Séjour",
     "mainBadge": "Main Destination",

@@ -9,19 +9,21 @@ import Map from "@src/components/Map.astro";
 import Sponsors from "@src/components/Sponsors.astro";
 ---
 
-<MainLayout title="New Horizons Immigration Law | Expertos en Inmigración a Francia" description="En New Horizons, te ayudamos a iniciar tu nueva vida en Francia. Especialistas en VLS-TS, Passeport Talent e inversión.">
+<MainLayout
+  title="New Horizons Immigration Law | Expertos en Inmigración a Francia"
+  description="Más de 16,000 familias establecidas en Francia. Especialistas en Passeport Talent, VLS-TS e Inversión. 91% de tasa de aprobación. Consulta gratuita.">
   <HeroSection
       backgroundImage="/img/countries/france/0.jpg"
-      badgeText="Guía experta para tu transición a Francia."
-      title="Tu Nueva Vida en Francia Comienza Aquí"
-      description="Asesoría legal especializada en VLS-TS y Pasaportes de Talento. Manejamos las complejidades de la administración francesa para que tú te enfoques en tus nuevos horizontes."
+      badgeText="Más de 16,000 casos resueltos · 91% de tasa de aprobación"
+      title="Tu Nueva Vida en Francia Empieza Hoy"
+      description="Somos el equipo legal que convierte los sueños de vivir en Francia en realidad documentada. VLS-TS, Passeport Talent e Inversión — manejamos cada formulario, cada prefectura y cada plazo por ti."
       avatars={[
-        { src: "/img/male1.jpg", alt: "Traveler 1" },
-        { src: "/img/male2.jpg", alt: "Traveler 2" },
-        { src: "/img/female1.jpg", alt: "Traveler 3" },
-        { src: "/img/female2.jpg", alt: "Traveler 4" },
+        { src: "/img/male1.jpg", alt: "Cliente 1" },
+        { src: "/img/male2.jpg", alt: "Cliente 2" },
+        { src: "/img/female1.jpg", alt: "Cliente 3" },
+        { src: "/img/female2.jpg", alt: "Cliente 4" },
       ]}
-      reviewText="Más de 16,000 Integraciones Exitosas"
+      reviewText="+16,000 familias establecidas en Francia"
       rating={5}
       badgeI18nKey="hero.badge"
       titleI18nKey="hero.title"
@@ -29,13 +31,13 @@ import Sponsors from "@src/components/Sponsors.astro";
       reviewTextI18nKey="hero.reviewText"
       ctas={[
         {
-          label: "Nuestras Visas",
+          label: "Ver Programas →",
           href: "/programs",
           variant: "white",
           i18nKey: "hero.cta.programs"
         },
         {
-          label: "Nuestra Experiencia",
+          label: "Nuestra Historia",
           href: "/about",
           variant: "outline",
           i18nKey: "hero.cta.aboutUs"
@@ -43,11 +45,19 @@ import Sponsors from "@src/components/Sponsors.astro";
       ]}
   />
   <Map />
-  <WhySection title="¿Por qué confiar en nuestra experiencia en Francia?" />
+  <WhySection title="¿Por qué New Horizons es la elección correcta?" />
   <CountriesSection />
   <Sponsors />
   <AboutSection />
-  <CtaSection />
+  <CtaSection
+    title="¿Listo para empezar tu proceso hacia Francia?"
+    description="Más de 16,000 familias ya lograron establecerse con nuestra guía. Agenda una consulta de 30 minutos y descubre en una sola llamada si calificas y qué programa te corresponde."
+    backgroundImage="/img/countries/france/2.jpg"
+    buttons={[
+      { label: "Ver Visas y Programas", href: "/programs", variant: "white" },
+      { label: "Agenda una Consulta", href: "/contact", variant: "outline" },
+    ]}
+  />
 </MainLayout>
 <script>
   /**

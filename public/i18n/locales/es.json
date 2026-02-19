@@ -169,6 +169,24 @@
   "countries": {
     "title": "Nuestro Destino Principal",
     "description": "Nos especializamos en inmigración a Francia. Consulta nuestros programas activos y los destinos que habilitaremos próximamente.",
+        "portugal": {
+      "title": "Residencia por Inversión · Portugal",
+      "category": "Visa de Inversión",
+      "description": "El programa Golden Visa de Portugal es uno de los programas de residencia por inversión más populares de Europa.",
+      "duration": "Residencia Permanente"
+    },
+    "spain": {
+      "title": "Visa No Lucrativa · España",
+      "category": "Visa de Inversión",
+      "description": "El programa Golden Visa de España ofrece residencia a ciudadanos no comunitarios que realicen una inversión significativa en el país.",
+      "duration": "Residencia Permanente"
+    },
+    "uae": {
+      "title": "Residencia de Talento · EAU",
+      "category": "Visa de Inversión",
+      "description": "La Golden Visa de los Emiratos es un visado de larga duración que permite a talentos extranjeros vivir, trabajar o estudiar en los EAU.",
+      "duration": "5-10 Años"
+    },
     "comingSoon": "Próximamente",
     "permanentResident": "Visa de Larga Duración",
     "permanentResidency": "Titre de Séjour",
