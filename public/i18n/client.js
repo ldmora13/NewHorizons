@@ -6,20 +6,22 @@
 (function() {
   'use strict';
 
-  const SUPPORTED_LANGUAGES = ['en', 'es', 'fr'];
+  const SUPPORTED_LANGUAGES = ['en', 'es', 'fr', 'pt'];
   const DEFAULT_LANGUAGE = 'en';
   const STORAGE_KEY = 'i18nextLng';
 
   const LANGUAGE_NAMES = {
     en: 'English',
     es: 'Español',
-    fr: 'Français'
+    fr: 'Français',
+    pt: 'Português'
   };
 
   const LANGUAGE_FLAGS = {
     en: '🇺🇸',
     es: '🇪🇸',
-    fr: '🇫🇷'
+    fr: '🇫🇷',
+    pt: '🇵🇹'
   };
 
   class I18nStatic {
@@ -400,7 +402,8 @@
         const locales = {
           en: 'en-US',
           es: 'es-ES',
-          fr: 'fr-FR'
+          fr: 'fr-FR',
+          pt: 'pt-BR'
         };
 
         return new Intl.NumberFormat(locales[targetLang] || 'en-US', {
@@ -421,7 +424,8 @@
         const locales = {
           en: 'en-US',
           es: 'es-ES',
-          fr: 'fr-FR'
+          fr: 'fr-FR',
+          pt: 'pt-BR'
         };
 
         const dateObj = typeof date === 'string' ? new Date(date) : date;
@@ -441,6 +445,8 @@
     pluralize(count, singular, plural, lang = null) {
       const targetLang = lang || this.currentLang;
       if (targetLang === 'fr') {
+        return count <= 1 ? singular : plural;
+      } else if (targetLang === 'pt') {
         return count <= 1 ? singular : plural;
       }
       return count === 1 ? singular : plural;
