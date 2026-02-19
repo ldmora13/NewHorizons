@@ -69,6 +69,13 @@
         <span class="text-xl">🇫🇷</span>
         <span>Français</span>
       </button>
+      <button
+        data-lang="pt"
+        class="w-full flex items-center gap-3 px-4 py-2 text-sm text-white hover:bg-white/10 transition text-left"
+      >
+        <span class="text-xl">🇵🇹</span>
+        <span>Português</span>
+      </button>
     </div>
   </div>
 </div>
@@ -88,7 +95,7 @@
             e.stopPropagation();
 
             const lang = button.getAttribute('data-lang');
-            if (!lang || !['en', 'es', 'fr'].includes(lang)) return;
+            if (!lang || !['en', 'es', 'fr', 'pt'].includes(lang)) return;
 
             try {
               // Wait for i18n to be ready if not yet initialized
