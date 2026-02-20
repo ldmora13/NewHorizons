@@ -83,10 +83,7 @@
   "map": {
     "title": "Tu Ruta Directa a Francia",
     "description": "Soporte Global hacia el Territorio Francés",
-    "usa_top": "TODO EL MUNDO",
-    "usa_text": "ORIGEN",
     "europe_top": "DESTINO",
-    "europe_mid": "Mudarse a",
     "europe_bot": "FRANCIA"
   },
   "why": {
@@ -213,6 +210,7 @@
     "zipCode": "Código Postal",
     "country": "País",
     "phoneNumber": "Teléfono",
+    "investmentAmount": "Monto de Inversión",
     "confirmCheckout": "Confirmar y Pagar",
     "orderSummary": "Resumen del Servicio",
     "program": "Tipo de Visa",

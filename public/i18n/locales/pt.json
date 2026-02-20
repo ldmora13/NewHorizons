@@ -50,11 +50,8 @@
   "map": {
     "title": "Sua Jornada para New Horizons",
     "description": "Dos EUA para Europa e Emirados Árabes Unidos",
-    "usa_top": "DE",
-    "usa_text": "EUA",
     "europe_top": "DESTINO",
-    "europe_mid": "Para Realizar Seus",
-    "europe_bot": "SONHOS"
+    "europe_bot": "FRANÇA"
   },
   "why": {
     "title": "O Que Já Alcançamos?",
@@ -132,6 +129,7 @@
     "zipCode": "CEP",
     "country": "País",
     "phoneNumber": "Número de Telefone",
+    "investmentAmount": "Montante de Investimento",
     "confirmCheckout": "Confirmar Pagamento",
     "orderSummary": "Resumo do Pedido",
     "program": "Programa",

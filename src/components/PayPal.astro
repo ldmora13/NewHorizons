@@ -16,7 +16,7 @@
 <script>
   // This script will be handled by the parent component or via custom events
   window.addEventListener('init-paypal', (e: any) => {
-    const { programId, adults, children, clientDetails, onApprove, onError } = e.detail;
+    const { programId, adults, children, customAmount, clientDetails, onApprove, onError } = e.detail;
     const wrapper = document.getElementById('paypal-container-wrapper');
     const container = document.getElementById('paypal-button-container');
     
@@ -41,7 +41,8 @@
                     body: JSON.stringify({
                         programId,
                         adults,
-                        children
+                        children,
+                        customAmount
                     })
                 });
                 

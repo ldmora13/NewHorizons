@@ -28,13 +28,7 @@ const {
 ========================= */
 const countries = await getCollection("countries");
 
-const sortedCountries = countries.sort((a, b) => {
-  const investmentA = a.data.investment || 0;
-  const investmentB = b.data.investment || 0;
-  return investmentA - investmentB;
-});
-
-const visibleCountries = sortedCountries.slice(0, maxCountries);
+const visibleCountries = countries;
 ---
 
 <!-- Countries Section -->
@@ -86,7 +80,6 @@ const visibleCountries = sortedCountries.slice(0, maxCountries);
               <Icon name="bi:clock" />
               <span data-i18n="countries.titreDeSeJour">Titre de Séjour</span>
             </span>
-            <span class="font-semibold text-white">€3,500+</span>
           </div>
         </div>
       </article>

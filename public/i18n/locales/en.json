@@ -83,10 +83,7 @@
   "map": {
     "title": "Your Direct Route to France",
     "description": "Global Support to French Territory",
-    "usa_top": "WORLDWIDE",
-    "usa_text": "ORIGIN",
     "europe_top": "DESTINATION",
-    "europe_mid": "Move to",
     "europe_bot": "FRANCE"
   },
   "why": {
@@ -212,6 +209,7 @@
     "zipCode": "Zip Code",
     "country": "Country",
     "phoneNumber": "Phone",
+    "investmentAmount": "Investment Amount",
     "confirmCheckout": "Confirm and Pay",
     "orderSummary": "Service Summary",
     "program": "Visa Type",

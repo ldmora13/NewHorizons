@@ -58,6 +58,5 @@ const countries = defineCollection({
 
 export const collections = {
   pages,
-  blog,
   countries,
 };

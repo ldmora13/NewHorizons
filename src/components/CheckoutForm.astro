@@ -15,9 +15,9 @@ export interface CheckoutFormProps {
 
 const {
   programs = [
-    { id: "TALENT", label: "Passeport Talent", description: "$2000.00" },
-    { id: "VLSTS", label: "VLS-TS Salarié / Visitor", description: "$5000.00" },
-    { id: "INVESTOR", label: "Business / Investor", description: "$8000.00" },
+    { id: "TALENT", label: "Passeport Talent" },
+    { id: "VLSTS", label: "VLS-TS Salarié / Visitor"},
+    { id: "INVESTOR", label: "Business / Investor"},
   ],
   className = "",
 } = Astro.props as CheckoutFormProps;
@@ -75,11 +75,25 @@ const {
               class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition appearance-none"
             >
               {programs.map((program) => (
-                <option value={program.id} data-price={program.description.replace(/[^\d.]/g, "")} data-label={program.label}>
-                  {program.id} - {program.label} ({program.description})
+                <option value={program.id} data-label={program.label} data-price={program.description || '0'}>
+                  {program.id} - {program.label}
                 </option>
               ))}
             </select>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 pt-4 space-y-3">
+          <label class="text-sm text-white/70 block" data-i18n="checkout.investmentAmount">Investment Amount</label>
+          <div class="relative group md:w-[48%]">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 group-focus-within:text-blue-400 transition-colors">$</span>
+            <input 
+              type="text"
+              inputmode="decimal"
+              id="custom-amount"
+              class="w-full rounded-xl bg-black/30 border border-white/20 pl-8 pr-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-all placeholder:text-white/20"
+              placeholder="0.00"
+            />
           </div>
         </div>
 
@@ -281,6 +295,24 @@ const {
 
     let currentTransaction: Partial<TransactionData> = {};
 
+    const customAmountInput = document.getElementById('custom-amount') as HTMLInputElement;
+
+    function formatCurrencyUS(value: string) {
+      const numeric = value.replace(/[^0-9]/g, '');
+      if (!numeric) return '';
+      
+      return (Number(numeric) / 100).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    // Formateo mientras escribe
+    customAmountInput?.addEventListener('input', (e) => {
+      const target = e.target as HTMLInputElement;
+      target.value = formatCurrencyUS(target.value);
+    });
+
     // Helper function for translations
     function getTranslation(key: string): string {
       if ((window as any).i18n && (window as any).i18n.getTranslation) {
@@ -304,11 +336,18 @@ const {
       const children = parseInt(formData.get('children') as string) || 0;
       const totalMembers = adults + children;
 
-      const total = basePrice * totalMembers;
+      const customAmountInput = document.getElementById('custom-amount') as HTMLInputElement;
+      const customAmount = parseFloat(
+        (customAmountInput?.value || '0').replace(/,/g, '')
+      );
+
+
+      const total = (basePrice * totalMembers) + customAmount;
 
       return {
         total,
         basePrice,
+        customAmount,
         programId,
         programLabel: selectedOption.dataset.label || '',
         adults,
@@ -368,6 +407,11 @@ const {
           adults: calc.adults,
           children: calc.children,
           total: calc.totalMembers
+        },
+        payment: {
+          totalPaid: calc.total,
+          date: new Date().toISOString(),
+          transactionId: ''
         }
       };
 
@@ -395,6 +439,7 @@ const {
           programId: calc.programId, // Backend uses this to calculate price
           adults: calc.adults,
           children: calc.children,
+          customAmount: calc.customAmount, // Pass custom amount
           clientDetails: currentTransaction.client, // Backend needs this to create User/Ticket
           
           onApprove: (transaction: any) => {
@@ -427,13 +472,16 @@ const {
       }));
     });
 
-    // Reset Summary when inputs change (optional, but good for UX)
-    form.addEventListener('input', () => {
-      if (summaryContent && summaryContent.style.opacity === '1') {
-        summaryContent.style.opacity = '0.3';
-        if (summaryPlaceholder) summaryPlaceholder.classList.remove('hidden');
-        window.dispatchEvent(new CustomEvent('reset-paypal'));
-      }
+    // Reset Summary when inputs change
+    const inputsToWatch = [form, document.getElementById('custom-amount')];
+    inputsToWatch.forEach(el => {
+      el?.addEventListener('input', () => {
+        if (summaryContent && summaryContent.style.opacity === '1') {
+          summaryContent.style.opacity = '0.3';
+          if (summaryPlaceholder) summaryPlaceholder.classList.remove('hidden');
+          window.dispatchEvent(new CustomEvent('reset-paypal'));
+        }
+      });
     });
   })();
 </script>

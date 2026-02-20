@@ -83,10 +83,7 @@
   "map": {
     "title": "Votre Route Directe vers la France",
     "description": "Soutien mondial vers le territoire français",
-    "usa_top": "DANS LE MONDE",
-    "usa_text": "ORIGINE",
     "europe_top": "DESTINATION",
-    "europe_mid": "S'installer en",
     "europe_bot": "FRANCE"
   },
   "why": {
@@ -212,6 +209,7 @@
     "zipCode": "Code Postal",
     "country": "Pays",
     "phoneNumber": "Téléphone",
+    "investmentAmount": "Montant d'Investissement",
     "confirmCheckout": "Confirmer et Payer",
     "orderSummary": "Résumé du Service",
     "program": "Type de Visa",

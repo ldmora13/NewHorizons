@@ -3,10 +3,7 @@ export interface MapSectionProps {
   id?: string;
   title: string;
   description: string;
-  usa_top: string;
-  usa_text: string;
   europe_top: string;
-  europe_mid: string;
   europe_bot: string;
 }
 
@@ -16,10 +13,7 @@ const {
   id = "map",
   title,
   description,
-  usa_top,
-  usa_text,
   europe_top,
-  europe_mid,
   europe_bot
 } = props;
 ---
@@ -92,7 +86,7 @@ const {
 
 				<path
 					id="flight-path"
-					d="M220 480 C320 300, 400 300, 500 440"
+					d="M220 480 C300 300, 400 300, 475 450"
 					fill="none"
 					stroke="url(#pathGradient)"
 					stroke-width="2.5"
@@ -101,21 +95,70 @@ const {
 				/>
 				
 				<!-- Partículas de estela del avión -->
-				<g id="plane-trail">
+				<g id="plane-trail-usa">
+					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#60a5fa" opacity="0"/>
+					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#a78bfa" opacity="0"/>
+					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#f472b6" opacity="0"/>
+				</g>
+				<g id="plane-trail-col">
+					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#60a5fa" opacity="0"/>
+					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#a78bfa" opacity="0"/>
+					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#f472b6" opacity="0"/>
+				</g>
+				<g id="plane-trail-australia">
+					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#60a5fa" opacity="0"/>
+					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#a78bfa" opacity="0"/>
+					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#f472b6" opacity="0"/>
+				</g>
+				<g id="plane-trail-japon">
 					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#60a5fa" opacity="0"/>
 					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#a78bfa" opacity="0"/>
 					<circle class="trail-particle" cx="0" cy="0" r="1.5" fill="#f472b6" opacity="0"/>
 				</g>
 
-				<!-- AVIÓN con brillo -->
+				<!-- AVIÓN con brillo - USA -->
 				<image
-					id="plane"
+					id="plane-usa"
 					href="/img/map/plane.svg"
 					width="35"
 					height="35"
 					x="0" 
 					y="0"
 					filter="url(#glow)"
+					opacity="0"
+				/>
+				<!-- AVIÓN con brillo - Colombia -->
+				<image
+					id="plane-col"
+					href="/img/map/plane.svg"
+					width="35"
+					height="35"
+					x="0" 
+					y="0"
+					filter="url(#glow)"
+					opacity="0"
+				/>
+				<!-- AVIÓN con brillo - Australia -->
+				<image
+					id="plane-australia"
+					href="/img/map/plane.svg"
+					width="35"
+					height="35"
+					x="0" 
+					y="0"
+					filter="url(#glow)"
+					opacity="0"
+				/>
+				<!-- AVIÓN con brillo - Japón -->
+				<image
+					id="plane-japon"
+					href="/img/map/plane.svg"
+					width="35"
+					height="35"
+					x="0" 
+					y="0"
+					filter="url(#glow)"
+					opacity="0"
 				/>
 
 				<!-- MARCADORES DE UBICACIÓN -->
@@ -123,32 +166,28 @@ const {
 					<circle cx="220" cy="490" r="7" fill="#60a5fa" stroke="#ffffff" stroke-width="2"/>
 					<circle cx="220" cy="490" r="9" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.5" class="pulse-ring"/>
 				</g>
+
+				<g id="location-col" opacity="0">
+					<circle cx="285" cy="572" r="7" fill="#60a5fa" stroke="#ffffff" stroke-width="2"/>
+					<circle cx="285" cy="572" r="9" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.5" class="pulse-ring"/>
+				</g>
+
+				<g id="location-australia" opacity="0">
+					<circle cx="800" cy="650" r="7" fill="#60a5fa" stroke="#ffffff" stroke-width="2"/>
+					<circle cx="800" cy="650" r="9" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.5" class="pulse-ring"/>
+				</g>
+
+				<g id="location-japon" opacity="0">
+					<circle cx="780" cy="450" r="7" fill="#60a5fa" stroke="#ffffff" stroke-width="2"/>
+					<circle cx="780" cy="450" r="9" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.5" class="pulse-ring"/>
+				</g>
 				
 				<g id="location-europe" opacity="0">
-					<circle cx="500" cy="450" r="7" fill="#f472b6" stroke="#ffffff" stroke-width="2"/>
-					<circle cx="500" cy="450" r="9" fill="none" stroke="#f472b6" stroke-width="2" opacity="0.5" class="pulse-ring"/>
+					<circle cx="475" cy="450" r="7" fill="#f472b6" stroke="#ffffff" stroke-width="2"/>
+					<circle cx="475" cy="450" r="9" fill="none" stroke="#f472b6" stroke-width="2" opacity="0.5" class="pulse-ring"/>
 				</g>	
 
 				<!-- TEXT -->
-				<defs>
-					<pattern id="usaFlagPattern" patternUnits="objectBoundingBox" width="1" height="1">
-						<image href="/img/usa-flag.png" width="160" height="50" opacity="0.35" preserveAspectRatio="xMidYMid slice"/>
-					</pattern>
-				</defs>
-
-				<g id="text-usa-group" opacity="0">
-					<rect 
-						x="140" 
-						y="410" 
-						width="160" 
-						height="50" 
-						rx="8" 
-						fill="rgba(255,255,255,0.1)" 
-						filter="url(#softShadow)"
-					/>
-					<text x="220" y="430" text-anchor="middle" class="map-text map-text-title" data-i18n="map.usa_top">{usa_top}</text>
-					<text x="220" y="450" text-anchor="middle" class="map-text map-text-location" data-i18n="map.usa_text">{usa_text}</text>
-				</g>
 
 				<defs>
 					<pattern id="franceFlagPattern" patternUnits="objectBoundingBox" width="1" height="1">
@@ -167,8 +206,7 @@ const {
 						filter="url(#softShadow)"
 					/>
 					<text x="500" y="375" text-anchor="middle" class="map-text map-text-title" data-i18n="map.europe_top">{europe_top}</text>
-					<text x="500" y="393" text-anchor="middle" class="map-text map-text-dream" data-i18n="map.europe_mid">{europe_mid}</text>
-					<text x="500" y="415" text-anchor="middle" class="map-text map-text-dream-emphasis" data-i18n="map.europe_bot">{europe_bot}</text>
+					<text x="500" y="410" text-anchor="middle" class="map-text map-text-dream-emphasis" data-i18n="map.europe_bot">{europe_bot}</text>
 				</g>
 			</g>
 		</svg>
@@ -182,7 +220,7 @@ const {
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #2a3150 100%);
+		background: #313e52;
 		overflow: hidden;
 		@media screen and (max-width: 768px) {
 			height: 50vh;
@@ -499,147 +537,222 @@ const {
 
 	gsap.registerPlugin(MotionPathPlugin);
 
-	// Configuración inicial - Estado de reposo
-	const resetToInitialState = () => {
-		gsap.set("#plane", { 
-			motionPath: {
-				path: "#flight-path",
-				align: "#flight-path",
-				alignOrigin: [0.5, 0.5],
-				start: 0,
-				end: 0
-			},
-			scale: 1,
-			rotate: 0
-		});
+	const EUROPE_X = 475;
+	const EUROPE_Y = 450;
 
-		gsap.set("#location-usa", { opacity: 1, scale: 1 });
-		gsap.set("#location-europe", { opacity: 1, scale: 1 });
-		gsap.set("#text-usa-group", { opacity: 0, y: 0 });
-		gsap.set("#text-europe-group", { opacity: 0, y: 0 });
-		gsap.set("#flight-path", { opacity: 0 });
-		gsap.set("#map-world", { scale: 1, x: 0, y: 0 });
-		gsap.set(".trail-particle", { opacity: 0, scale: 1 });
+	const ROUTES = [
+		{ id: "usa", markerSelector: "#location-usa", fromX: 220, fromY: 490, planeId: "#plane-usa", trailId: "#plane-trail-usa" },
+		{ id: "col", markerSelector: "#location-col", fromX: 285, fromY: 572, planeId: "#plane-col", trailId: "#plane-trail-col" },
+		{ id: "australia", markerSelector: "#location-australia", fromX: 800, fromY: 650, planeId: "#plane-australia", trailId: "#plane-trail-australia" },
+		{ id: "japon", markerSelector: "#location-japon", fromX: 780, fromY: 450, planeId: "#plane-japon", trailId: "#plane-trail-japon" },
+	];
+
+	const buildPath = (fromX: number, fromY: number) => {
+		const isComingFromEast = fromX > EUROPE_X;
+		const offset = isComingFromEast ? -60 : 60;
+		const height = 100; // Altura consistente para simetría
+		const ctrl1X = fromX + offset;
+		const ctrl1Y = fromY - height;
+		const ctrl2X = EUROPE_X - offset;
+		const ctrl2Y = EUROPE_Y - height;
+		return `M ${fromX} ${fromY} C ${ctrl1X} ${ctrl1Y}, ${ctrl2X} ${ctrl2Y}, ${EUROPE_X} ${EUROPE_Y}`;
 	};
 
-	// Timeline con loop infinito
+	const resetToInitialState = () => {
+		const firstRoute = ROUTES[0];
+
+		gsap.set("#flight-path", {
+			attr: { d: buildPath(firstRoute.fromX, firstRoute.fromY) },
+			opacity: 0,
+		});
+
+		// Reset all planes
+		ROUTES.forEach((route) => {
+			const pathD = buildPath(route.fromX, route.fromY);
+			gsap.set("#flight-path", {
+				attr: { d: pathD },
+			});
+			const isComingFromEast = route.fromX > EUROPE_X;
+			gsap.set(route.planeId, {
+				motionPath: {
+					path: "#flight-path",
+					align: "#flight-path",
+					alignOrigin: [0.5, 0.5],
+					autoRotate: true,
+					start: 0,
+					end: 0,
+				},
+				scale: 1,
+				scaleY: isComingFromEast ? -1 : 1,
+				opacity: 0,
+			});
+		});
+
+		gsap.set("#map-world", { scale: 1, x: 0, y: 0 });
+		gsap.set("#text-europe-group", { opacity: 0, y: 0 });
+		gsap.set("#destino-europa-group", { opacity: 0, y: 0 });
+		gsap.set(".trail-particle", { opacity: 0, scale: 1 });
+
+		gsap.set("#location-europe", { opacity: 1, scale: 1 });
+		ROUTES.forEach((route) => {
+			gsap.set(route.markerSelector, { opacity: 1, scale: 1 });
+		});
+	};
+
 	const createMapAnimation = () => {
 		const tl = gsap.timeline({
 			defaults: { ease: "power2.inOut" },
 		});
 
-		return tl
+		// Zoom inicial del mapa
+		tl.to("#map-world", {
+			scale: 1.2,
+			x: -100,
+			y: -100,
+			duration: 1.2,
+		});
 
-			.to("#map-world", { 
-				scale: 1.2, 
-				x: -100, 
-				y: -100,
-				duration: 1.2
-			})		
+		// Animar cada avión secuencialmente
+		ROUTES.forEach((route, index) => {
+			const pathD = buildPath(route.fromX, route.fromY);
 
-			.to("#text-usa-group", { 
-				opacity: 1, 
-				y: -10,
-				duration: 0.6
-			}, "-=0.4")
+			tl.set("#flight-path", {
+				attr: { d: pathD },
+			});
 
-			// === FASE 3: VUELO (2.5s) ===
-			.to("#flight-path", {
-				opacity: 0.75,
-				duration: 0.5
-			}, "-=0.2")
-			.to("#plane", {
+			// Mostrar y animar el marcador de origen
+			tl.to(route.markerSelector, {
+				scale: 1.3,
+				duration: 0.3,
+				yoyo: true,
+				repeat: 1,
+			});
+
+			// Posicionar el avión en su punto de origen y hacerlo visible
+			const isComingFromEast = route.fromX > EUROPE_X;
+			tl.set(route.planeId, {
+				opacity: 1,
+				scaleY: isComingFromEast ? -1 : 1,
 				motionPath: {
 					path: "#flight-path",
 					align: "#flight-path",
 					alignOrigin: [0.5, 0.5],
+					autoRotate: true,
 					start: 0,
-					end: 1
+					end: 0,
 				},
-				duration: 2.5,
-				ease: "power1.inOut",
-				onUpdate: function() {
-					const progress = this.progress();
-					gsap.to(".trail-particle", {
-						opacity: 0.4 + (progress * 0.4),
-						scale: 1 + (progress * 0.3),
-						stagger: 0.08,
-						duration: 0.2
-					});
-				}
-			}, "-=0.3")
-			
-			// Efecto de vuelo del avión
-			.to("#plane", {
-				scale: 1.1,
-				duration: 0.25,
-				yoyo: true,
-				repeat: 3,
-				ease: "sine.inOut",
-				rotate: 6
-			}, "-=2")
+			});
 
-			.to("#text-europe-group", { 
-				opacity: 1, 
-				y: -10,
-				duration: 0.6
-			}, "-=0.6")
+			// Mostrar la ruta
+			tl.to("#flight-path", {
+				opacity: 0.75,
+				duration: 0.5,
+			});
 
-			// Desvanecer ruta
-			.to("#flight-path", {
-				opacity: 0.2,
-				duration: 0.8
-			}, "-=1")
-			
-			// === FASE 5: PAUSA EN DESTINO (1s) ===
-			.to({}, { duration: 1 })
-			
-			// === FASE 6: RESET SUAVE A VISTA GLOBAL (1.2s) ===
-			.to("#map-world", { 
-				scale: 1, 
-				x: 0, 
-				y: 0,
-				duration: 1.2
-			})
-			.to("#flight-path", {
+			// Animar el avión hacia Europa
+			tl.to(
+				route.planeId,
+				{
+					motionPath: {
+						path: "#flight-path",
+						align: "#flight-path",
+						alignOrigin: [0.5, 0.5],
+						autoRotate: true,
+						start: 0,
+						end: 1,
+					},
+					duration: 2.5,
+					ease: "power1.inOut",
+					onUpdate: function () {
+						const progress = this.progress();
+						const trailParticles = document.querySelectorAll(`${route.trailId} .trail-particle`);
+						trailParticles.forEach((particle, i) => {
+							gsap.to(particle, {
+								opacity: 0.4 + progress * 0.4,
+								scale: 1 + progress * 0.3,
+								duration: 0.2,
+								delay: i * 0.08,
+							});
+						});
+					},
+				},
+				"-=0.1"
+			);
+
+			// Ocultar el avión al llegar (sin temblor)
+			tl.to(route.planeId, {
 				opacity: 0,
-				duration: 0.6
-			}, "-=1.2")
-			.to(".trail-particle", {
+				duration: 0.3,
+			});
+
+			// Ocultar la ruta
+			tl.to(
+				"#flight-path",
+				{
+					opacity: 0.2,
+					duration: 0.8,
+				},
+				"-=0.5"
+			);
+
+			// Ocultar partículas de estela
+			tl.to(
+				`${route.trailId} .trail-particle`,
+				{
+					opacity: 0,
+					duration: 0.4,
+				},
+				"-=0.3"
+			);
+
+			// Pequeña pausa antes del siguiente avión
+			tl.to({}, { duration: 0.3 });
+		});
+
+		tl.to(
+			"#flight-path",
+			{
 				opacity: 0,
-				duration: 0.4
-			}, "-=1");
+				duration: 0.6,
+			},
+			"-=0.6"
+		);
+
+		// Mostrar el texto de Europa
+		tl.to("#text-europe-group", {
+			opacity: 1,
+			y: -10,
+			duration: 0.6,
+		});
+
+		return tl;
 	};
 
-	// Inicializar cuando la página carga
-	const mapSection = document.querySelector('.map__section');
+	const mapSection = document.querySelector(".map__section");
 
 	if (mapSection) {
-		// Establecer estado inicial
 		resetToInitialState();
-		
-		// Intersection Observer para iniciar cuando sea visible
+
 		let animation: gsap.core.Timeline | null = null;
 
 		const observer = new IntersectionObserver(
 			(entries) => {
-				entries.forEach(entry => {
+				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						if (!animation) {
 							animation = createMapAnimation();
-							}
-						animation.restart();
-						} else {
-							if (animation) {
-								animation.pause(0);
-							}
-							resetToInitialState();
 						}
-
-					});
-				},
+						animation.restart();
+					} else {
+						if (animation) {
+							animation.pause(0);
+						}
+						resetToInitialState();
+					}
+				});
+			},
 			{
-				threshold: 0.2
+				threshold: 0.2,
 			}
 		);
 
