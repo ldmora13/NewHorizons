@@ -75,7 +75,7 @@ const {
               class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition appearance-none"
             >
               {programs.map((program) => (
-                <option value={program.id} data-label={program.label} data-price={program.description || '0'}>
+                <option value={program.id} data-label={program.label}>
                   {program.id} - {program.label}
                 </option>
               ))}
@@ -341,12 +341,11 @@ const {
         (customAmountInput?.value || '0').replace(/,/g, '')
       );
 
-
-      const total = (basePrice * totalMembers) + customAmount;
+      // Total IS the custom amount — no per-member multiplication
+      const total = customAmount;
 
       return {
         total,
-        basePrice,
         customAmount,
         programId,
         programLabel: selectedOption.dataset.label || '',
@@ -379,13 +378,17 @@ const {
       if (isNaN(adults) || adults < 1) errors.push(getTranslation('checkout.validation.atLeastOneAdult'));
       if (isNaN(children) || children < 0) errors.push(getTranslation('checkout.validation.childrenCannotBeNegative'));
 
+      // Validate amount BEFORE showing PayPal
+      const calc = calculateTotal();
+      if (!calc.customAmount || calc.customAmount <= 0) {
+        errors.push(getTranslation('checkout.validation.amountRequired') || 'Please enter a valid investment amount.');
+      }
+
       if (errors.length > 0) {
         const errorTitle = getTranslation('validation.errorsDetected') || 'Errors detected:';
         alert(errorTitle + '\n\n- ' + errors.join('\n- '));
         return;
       }
-
-      const calc = calculateTotal();
 
       // Store data temporarily
       currentTransaction = {
@@ -433,35 +436,41 @@ const {
       if (summaryPlaceholder) summaryPlaceholder.classList.add('hidden');
       
       // Initialize PayPal via Custom Event
-      // We pass the raw data so the backend can validate and calculate the total
+      // amount is a clean number — no commas, ready for backend parseFloat
       window.dispatchEvent(new CustomEvent('init-paypal', {
         detail: {
-          programId: calc.programId, // Backend uses this to calculate price
+          programId: calc.programId,
+          amount: calc.total.toFixed(2),   // ← "1500.00" — no commas, no ambiguity
           adults: calc.adults,
           children: calc.children,
-          customAmount: calc.customAmount, // Pass custom amount
-          clientDetails: currentTransaction.client, // Backend needs this to create User/Ticket
-          
-          onApprove: (transaction: any) => {
-             // Transaction successful on backend
-             console.log('Backend Transaction Success:', transaction);
-             
-             // Update Success Screen with real data
-             if (orderIdDisplay) orderIdDisplay.textContent = transaction.ticketId ? `EXP-${transaction.ticketId}` : transaction.payment.id;
-             
-             const successMessage = document.querySelector('#success-section p[data-i18n="checkout.confirmationEmailSent"]');
-             if (successMessage) {
-                 if (transaction.isNewUser && transaction.tempPassword) {
-                     successMessage.innerHTML = `Your account has been created.<br><strong>Email:</strong> ${transaction.userEmail}<br><strong>Temp Password:</strong> ${transaction.tempPassword}<br><br>A confirmation email has been sent.`;
-                 } else {
-                     successMessage.textContent = `A confirmation email has been sent to ${transaction.userEmail}.`;
-                 }
-             }
+          clientDetails: {
+            ...currentTransaction.client,
+            programLabel: currentTransaction.program?.label,
+            adults: currentTransaction.family?.adults,
+            children: currentTransaction.family?.children
+          },
 
-             // Show success section
-             if (mainGrid) mainGrid.classList.add('hidden');
-             if (successSection) successSection.classList.remove('hidden');
-             window.scrollTo({ top: 0, behavior: 'smooth' });
+          onApprove: (transaction: any) => {
+            // Build success payload and redirect — completely discards checkout state
+            const successPayload = {
+              ticketId:      transaction.ticketId,
+              paypalOrderId: transaction.payment?.paypalOrderId ?? '',
+              userEmail:     transaction.userEmail,
+              isNewUser:     transaction.isNewUser ?? false,
+              tempPassword:  transaction.tempPassword ?? null,
+              programLabel:  currentTransaction.program?.label ?? '',
+              programId:     currentTransaction.program?.id ?? '',
+              adults:        currentTransaction.family?.adults ?? 1,
+              children:      currentTransaction.family?.children ?? 0,
+              amountPaid:    currentTransaction.payment?.totalPaid ?? 0,
+              paymentDate:   new Date().toISOString(),
+              paymentMethod: 'PayPal',
+              clientName:    currentTransaction.client?.fullName ?? '',
+              destination:   'France',
+            };
+            // sessionStorage: tab-scoped, never in URL, consumed once by success page
+            sessionStorage.setItem('nh_tx_success', JSON.stringify(successPayload));
+            window.location.href = '/payment-success';
           },
           onError: (err: any) => {
             console.error('PayPal Integration Error:', err);

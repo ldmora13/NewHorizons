@@ -1,202 +1,231 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-const backgroundImage = "/img/passport-european-map.jpg";
-
-export interface PaymentSectionProps {
-  id?: string;
-  title: string;
-  description: string;
-  amount: string;
-  customer: string;
-  service: string;
-  transaction_id: string;
-  date: string;
-  payment_method: string;
-  status: string;
-  btnPrint: string;
-  btnBack: string
-}
-
-const props = Astro.props as PaymentSectionProps;
-
-const {
-  id = "payment",
-  title,
-  description,
-  amount,
-  customer,
-  service,
-  transaction_id,
-  date,
-  payment_method,
-  status,
-  btnPrint,
-  btnBack
-} = props;
+/*
+ * Destination page after a successful PayPal checkout.
+ * Transaction data is read from sessionStorage (key: "nh_tx_success"),
+ * consumed once, and then deleted — it never travels through the URL.
+ *
+ * If the key is absent (direct navigation / refresh) the page shows a
+ * generic confirmation with a link back to the home page.
+ */
+import Layout from "../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="Payment Successful | New Horizons">
-  <section class="min-h-screen py-24 flex items-center justify-center bg-slate-900/50">
-    <div class="max-w-xl w-full mx-4">
-      <!-- Ticket Container -->
-      <div id="ticket" class="bg-white rounded-3xl overflow-hidden shadow-2xl">
-        <!-- Ticket Header -->
-        <div class="p-8 text-center text-white relative" 
-          style={`background-image: url('${backgroundImage}');
-              background-size: cover;
-              background-position: center;
-              background-repeat: no-repeat;
-              image-rendering: -webkit-optimize-contrast;
-              image-rendering: crisp-edges;
-            `}>
-            <div class="absolute inset-0 bg-black/50"></div>
-          <div class="relative z-10">
-            <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/30">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h1 class="text-3xl font-bold uppercase tracking-wider" data-i18n="payment.title">{title}</h1>
-            <p class="text-blue-100 mt-2" data-i18n="payment.description">{description}</p>
+<Layout title="Payment Successful — New Horizons">
+  <section class="relative min-h-screen py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4">
+
+      <!-- ── SKELETON shown while JS runs ─────────────────────────── -->
+      <div id="ps-loading" class="text-center py-32 text-white/40 text-sm animate-pulse">
+        Loading your receipt…
+      </div>
+
+      <!-- ── SUCCESS CARD (populated by JS) ────────────────────────── -->
+      <div id="ps-card" class="hidden rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-10 space-y-8">
+
+        <!-- Header -->
+        <div class="text-center space-y-4">
+          <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+            </svg>
           </div>
+          <h1 class="text-4xl font-bold text-white" data-i18n="checkout.paymentSuccessful">
+            Transaction Approved!
+          </h1>
+          <p class="text-lg text-white/70" data-i18n="checkout.thankYouMessage">
+            Thank you for choosing New Horizons. Your process for France has officially started.
+          </p>
         </div>
 
-        <!-- Ticket Body -->
-        <div class="p-8 space-y-8 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px]">
-          
-          <!-- Amount Section -->
-          <div class="text-center pb-8 border-b border-dashed border-gray-300">
-            <p class="text-gray-500 uppercase text-xs font-bold tracking-widest mb-1" data-i18n="payment.amount">{amount}</p>
-            <h2 class="text-5xl font-black text-gray-900">$<span id="display-amount">0.00</span> <span class="text-lg font-medium text-gray-400">USD</span></h2>
+        <!-- File Reference -->
+        <div class="bg-black/30 rounded-2xl border border-white/10 p-6 text-center">
+          <p class="text-white/50 text-sm mb-1" data-i18n="checkout.orderNumber">File Reference</p>
+          <p id="ps-ticket-id" class="text-3xl font-mono text-blue-400 font-bold tracking-widest"></p>
+        </div>
+
+        <!-- Transaction Details Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 space-y-1">
+            <p class="text-white/40 text-xs uppercase tracking-wider">Program</p>
+            <p id="ps-program" class="text-white font-semibold text-sm"></p>
           </div>
 
-          <!-- Details Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <p class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="payment.customer">{customer}</p>
-              <p id="display-client" class="text-gray-800 font-medium">Guest</p>
-            </div>
-            <div>
-              <p class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="payment.service">{service}</p>
-              <p id="display-service" class="text-gray-800 font-medium">Immigration Program</p>
-            </div>
-            <div>
-              <p class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="payment.transactionID">{transaction_id}</p>
-              <p id="display-id" class="text-gray-800 font-mono text-sm break-all">N/A</p>
-            </div>
-            <div>
-              <p class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="payment.date">{date}</p>
-              <p id="display-date" class="text-gray-800 font-medium">--</p>
-            </div>
-            <div>
-              <p class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="payment.paymentMethod">{payment_method}</p>
-              <div class="flex items-center space-x-2">
-                <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
-                <p class="text-gray-800 font-medium">PayPal (Simulated)</p>
-              </div>
-            </div>
-            <div>
-              <p class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="payment.status">{status}</p>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                Success
-              </span>
-            </div>
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 space-y-1">
+            <p class="text-white/40 text-xs uppercase tracking-wider">Destination</p>
+            <p id="ps-destination" class="text-white font-semibold text-sm">France</p>
           </div>
 
-          <!-- Note -->
-          <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
-            <p class="text-blue-700 text-sm italic text-center">
-              "This is a simulated transaction for testing purposes. In a production environment, a real payment would have been processed."
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 space-y-1">
+            <p class="text-white/40 text-xs uppercase tracking-wider">Family Members</p>
+            <p id="ps-family" class="text-white font-semibold text-sm"></p>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 space-y-1">
+            <p class="text-white/40 text-xs uppercase tracking-wider">Payment Method</p>
+            <p id="ps-method" class="text-white font-semibold text-sm">PayPal</p>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 space-y-1">
+            <p class="text-white/40 text-xs uppercase tracking-wider">Date</p>
+            <p id="ps-date" class="text-white font-semibold text-sm"></p>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 space-y-1">
+            <p class="text-white/40 text-xs uppercase tracking-wider">Amount Paid</p>
+            <p id="ps-amount" class="text-blue-400 font-bold text-lg"></p>
+          </div>
+
+        </div>
+
+        <!-- Account Info (new users only) -->
+        <div id="ps-account-block" class="hidden rounded-2xl bg-blue-500/10 border border-blue-500/20 p-6 space-y-3">
+          <div class="flex items-center gap-2 text-blue-300 font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+            <span>Your portal account has been created</span>
+          </div>
+          <div class="space-y-1 text-sm">
+            <p class="text-white/60">
+              Email: <span id="ps-email" class="text-white font-medium"></span>
+            </p>
+            <p class="text-white/60">
+              Temporary password: <span id="ps-temp-pass" class="text-white font-mono font-medium bg-black/30 px-2 py-0.5 rounded"></span>
             </p>
           </div>
-
-          <!-- Actions -->
-          <div class="pt-4 flex flex-col sm:flex-row gap-4 no-print">
-            <button 
-              onclick="window.print()" 
-              class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-xl transition flex items-center justify-center space-x-2"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 00-2 2h2m2 4h10a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-              </svg>
-              <span data-i18n="payment.btnPrint">{btnPrint}</span>
-            </button>
-            <a 
-              href="/" data-i18n="payment.btnBack"
-              class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition text-center"
-            >
-              {btnBack}
-            </a>
-          </div>
+          <p class="text-white/40 text-xs">
+            Please log in and change your password at your earliest convenience.
+          </p>
         </div>
 
-        <!-- Ticket Footer (Jagged Edge effect) -->
-        <div class="h-4 bg-gray-200 w-full" style="clip-path: polygon(0% 0%, 5% 100%, 10% 0%, 15% 100%, 20% 0%, 25% 100%, 30% 0%, 35% 100%, 40% 0%, 45% 100%, 50% 0%, 55% 100%, 60% 0%, 65% 100%, 70% 0%, 75% 100%, 80% 0%, 85% 100%, 90% 0%, 95% 100%, 100% 0%);"></div>
+        <!-- Returning-user confirmation -->
+        <div id="ps-returning-block" class="hidden text-center">
+          <p class="text-white/60 text-sm" id="ps-returning-msg"></p>
+        </div>
+
+        <!-- CTA -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+          <a href="/"
+             class="flex-1 text-center rounded-xl bg-white px-6 py-4 font-bold text-black hover:bg-white/90 hover:scale-[1.02] transition active:scale-95"
+             data-i18n="common.returnToHome">
+            Return to Home
+          </a>
+          <a href="http://localhost:5173/login"
+             class="flex-1 text-center rounded-xl bg-blue-500/20 border border-blue-500/30 px-6 py-4 font-semibold text-blue-300 hover:bg-blue-500/30 hover:scale-[1.02] transition active:scale-95">
+            Go to My Portal →
+          </a>
+        </div>
+
       </div>
-      
-      <p class="text-center text-white/40 text-xs mt-8 no-print uppercase tracking-widest font-bold">
-        Static Simulation Mode • New Horizons
-      </p>
+
+      <!-- ── FALLBACK (direct navigation / missing data) ────────────── -->
+      <div id="ps-fallback" class="hidden text-center py-20 space-y-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur p-10">
+        <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold text-white">Payment Confirmed</h2>
+        <p class="text-white/60">Your immigration process has started. Check your email for details.</p>
+        <a href="/"
+           class="inline-block rounded-xl bg-white px-8 py-3 font-semibold text-black hover:bg-white/90 transition">
+          Return to Home
+        </a>
+      </div>
+
     </div>
   </section>
-</MainLayout>
+</Layout>
 
 <script>
-  // Manejo de datos en el cliente para mantener el sitio estático
-  window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    
-    // Elementos del DOM
-    const elId = document.getElementById('display-id');
-    const elAmount = document.getElementById('display-amount');
-    const elDate = document.getElementById('display-date');
-    const elClient = document.getElementById('display-client');
-    const elService = document.getElementById('display-service');
-    const ticket = document.getElementById('ticket');
+  (() => {
+    const loading    = document.getElementById('ps-loading')!;
+    const card       = document.getElementById('ps-card')!;
+    const fallback   = document.getElementById('ps-fallback')!;
 
-    // Poblar datos
-    if (elId) elId.textContent = params.get('id') || 'SIM-TX-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-    if (elAmount) elAmount.textContent = params.get('amount') || '0.00';
-    if (elClient) elClient.textContent = params.get('client') || 'Valued Customer';
-    if (elService) elService.textContent = params.get('service') || 'Immigration Program';
-    
-    const rawDate = params.get('date');
-    const dateObj = rawDate ? new Date(rawDate) : new Date();
-    if (elDate) elDate.textContent = dateObj.toLocaleString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+    // ── helpers ───────────────────────────────────────────────────────
+    function show(el: HTMLElement) { el.classList.remove('hidden'); }
+    function hide(el: HTMLElement) { el.classList.add('hidden'); }
+    function setText(id: string, value: string) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
 
-    // Animación de entrada
-    setTimeout(() => {
-      if (ticket) {
-        ticket.classList.remove('opacity-0', 'translate-y-4');
-        ticket.classList.add('opacity-100', 'translate-y-0');
+    function formatCurrency(amount: number): string {
+      // Reuse the same i18n helper if available, otherwise fallback
+      if ((window as any).i18n?.formatCurrency) {
+        return (window as any).i18n.formatCurrency(amount);
       }
-    }, 100);
-  });
+      return `$${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    function formatDate(iso: string): string {
+      try {
+        return new Date(iso).toLocaleString('en-US', {
+          year: 'numeric', month: 'long', day: 'numeric',
+          hour: '2-digit', minute: '2-digit'
+        });
+      } catch {
+        return iso;
+      }
+    }
+
+    // ── read & consume sessionStorage key ────────────────────────────
+    const raw = sessionStorage.getItem('nh_tx_success');
+    hide(loading);
+
+    if (!raw) {
+      // No data: direct nav or page refresh after first render
+      show(fallback);
+      return;
+    }
+
+    // Consume immediately — prevents stale data on future visits
+    sessionStorage.removeItem('nh_tx_success');
+
+    let tx: Record<string, any>;
+    try {
+      tx = JSON.parse(raw);
+    } catch {
+      show(fallback);
+      return;
+    }
+
+    // ── populate card ─────────────────────────────────────────────────
+    setText('ps-ticket-id',   tx.ticketId ? `EXP-${tx.ticketId}` : tx.paypalOrderId ?? '—');
+    setText('ps-program',     `${tx.programId} — ${tx.programLabel}`);
+    setText('ps-destination', tx.destination ?? 'France');
+    setText('ps-family',      `${tx.adults ?? 1} Adult${(tx.adults ?? 1) !== 1 ? 's' : ''}, ${tx.children ?? 0} Child${(tx.children ?? 0) !== 1 ? 'ren' : ''}`);
+    setText('ps-method',      tx.paymentMethod ?? 'PayPal');
+    setText('ps-date',        formatDate(tx.paymentDate));
+    setText('ps-amount',      formatCurrency(tx.amountPaid ?? 0));
+
+    if (tx.isNewUser && tx.tempPassword) {
+      const accountBlock = document.getElementById('ps-account-block')!;
+      show(accountBlock);
+      setText('ps-email',     tx.userEmail ?? '');
+      setText('ps-temp-pass', tx.tempPassword);
+    } else {
+      const returningBlock = document.getElementById('ps-returning-block')!;
+      show(returningBlock);
+      setText('ps-returning-msg', `A confirmation email has been sent to ${tx.userEmail ?? 'your inbox'}.`);
+    }
+
+    hide(loading);
+    show(card);
+
+    // Scroll to top cleanly
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  })();
 </script>
 
 <style>
-  @media print {
-    .no-print {
-      display: none !important;
-    }
-    body {
-      background: white !important;
-    }
-    section {
-      padding: 0 !important;
-      background: none !important;
-    }
-    #ticket {
-      box-shadow: none !important;
-      border: 1px solid #e5e7eb;
-      opacity: 1 !important;
-      transform: none !important;
-    }
+  /* Preserve the same backdrop-blur / glassmorphism feel as CheckoutForm */
+  section {
+    background: radial-gradient(ellipse at 60% 0%, rgba(59,130,246,0.08) 0%, transparent 70%);
   }
 </style>
