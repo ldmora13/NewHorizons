@@ -161,6 +161,16 @@
       "trustDesc": "Pas de surprise. Nous vous expliquons exactement ce que comprend votre forfait, combien de temps cela prendra et ce qu’il faut attendre à chaque étape, avec des mises à jour en temps réel.",
       "globalTitle": "Présence Internationale",
       "globalDesc": "Nous accompagnons des clients depuis plus de 40 pays. Avec des bureaux à Miami, Madrid et Paris, nous comprenons votre contexte culturel et juridique d’origine, facilitant toute la logistique transfrontière."
+    },
+    "team": {
+      "badge": "Les personnes derrière votre parcours",
+      "title": "Notre Équipe de Spécialistes",
+      "description": "Notre équipe d'avocats spécialisés en immigration française et de spécialistes de la relocalisation a accompagné plus de 500 familles dans le processus de visa et de résidence",
+      "director": "Directeur des Services Juridiques",
+      "administrative": "Expert en Droit Administratif",
+      "consular": "Spécialiste des Procédures Consulaires",
+      "manager": "Responsable de la Relocalisation",
+      "end": "Et bien d'autres qui ont aidé nos clients à réaliser leur rêve de vivre en France."
     }
   },
   "countries": {

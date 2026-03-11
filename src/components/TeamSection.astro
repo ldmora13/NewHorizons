@@ -1,0 +1,76 @@
+---
+
+export interface HeroAboutProps {
+  id?: string;
+  badgeKey?: string;
+  titleKey?: string;
+  descriptionKey?: string;
+}
+
+const {
+  id = "heroabout",
+  badgeKey = "about.team.badge",
+  titleKey = "about.team.title",
+  descriptionKey = "about.team.description"
+} = Astro.props as HeroAboutProps;
+---
+
+<section>
+  <!-- Content -->
+  <div class="relative z-10 w-full">
+    <div class="max-w-6xl mx-auto px-4 py-20">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/80 px-6 py-2 text-sm text-slate-800" data-i18n={badgeKey}>
+            The people behind your journey
+        </span>
+        <h1 class="mt-5 text-4xl sm:text-5xl font-semibold tracking-tight text-white" data-i18n={titleKey}>
+          Leading Your Path to France
+        </h1>
+        <p class="mt-5 text-lg text-white/70 leading-relaxed" data-i18n={descriptionKey}>
+          We combine years of legal experience with a passionate focus on helping global citizens settle in the heart of Europe.
+        </p>      
+        </div>
+        <div>
+            <div class="grid grid-cols-1 gap-8 mt-10">
+                <div class="relative rounded-2xl p-6 w-full h-120 flex flex-col justify-end" 
+                    style="background-image: url('/img/team/team0.jpeg'); background-size: cover; background-position: center;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-semibold text-white text-shadow-2xs">Christina Rodríguez</h2>
+                        <p class="text-white/70 text-shadow-2xs" data-i18n="about.team.director">Director of Legal Services</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                <div class="rounded-2xl p-6 backdrop-blur h-90 flex flex-col justify-end" 
+                    style="background-image: url('/img/team/1.jpg'); background-size: cover; background-position: top;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-semibold text-white text-shadow-2xs">Pedro Martinez</h2>
+                        <p class="text-white/70 text-shadow-2xs" data-i18n="about.team.administrative">Administrative Law Expert</p>
+                    </div>
+                </div>
+                <div class="rounded-2xl bg-white p-6 h-90 flex flex-col justify-end transform -scale-x-100" 
+                    style="background-image: url('/img/team/team1.png'); background-size: cover; background-repeat: no-repeat; background-position: -50px 0px;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-semibold text-white text-shadow-2xs transform -scale-x-100">Camille Dufour</h2>
+                        <p class="text-white/70 text-shadow-2xs transform -scale-x-100" data-i18n="about.team.consular">Consular Procedure Specialist</p>
+                    </div>
+                </div>
+                <div class="rounded-2xl p-6 h-90 flex flex-col justify-end transform -scale-x-100" 
+                    style="background-image: url('/img/team/2.png'); background-size: cover; background-position: -40px 0px;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-semibold text-white text-shadow-2xs transform -scale-x-100">Julian Perez</h2>
+                        <p class="text-white/70 text-shadow-2xs transform -scale-x-100" data-i18n="about.team.manager">Recolocation Manager</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="mt-5 text-lg text-white/70 text-center leading-relaxed" data-i18n="about.team.end">
+            And many more who have helped our clients achieve their dream of living in France
+        </p>      
+    </div>
+  </div>
+</section>

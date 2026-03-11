@@ -2,11 +2,11 @@
   "common": {
     "home": "Início",
     "about": "Sobre",
-    "programs": "Programas",
+    "programs": "Vistos e Programas",
     "faq": "FAQ",
-    "reviews": "Avaliações",
+    "reviews": "Histórias de Sucesso",
     "contact": "Contato",
-    "getStart": "Começar",
+    "getStart": "Começar Agora",
     "learnMore": "Saiba Mais",
     "returnToHome": "Voltar ao Início"
   },
@@ -15,204 +15,394 @@
   },
   "footer": {
     "about": {
-      "title": "Sobre Nós",
-      "description": "Na NewHorizons Immigration Law, somos especializados em ajudar pessoas que desejam viver, trabalhar ou investir no exterior. Nosso foco principal é nos Estados Unidos, Europa e Emirados Árabes Unidos."
+      "title": "New Horizons Immigration Law",
+      "description": "Especialistas em mobilidade internacional para França, Espanha, Portugal e Emirados Árabes Unidos. Mais de 15 anos e 16.000 casos de sucesso nos apoiam. Sua nova vida começa com uma consulta."
     },
     "navigation": {
       "title": "Navegação",
-      "immigrationPrograms": "Programas de Imigração",
+      "immigrationPrograms": "Vistos e Programas",
+      "successStories": "Histórias de Sucesso",
+      "faqs": "Perguntas Frequentes",
       "privacyPolicy": "Política de Privacidade",
       "termsOfService": "Termos de Serviço"
     },
     "programs": {
-      "title": "Programas",
-      "eb1": "EB-1 - Carreira Extraordinária",
-      "eb2": "EB-2 NIW - Interesse Nacional",
-      "eb5": "EB-5 - Programas de Investimento",
-      "permanentResidence": "Residência Permanente",
-      "newHorizonsClub": "Clube NewHorizons"
+      "title": "Nossos Serviços",
+      "eb1": "Passeport Talent (França)",
+      "eb2": "VLS-TS Salarié / Visitante",
+      "eb5": "Investidor Empresarial",
+      "permanentResidence": "Titre de Séjour",
+      "newHorizonsClub": "Consultoria para Expatriados"
     },
-    "copyright": "© 2026 New Horizons Immigration Law. Todos os direitos reservados.",
-    "address": "Washington/Wells, Chicago, IL 60602, EUA",
+    "copyright": "© 2026 New Horizons Immigration Law. Especialistas em Direito Francês.",
+    "address": "Miami · Madrid · Paris",
     "phone": "+1 (909) 547-3238",
     "email": "info@newhorizonsimmigrationlaw.org"
   },
   "hero": {
-    "badge": "Confie na nossa experiência e deixe-nos ser seu guia no complexo mundo da migração internacional.",
-    "title": "Agende uma Consulta para Seu Projeto Internacional",
-    "description": "Pronto para dar o próximo passo em direção ao seu projeto internacional? Entre em contato conosco hoje para agendar uma consulta. Ajudaremos você a navegar pelas complexidades do processo de imigração e garantir um resultado tranquilo e bem-sucedido.",
-    "reviewText": "16000+ Pessoas Acompanhadas",
+    "badge": "16.000+ casos resolvidos · 91% de taxa de aprovação",
+    "title": "Sua Nova Vida na França Começa Hoje",
+    "description": "Assessoria jurídica especializada para VLS-TS e Passeport Talent. Lidamos com as complexidades da administração francesa para que você possa focar em seus novos horizontes.",
+    "reviewText": "16.000+ Integrações Bem-Sucedidas",
+    "programs": {
+      "flagLabel": "Destino Principal",
+      "flagTitle": "Programas Ativos na França",
+      "processTitle": "Como o Processo Funciona",
+      "processDesc": "Desde a consulta inicial até o seu Titre de Séjour na França, cuidamos de cada etapa.",
+      "talent": {
+        "f1": "Autorização renovável de 4 anos",
+        "f2": "Inclui cônjuge e filhos",
+        "f3": "Autorização de trabalho incluída",
+        "f4": "Acesso ao mercado da UE",
+        "profile": "Pesquisadores, artistas, empreendedores e investidores com perfis qualificados."
+      },
+      "vlsts": {
+        "f1": "Estadia superior a 3 meses",
+        "f2": "Validação do OFII incluída",
+        "f3": "Para funcionários e trabalhadores remotos",
+        "f4": "Renovável como Titre de Séjour",
+        "profile": "Profissionais com contrato francês ou indivíduos com recursos próprios."
+      },
+      "investor": {
+        "f1": "Criação ou aquisição de uma empresa",
+        "f2": "Abertura de conta bancária francesa",
+        "f3": "Assessoria jurídica e fiscal completa",
+        "f4": "Via rápida para residência permanente",
+        "profile": "Empreendedores e investidores que desejam abrir ou adquirir um negócio na França."
+      },
+      "step1": { "title": "Consulta Inicial", "desc": "Avaliamos o seu perfil em 30 minutos e indicamos o programa ideal." },
+      "step2": { "title": "Preparação do Dossiê", "desc": "Compilamos e verificamos cada documento com nosso processo de revisão em 3 camadas." },
+      "step3": { "title": "Agendamento Consular", "desc": "Apoiamos você na apresentação ao consulado em seu país." },
+      "step4": { "title": "Chegada à França", "desc": "Gerenciamos a validação do OFII e todos os procedimentos de chegada para você." },
+      "step5": { "title": "Titre de Séjour", "desc": "Cuidamos do seu Titre de Séjour e o orientamos sobre a renovação." }
+    },
     "cta": {
-      "programs": "Programas",
-      "aboutUs": "Sobre Nós"
+      "programs": "Ver Programas ",
+      "aboutUs": "Nossa História"
     }
   },
   "map": {
-    "title": "Sua Jornada para New Horizons",
-    "description": "Dos EUA para Europa e Emirados Árabes Unidos",
+    "title": "Sua Rota Direta para a França",
+    "description": "Suporte Global para o Território Francês",
     "europe_top": "DESTINO",
     "europe_bot": "FRANÇA"
   },
   "why": {
-    "title": "O Que Já Alcançamos?",
+    "title": "Por que Confiar em Nossa Experiência na França?",
     "cards": {
       "peopleAccompanied": {
-        "title": "16000+ Pessoas Acompanhadas",
-        "description": "Com mais de 16.000 casos tratados com sucesso, nossa experiência é respaldada por resultados concretos."
+        "title": "16.000+ Casos Resolvidos",
+        "description": "Com mais de 16.000 famílias estabelecidas com sucesso na França, nossa experiência é a sua melhor garantia."
       },
       "teamMembers": {
-        "title": "2k Membros da Equipe",
-        "description": "Contamos com uma equipe multidisciplinar de profissionais altamente qualificados, especializados em diferentes categorias migratórias."
+        "title": "Especialistas Jurídicos",
+        "description": "Uma equipe multidisciplinar especializada em direito administrativo francês e procedimentos consulares."
       },
       "experience": {
-        "title": "+15 Anos de Experiência",
-        "description": "Com mais de 15 anos de experiência na área de imigração, ajudamos milhares de pessoas a realizarem seus sonhos."
+        "title": "+15 Anos na França",
+        "description": "Mais de 15 anos navegando pelas complexidades das Prefeituras francesas e do OFII."
       },
       "successRate": {
-        "title": "91% de Taxa de Sucesso",
-        "description": "Mais de 91% dos nossos clientes concluíram com sucesso sua jornada migratória."
+        "title": "91% de Taxa de Aprovação",
+        "description": "Nossa preparação meticulosa garante uma taxa de sucesso de 91% nas solicitações de visto e residência."
       },
       "successfulCases": {
-        "title": "52k Casos de Sucesso",
-        "description": "Mais de 52.000 casos de sucesso, representando uma ampla diversidade de culturas, idiomas e tradições."
+        "title": "52k Atos Administrativos",
+        "description": "Milhares de renovações e mudanças de status bem-sucedidas tratadas com precisão."
       },
       "countriesRepresented": {
-        "title": "100+ Países Representados",
-        "description": "Casos bem-sucedidos em mais de 100 países, representando uma ampla diversidade cultural e linguística."
+        "title": "Especialistas em Perfis Globais",
+        "description": "Ampla experiência em ajudar cidadãos de todo o mundo a obter a residência francesa."
       }
     }
   },
   "about": {
-    "title": "Programas que Oferecemos",
-    "description": "Trabalhamos com projetos de residência permanente e vistos baseados em carreira profissional, méritos ou investimento. Mais de 16.000 pessoas acompanhadas com 91% de taxa de sucesso.",
+    "title": "Nossos Programas de Imigração Francesa",
+    "description": "Três caminhos para a residência francesa, cada um adaptado a um perfil diferente. Nossos consultores analisam o seu caso e o guiam pelo caminho mais seguro e eficiente para sua nova vida em Paris, Lyon, Bordeaux ou qualquer cidade da França.",
     "features": {
-      "globalDestinations": "Destinos Globais",
-      "certificateSpecialists": "Especialistas Certificados"
+      "globalDestinations": " Especialistas na França",
+      "certificateSpecialists": " Juristas Certificados"
     },
     "programs": {
       "eb1": {
-        "title": "EB-1",
-        "description": "Para pessoas com carreira extraordinária em ciências, artes, educação, negócios ou esportes. Residência permanente baseada em méritos excepcionais e reconhecimento internacional. Não requer oferta de trabalho e possui processamento prioritário disponível."
+        "title": "Passeport Talent",
+        "description": "Para pesquisadores, empreendedores e perfis altamente qualificados. Uma autorização de residência de 4 anos que permite viver e trabalhar na França com sua família."
       },
       "eb2": {
-        "title": "EB-2 NIW",
-        "description": "Para profissionais cujo trabalho gera interesse nacional ou impacto significativo. Dispensa oferta de trabalho, ideal para pesquisadores, acadêmicos e profissionais de destaque. Exige demonstrar que o candidato oferece benefício substancial aos Estados Unidos."
+        "title": "VLS-TS (Salarié / Visitante)",
+        "description": "O visto padrão de longa duração para profissionais com contratos locais ou indivíduos com recursos próprios que desejam residir na França por mais de 3 meses."
       },
       "eb5": {
-        "title": "EB-5",
-        "description": "Programas de investimento com possibilidade de residência permanente para investidores e suas famílias. Diferentes níveis de investimento disponíveis conforme o projeto e a localização. Requer a criação de pelo menos 10 empregos nos Estados Unidos por meio do investimento realizado."
+        "title": "Investidor Empresarial",
+        "description": "Para empreendedores que desejam criar ou assumir uma empresa na França. Inclui assessoria estratégica sobre os requisitos econômicos da administração francesa."
       }
+    },
+    "hero": {
+      "badge": "Nosso Compromisso",
+      "title": "Seus Especialistas em Mobilidade Internacional",
+      "description": "Há mais de 15 anos, orientamos mais de 16.000 famílias, profissionais e investidores a se estabelecerem com sucesso na Europa e além. A França é o nosso destino principal, mas nossa missão global não conhece fronteiras."
+    },
+    "story": {
+      "title": "Nossa História",
+      "paragraph1": "A New Horizons Immigration Law foi fundada em 2009 em Miami por uma equipe de advogados com experiência em primeira mão nos sistemas administrativos europeus. Nossa missão fundadora era clara: remover as barreiras burocráticas que impedem o talento global de aproveitar as oportunidades que o mundo tem a oferecer.",
+      "paragraph2": "Hoje temos programas ativos na França — nosso principal destino — e estamos expandindo nossas operações para a Espanha, Portugal e Emirados Árabes Unidos. Cada destino possui sua própria arquitetura legal, e nós a conhecemos profundamente.",
+      "paragraph3": "Com escritórios em Miami, Madri e Paris, e clientes em mais de 40 países, somos a ponte mais confiável entre o talento global e as oportunidades de residência em todo o mundo. Não somos apenas consultores — somos seus aliados locais em cada país de destino."
+    },
+    "why": {
+      "title": "Por Que nos Escolher?",
+      "expertTitle": "Especialistas em Múltiplos Destinos",
+      "expertDesc": "Embora a França seja o nosso destino principal, gerenciamos programas na Espanha, Portugal e Emirados Árabes Unidos. Cada consultor é treinado no direito administrativo específico de cada país.",
+      "adminTitle": "Gestão Administrativa Completa",
+      "adminDesc": "Da preparação do dossiê ao apoio no agendamento oficial, gerenciamos cada fase do processo para que você possa focar em planejar sua nova vida.",
+      "humanTitle": "Atendimento Humano e Personalizado",
+      "humanDesc": "Cada cliente tem uma situação única. Atribuímos um consultor dedicado a cada caso, com comunicação direta em espanhol, inglês, francês e português — sem intermediários, sem bots.",
+      "speedTitle": "Velocidade e Precisão",
+      "speedDesc": "Os prazos consulares em qualquer país são rigorosos e erros custam caro. Nosso sistema de revisão em três camadas garante que cada arquivo esteja impecável antes do envio.",
+      "trustTitle": "Transparência Total",
+      "trustDesc": "Sem letras miúdas. Explicamos exatamente o que seu plano inclui, quanto tempo levará e o que esperar em cada etapa, com atualizações em tempo real sobre seu processo.",
+      "globalTitle": "Presença Internacional",
+      "globalDesc": "Atendemos clientes de mais de 40 países. Com escritórios em Miami, Madri e Paris, entendemos seu contexto cultural e legal, facilitando toda a logística transfronteiriça."
+    },
+    "team": {
+      "badge": "As pessoas por trás da sua jornada",
+      "title": "Nossa Equipe de Especialistas",
+      "description": "Nossa equipe de advogados de imigração franceses e especialistas em relocação já guiou mais de 500 famílias através do processo de visto e residência",
+      "director": "Diretor de Serviços Jurídicos",
+      "administrative": "Especialista em Direito Administrativo",
+      "consular": "Especialista em Procedimentos Consulares",
+      "manager": "Gerente de Relocação",
+      "end": "E muitos outros que ajudaram nossos clientes a alcançar o sonho de viver na França."
     }
   },
   "countries": {
-    "title": "Países Populares para Viver",
-    "description": "Descubra nossos países mais procurados para viver, cuidadosamente selecionados para imigrantes internacionais.",
+    "title": "Nosso Destino Principal",
+    "description": "Somos especialistas em imigração para a França. Explore nossos programas ativos e os destinos que habilitaremos em breve.",
+    "portugal": {
+      "title": "Residência por Investimento · Portugal",
+      "category": "Visto de Investidor",
+      "description": "O programa Golden Visa de Portugal é um dos programas de residência por investimento mais populares da Europa.",
+      "duration": "Residência Permanente"
+    },
+    "spain": {
+      "title": "Visto Não Lucrativo · Espanha",
+      "category": "Visto de Investidor",
+      "description": "O programa Golden Visa da Espanha oferece residência a cidadãos não pertencentes à UE que fazem um investimento significativo no país.",
+      "duration": "Residência Permanente"
+    },
+    "uae": {
+      "title": "Residência para Talentos · EAU",
+      "category": "Visto de Investidor",
+      "description": "O Golden Visa dos Emirados Árabes Unidos é um visto de residência de longo prazo que permite a talentos estrangeiros viver, trabalhar ou estudar nos EAU enquanto desfrutam de benefícios exclusivos.",
+      "duration": "5-10 Anos"
+    },
     "comingSoon": "Em Breve",
-    "permanentResident": "Residente Permanente",
-    "permanentResidency": "Residência Permanente"
+    "permanentResident": "Visto de Longa Duração",
+    "permanentResidency": "Titre de Séjour",
+    "mainBadge": "Destino Principal",
+    "mainTitle": "Programas de Imigração para a França",
+    "mainDescription": "A França, no coração da Europa Ocidental, oferece uma qualidade de vida excepcional, acesso ao mercado da UE e um sistema social de classe mundial.",
+    "titreDeSeJour": "Titre de Séjour"
   },
   "sponsor": {
-    "title": "Patrocinado por"
+    "title": "Reconhecido por"
   },
   "checkout": {
-    "title": "Finalização de Imigração",
-    "destination": "Destino",
-    "programOption": "Opção de Programa",
-    "familyNumbers": "Número de Familiares",
-    "adults": "Adultos (Mín. 1)",
+    "title": "Inicie Seu Projeto na França",
+    "destination": "Destino Alvo",
+    "programOption": "Categoria do Visto",
+    "familyNumbers": "Composição Familiar",
+    "adults": "Adultos",
     "children": "Crianças",
-    "billingInformation": "Informações de Cobrança",
+    "billingInformation": "Informações Pessoais",
     "fullName": "Nome Completo",
-    "emailAddress": "Endereço de Email",
-    "address": "Endereço",
+    "emailAddress": "Endereço de E-mail",
+    "address": "Endereço Atual",
     "city": "Cidade",
     "zipCode": "CEP",
     "country": "País",
-    "phoneNumber": "Número de Telefone",
-    "investmentAmount": "Montante de Investimento",
-    "confirmCheckout": "Confirmar Pagamento",
-    "orderSummary": "Resumo do Pedido",
-    "program": "Programa",
+    "phoneNumber": "Telefone",
+    "investmentAmount": "Valor do Investimento",
+    "confirmCheckout": "Confirmar e Pagar",
+    "orderSummary": "Resumo do Serviço",
+    "program": "Tipo de Visto",
     "familyMembers": "Membros da Família",
-    "total": "Total",
-    "pleaseConfirmDetails": "Por favor, confirme seus dados",
-    "completeFormMessage": "Preencha o formulário e clique em \"Confirmar Pagamento\" para prosseguir com o pagamento.",
-    "paymentSuccessful": "Pagamento Realizado com Sucesso!",
-    "thankYouMessage": "Obrigado pela sua confiança. Seu processo de imigração foi iniciado.",
-    "orderNumber": "Número do Pedido",
-    "confirmationEmailSent": "Um email de confirmação foi enviado para sua caixa de entrada.",
+    "total": "Taxa Total de Serviço",
+    "pleaseConfirmDetails": "Por favor, confirme seus detalhes",
+    "completeFormMessage": "Preencha o formulário e clique em \"Confirmar\" para iniciar seu processo.",
+    "paymentSuccessful": "Transação Aprovada!",
+    "thankYouMessage": "Obrigado por escolher a New Horizons. Seu processo para a França começou oficialmente.",
+    "orderNumber": "Referência do Arquivo",
+    "confirmationEmailSent": "Um e-mail de confirmação com o acesso ao seu escritório virtual foi enviado.",
     "programs": {
-      "eb1": "Pessoas com Carreira Extraordinária",
-      "eb2": "Interesse Nacional",
-      "eb5": "Programa de Investimento"
+      "eb1": "Passeport Talent (França)",
+      "eb2": "VLS-TS Salarié / Visitante",
+      "eb5": "Investidor Empresarial"
     },
     "validation": {
-      "fullNameRequired": "Nome completo é obrigatório",
-      "validEmailRequired": "Por favor, insira um email válido",
-      "addressRequired": "Endereço é obrigatório",
-      "cityRequired": "Cidade é obrigatória",
-      "zipRequired": "CEP é obrigatório",
-      "countryRequired": "País é obrigatório",
-      "phoneRequired": "Número de telefone é obrigatório",
-      "atLeastOneAdult": "Deve haver pelo menos um adulto",
+      "fullNameRequired": "O nome completo é obrigatório",
+      "validEmailRequired": "Por favor, insira um e-mail válido",
+      "addressRequired": "O endereço é obrigatório",
+      "cityRequired": "A cidade é obrigatória",
+      "zipRequired": "O CEP é obrigatório",
+      "countryRequired": "O país é obrigatório",
+      "phoneRequired": "O número de telefone é obrigatório",
+      "atLeastOneAdult": "Pelo menos um adulto é necessário",
       "childrenCannotBeNegative": "O número de crianças não pode ser negativo"
     }
   },
+  "programs": {
+    "flagLabel": "Destino Principal",
+    "flagTitle": "Programas Ativos na França",
+    "processTitle": "Como o Processo Funciona",
+    "processDesc": "Desde a consulta inicial até o seu Titre de Séjour na França, cuidamos de cada etapa.",
+    "talent": {
+      "f1": "Autorização renovável de 4 anos",
+      "f2": "Inclui cônjuge e filhos",
+      "f3": "Autorização de trabalho incluída",
+      "f4": "Acesso ao mercado da UE",
+      "profile": "Pesquisadores, artistas, empreendedores e investidores com perfis qualificados."
+    },
+    "vlsts": {
+      "f1": "Estadia superior a 3 meses",
+      "f2": "Validação do OFII incluída",
+      "f3": "Para funcionários e trabalhadores remotos",
+      "f4": "Renovável como Titre de Séjour",
+      "profile": "Profissionais com contrato francês ou indivíduos com recursos próprios."
+    },
+    "investor": {
+      "f1": "Criação ou aquisição de uma empresa",
+      "f2": "Abertura de conta bancária francesa",
+      "f3": "Assessoria jurídica e fiscal completa",
+      "f4": "Via rápida para residência permanente",
+      "profile": "Empreendedores e investidores que desejam abrir ou adquirir um negócio na França."
+    },
+    "step1": { "title": "Consulta Inicial", "desc": "Avaliamos o seu perfil em 30 minutos e indicamos o programa ideal." },
+    "step2": { "title": "Preparação do Dossiê", "desc": "Compilamos e verificamos cada documento com nosso processo de revisão em 3 camadas." },
+    "step3": { "title": "Agendamento Consular", "desc": "Apoiamos você na apresentação ao consulado em seu país." },
+    "step4": { "title": "Chegada à França", "desc": "Gerenciamos a validação do OFII e todos os procedimentos de chegada para você." },
+    "step5": { "title": "Titre de Séjour", "desc": "Cuidamos do seu Titre de Séjour e o orientamos sobre a renovação." }
+  },
   "cta": {
-    "title": "Entre em Contato Agora!",
-    "description": "Ajudaremos você a navegar pelas complexidades do processo de imigração e garantir um resultado tranquilo e bem-sucedido.",
-    "getStartNow": "Comece Agora!",
-    "contactUs": "Entre em Contato"
+    "title": "Não Tem Certeza de Qual Programa é o Certo para Você?",
+    "description": "Mais de 16.000 famílias se estabeleceram com sucesso na França sob nossa orientação. Agende uma consulta e descubra em 30 minutos se você se qualifica.",
+    "getStartNow": "Comece Hoje!",
+    "contactUs": "Agendar uma Consulta"
   },
   "meta": {
-    "defaultTitle": "New Horizons Immigration Law | Especialistas em Migração Internacional",
-    "defaultDescription": "Na NewHorizons Immigration Law, somos especializados em ajudar pessoas que desejam viver, trabalhar ou investir no exterior"
+    "defaultTitle": "New Horizons | Especialistas em Leis de Imigração Francesa",
+    "defaultDescription": "Assessoria jurídica especializada para Vistos, Passeport Talent e Residência na França."
   },
   "pages": {
+    "programs": {
+      "title": "Programas de Imigração Francesa",
+      "description": "Explore nossas categorias de vistos especializados para a França. Do talento profissional ao investimento estratégico, guiamos você em cada etapa do processo administrativo francês."
+    },
     "checkout": {
-      "title": "Inicie Seu Plano de Imigração",
-      "description": "Escolha o programa de imigração ideal para seu perfil, preencha seus dados e prossiga para o pagamento"
+      "title": "Garanta o Seu Visto Francês",
+      "description": "Escolha a categoria que se adapta ao seu perfil e deixe-nos cuidar da burocracia."
     },
     "contact": {
-      "title": "Entre em Contato",
-      "description": "Estamos aqui para ajudar! Fale conosco para qualquer dúvida ou assistência sobre seu processo de imigração.",
-      "sendMessage": "Envie-nos uma Mensagem",
+      "title": "Fale com Nossos Especialistas em Imigração para a França",
+      "description": "Oferecemos suporte personalizado em inglês, espanhol, francês e português. Conte-nos o seu caso e diremos exatamente qual programa se aplica e quando você poderá estar na França.",
+      "sendMessage": "Solicite Sua Consulta Gratuita",
       "fullName": "Nome Completo",
-      "emailAddress": "Endereço de Email",
-      "message": "Mensagem",
-      "sendButton": "Enviar Mensagem",
-      "address": "Endereço",
-      "email": "Email",
+      "emailAddress": "Endereço de E-mail",
+      "message": "Sua Situação",
+      "formSubtitle": "Respondemos em até 24 horas · Sem compromisso",
+      "phoneLabel": "Telefone",
+      "destinationLabel": "Destino de Interesse",
+      "destinationPlaceholder": "Selecione seu destino",
+      "destinationOther": "Outro / Não tenho certeza",
+      "privacyNote": "Suas informações estão protegidas. Não compartilhamos seus dados com terceiros.",
+      "trust1": "16.000+ Casos de Sucesso",
+      "trust2": "Resposta em até 24h",
+      "trust3": "Atendimento em ES · EN · FR · PT",
+      "trust4": "91% de Taxa de Aprovação",
+      "sendButton": "Solicitar Consulta Gratuita \u2192",
+      "address": "Escritórios",
+      "email": "E-mail",
       "phone": "Telefone"
     },
     "faqs": {
       "title": "Perguntas Frequentes",
-      "description": "Encontre respostas para perguntas comuns sobre nossos programas, processos e serviços de imigração."
+      "description": "Respostas para as perguntas mais comuns sobre nossos programas de imigração, processos e destinos disponíveis.",
+      "items": {
+        "q1": {
+          "q": "Em quais países vocês possuem programas ativos?",
+          "a": "Atualmente, temos programas ativos na França, nosso principal destino. Estamos em processo de lançamento de programas formais para a Espanha, Portugal e Emirados Árabes Unidos. Você pode registrar seu interesse e nós o notificaremos assim que estiverem disponíveis."
+        },
+        "q2": {
+          "q": "O que é o Passeport Talent e a quem se destina?",
+          "a": "É uma autorização de residência plurianual (até 4 anos) exclusiva da França, projetada para perfis de alto potencial: pesquisadores, artistas, empreendedores e investidores. Permite trabalhar sem uma autorização de trabalho adicional e facilita o reagrupamento familiar imediato."
+        },
+        "q3": {
+          "q": "Quanto tempo demora o processo de visto?",
+          "a": "Os prazos variam de acordo com o destino e o consulado. Para a França, o processo geralmente leva entre 2 e 6 semanas após o agendamento consular. A New Horizons acelera esse processo realizando uma auditoria técnica de seu processo antes do envio."
+        },
+        "q4": {
+          "q": "É obrigatório falar o idioma do país de destino?",
+          "a": "Depende do programa. Na França, não há exigência de idioma inicial para Vistos de Investimento e Passeport Talent; a residência permanente após 5 anos requer um nível A2/B1 em francês. A Espanha e Portugal também têm requisitos graduais. Nossos consultores explicarão exatamente o que se aplica ao seu caso."
+        },
+        "q5": {
+          "q": "O que devo fazer ao chegar ao meu destino com meu visto?",
+          "a": "Na França, a maioria dos vistos VLS-TS deve ser validada junto ao OFII (Gabinete Francês de Imigração e Integração) nos primeiros 3 meses. Cada país tem as suas próprias etapas de chegada; nós o acompanhamos e gerenciamos todos esses procedimentos em seu nome."
+        },
+        "q6": {
+          "q": "O que acontece se meu visto for negado?",
+          "a": "Temos uma equipe jurídica especializada em recursos administrativos. Na França, atuamos perante a CRRV (Comissão de Recursos contra Decisões de Recusa de Visto) em Nantes. Nosso sistema de revisão de 3 camadas reduz significativamente o risco de rejeição antes do envio."
+        }
+      }
     },
     "reviews": {
-      "title": "Avaliações de Clientes",
-      "description": "Veja o que dizem nossos clientes que concluíram com sucesso sua jornada de imigração."
+      "title": "Histórias Reais, Vidas Transformadas",
+      "description": "Mais de 16.000 pessoas já construíram sua nova vida na França com a New Horizons. Leia as suas histórias e descubra o que é possível para você."
     },
     "about": {
-      "title": "Sobre Nós",
-      "description": "Saiba mais sobre nossa missão, valores e compromisso em ajudar você a alcançar seus objetivos de imigração."
+      "title": "Nossa Experiência na França",
+      "description": "Conheça nossa equipe especializada e descubra nosso compromisso com o seu sucesso na França.",
+      "hero": {
+        "badge": "Nosso Compromisso",
+        "title": "Liderando o Seu Caminho para a França",
+        "description": "Combinamos anos de experiência jurídica com um foco apaixonado em ajudar cidadãos globais a se estabelecerem no coração da Europa."
+      },
+      "story": {
+        "title": "Nossa História",
+        "paragraph1": "O que começou como uma empresa de consultoria jurídica internacional evoluiu para a principal autoridade em mobilidade para a França.",
+        "paragraph2": "Entendemos que a mudança para outro país não é apenas um processo administrativo — é um projeto de vida. É por isso que aperfeiçoamos nossa metodologia para gerenciar vistos e residência com uma taxa de sucesso inigualável.",
+        "paragraph3": "Nossa presença constante nas Préfectures e nosso forte relacionamento com as autoridades consulares nos permitem oferecer uma vantagem estratégica aos nossos clientes."
+      },
+      "why": {
+        "title": "O Que nos Diferencia",
+        "expertTitle": "Especialistas Jurídicos",
+        "expertDesc": "Especializados exclusivamente no Código Francês de Entrada e Residência de Estrangeiros (CESEDA).",
+        "adminTitle": "Relações Administrativas",
+        "adminDesc": "Gestão direta e fluida com as Préfectures e o Ministério do Interior.",
+        "humanTitle": "Acompanhamento Humano",
+        "humanDesc": "Você não é apenas um número de processo. Tratamos o seu caso com a importância que o seu futuro merece.",
+        "speedTitle": "Agilidade Processual",
+        "speedDesc": "Maximizamos os tempos de resposta através de uma preparação impecável de documentos.",
+        "trustTitle": "Confiança Transparente",
+        "trustDesc": "Clareza total sobre honorários e possibilidades reais de sucesso desde a primeira consulta.",
+        "globalTitle": "Visão Global",
+        "globalDesc": "Compreendemos as necessidades únicas dos expatriados de todas as partes do mundo."
+      }
     }
   },
   "payment": {
-    "title": "Pagamento Realizado",
-    "description": "New Horizons Immigration Law",
+    "title": "Serviço Confirmado",
+    "description": "New Horizons França",
     "amount": "Valor",
     "customer": "Cliente",
-    "service": "Serviço",
+    "service": "Categoria de Visto",
     "transactionID": "ID da Transação",
     "date": "Data",
-    "paymentMethod": "Método de Pagamento",
+    "paymentMethod": "Método",
     "status": "Status",
-    "btnPrint": "Imprimir",
+    "btnPrint": "Imprimir Recibo",
     "btnBack": "Voltar ao Início"
   },
   "validation": {
-    "errorsDetected": "Erros detectados",
-    "paypalError": "Ocorreu um erro no processo de pagamento com PayPal."
+    "errorsDetected": "Erros de Validação",
+    "paypalError": "Erro no processamento do PayPal."
   }
 }

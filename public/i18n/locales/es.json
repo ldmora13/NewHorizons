@@ -161,6 +161,16 @@
       "trustDesc": "Sin letra pequeña. Te explicamos exactamente lo que incluye tu plan, cuánto tiempo tomará y qué esperar en cada etapa, con actualizaciones en tiempo real de tu expediente.",
       "globalTitle": "Presencia Internacional",
       "globalDesc": "Atendemos clientes desde más de 40 países. Con oficinas en Miami, Madrid y París, entendemos tu contexto cultural y legal de origen, facilitando toda la logística transfronteriza."
+    },
+    "team": {
+      "badge": "Las personas detrás de tu proceso",
+      "title": "Nuestro Equipo de Especialistas",
+      "description": "Nuestro equipo de abogados de inmigración francesa y especialistas en reubicación ha guiado a más de 500 familias a través del proceso de visa y residencia",
+      "director": "Director de Servicios Legales",
+      "administrative": "Experto en Derecho Administrativo",
+      "consular": "Especialista en Procedimientos Consulares",
+      "manager": "Gerente de Reubicación",
+      "end": "Y muchos más que han ayudado a nuestros clientes a lograr su sueño de vivir en Francia."
     }
   },
   "countries": {

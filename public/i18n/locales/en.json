@@ -161,6 +161,16 @@
       "trustDesc": "No fine print. We explain exactly what your plan includes, how long it will take, and what to expect at each stage, with real-time updates on your file.",
       "globalTitle": "International Presence",
       "globalDesc": "We serve clients from over 40 countries. With offices in Miami, Madrid, and Paris, we understand your cultural and legal background, facilitating all cross-border logistics."
+    },
+    "team": {
+      "badge": "The people behind your journey",
+      "title": "Our Specialists Team",
+      "description": "Our team of French immigration attorneys and relocation specialists has guided over 500 families through the visa and residency process",
+      "director": "Director of Legal Services",
+      "administrative": "Administrative Law Expert",
+      "consular": "Consular Procedure Specialist",
+      "manager": "Recolocation Manager",
+      "end": "And many more who have helped our clients achieve their dream of living in France."
     }
   },
   "countries": {
