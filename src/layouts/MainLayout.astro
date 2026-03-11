@@ -5,6 +5,7 @@ import Footer from '@src/components/Footer.astro';
 import 'glightbox/dist/css/glightbox.min.css';
 import '@src/styles/style.css';
 import BackToTop from '@src/components/BackToTop.astro';
+import ToastNotification from '@src/components/ToastNotification.astro';
 
 const navItems = [
   { label: "Home", href: "/", i18nKey: "common.home" },
@@ -93,6 +94,7 @@ const {
       email="info@newhorizonsimmigrationlaw.org"
       emailI18n="footer.email"
     />
+    <ToastNotification />
     <BackToTop />
 
     <!-- Alpine.js -->

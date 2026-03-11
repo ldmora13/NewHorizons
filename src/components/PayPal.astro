@@ -16,97 +16,175 @@ const paypalClientId = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
   src={`https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=USD`} />
 
 <script>
+  // ─── Helpers ──────────────────────────────────────────────────────────────
+
+  /**
+   * Fetch wrapper that guards against HTML error pages.
+   * Always returns parsed JSON or throws a typed Error.
+   */
+  async function apiFetch(url: string, body: object): Promise<any> {
+    let response: Response;
+
+    try {
+      response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+    } catch (networkErr: any) {
+      // DNS failure, offline, CORS, etc.
+      throw new Error('network: ' + (networkErr?.message || 'Failed to connect to server'));
+    }
+
+    const contentType = response.headers.get('content-type') ?? '';
+    const isJson = contentType.includes('application/json');
+
+    if (!response.ok) {
+      // Try to extract backend error message from JSON body
+      if (isJson) {
+        try {
+          const errBody = await response.json();
+          const detail = errBody?.message || errBody?.error || JSON.stringify(errBody);
+          throw new Error(detail);
+        } catch (parseErr) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+      } else {
+        // Backend returned HTML (Express default error page) — log for dev, show generic to user
+        const html = await response.text();
+        console.error(`[PayPal] Backend error ${response.status}:`, html.slice(0, 400));
+        throw new Error(`HTTP ${response.status}`);
+      }
+    }
+
+    // 2xx but not JSON — shouldn't happen, but guard anyway
+    if (!isJson) {
+      console.error('[PayPal] Unexpected non-JSON 2xx response');
+      throw new Error('Unexpected server response format');
+    }
+
+    return response.json();
+  }
+
+  // ─── Event Listeners ──────────────────────────────────────────────────────
+
   window.addEventListener('init-paypal', (e: any) => {
-    const { programId, adults, children, amount, clientDetails, onApprove, onError } = e.detail;
+    const { programId, amount, adults, children, clientDetails, onApprove, onError } = e.detail;
 
     const wrapper   = document.getElementById('paypal-container-wrapper');
     const container = document.getElementById('paypal-button-container');
-    
     if (!wrapper || !container) return;
-    
-    wrapper.classList.remove('hidden');
-    container.innerHTML = '';
 
-    const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3000/api';
+    wrapper.classList.remove('hidden');
+    container.innerHTML = ''; // clear previous render
+
+    const API_URL = (import.meta as any).env?.PUBLIC_API_URL || 'http://localhost:3000/api';
 
     // @ts-ignore
     if (!window.paypal) {
-      onError(new Error('PayPal SDK not loaded'));
+      (window as any).toast?.error(
+        'PayPal unavailable',
+        'The PayPal SDK failed to load. Please refresh the page.',
+        0
+      );
       return;
     }
 
     // @ts-ignore
     window.paypal.Buttons({
 
+      // ── Create Order ──────────────────────────────────────────────────────
       createOrder: async () => {
-        const response = await fetch(`${API_URL}/public/checkout/init`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ programId, adults, children, amount })
-        });
+        try {
+          const data = await apiFetch(`${API_URL}/public/checkout/init`, {
+            programId,
+            amount,    // "1500.00" — clean string, no commas
+            adults,
+            children,
+          });
 
-        // Guard: si el servidor devuelve HTML (404/500) esto previene el JSON.parse crash
-        const contentType = response.headers.get('content-type') ?? '';
-        if (!response.ok || !contentType.includes('application/json')) {
-          const text = await response.text();
-          console.error('[PayPal] Backend init error:', response.status, text.slice(0, 300));
-          throw new Error(`Order creation failed (HTTP ${response.status})`);
+          if (!data.id) {
+            // PayPal returned success HTTP but missing order id
+            const detail = data?.details?.[0];
+            throw new Error(detail
+              ? `${detail.issue}: ${detail.description}`
+              : 'PayPal did not return an order ID'
+            );
+          }
+
+          return data.id;
+
+        } catch (err: any) {
+          console.error('[PayPal] createOrder failed:', err.message);
+          // Surface to user via checkout's onError handler
+          onError(err);
+          throw err; // must rethrow so PayPal SDK stops the flow
         }
-
-        const orderData = await response.json();
-
-        if (orderData.id) {
-          return orderData.id;
-        }
-
-        const errorDetail = orderData?.details?.[0];
-        throw new Error(
-          errorDetail
-            ? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})`
-            : JSON.stringify(orderData)
-        );
       },
 
+      // ── On Approve ────────────────────────────────────────────────────────
       onApprove: async (data: any) => {
-        const response = await fetch(`${API_URL}/public/checkout/capture`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ orderID: data.orderID, clientDetails })
-        });
+        // Show a "processing" toast while we capture
+        const processingToast = (window as any).toast?.info(
+          'Processing payment…',
+          'Please wait while we confirm your payment.',
+          0 // sticky — we'll dismiss it manually
+        );
 
-        const contentType = response.headers.get('content-type') ?? '';
-        if (!response.ok || !contentType.includes('application/json')) {
-          const text = await response.text();
-          console.error('[PayPal] Backend capture error:', response.status, text.slice(0, 300));
-          throw new Error(`Capture failed (HTTP ${response.status})`);
+        try {
+          const transaction = await apiFetch(`${API_URL}/public/checkout/capture`, {
+            orderID: data.orderID,
+            clientDetails,
+          });
+
+          // Dismiss processing toast
+          processingToast?.classList.add('toast-exit');
+
+          if (transaction.status === 'SUCCESS' || transaction.status === 'COMPLETED') {
+            (window as any).toast?.success(
+              'Payment confirmed!',
+              'Redirecting to your receipt…',
+              3000
+            );
+            onApprove(transaction);
+          } else {
+            const detail = transaction?.details?.[0];
+            throw new Error(detail
+              ? `${detail.issue}: ${detail.description}`
+              : `Unexpected status: ${transaction.status}`
+            );
+          }
+
+        } catch (err: any) {
+          processingToast?.classList.add('toast-exit');
+          console.error('[PayPal] capture failed:', err.message);
+          onError(err);
         }
+      },
 
-        const transaction = await response.json();
-
-        if (transaction.status === 'SUCCESS' || transaction.status === 'COMPLETED') {
-          onApprove(transaction);
-        } else {
-          const errorDetail = transaction?.details?.[0];
-          throw new Error(
-            errorDetail
-              ? `${errorDetail.issue} ${errorDetail.description} (${transaction.debug_id})`
-              : JSON.stringify(transaction)
-          );
-        }
+      // ── SDK-level cancel / error ───────────────────────────────────────────
+      onCancel: () => {
+        (window as any).toast?.warning(
+          'Payment cancelled',
+          'No charge was made. You can try again whenever you\'re ready.',
+          6000
+        );
       },
 
       onError: (err: any) => {
         console.error('[PayPal] SDK error:', err);
-        onError(err);
-      }
+        onError(new Error(typeof err === 'string' ? err : 'PayPal encountered an unexpected error'));
+      },
 
     }).render('#paypal-button-container');
   });
 
+  // ─── Reset ────────────────────────────────────────────────────────────────
   window.addEventListener('reset-paypal', () => {
     const wrapper   = document.getElementById('paypal-container-wrapper');
     const container = document.getElementById('paypal-button-container');
-    if (wrapper)    wrapper.classList.add('hidden');
-    if (container)  container.innerHTML = '<div class="text-center text-white/50 text-sm animate-pulse">Initializing PayPal...</div>';
+    if (wrapper)   wrapper.classList.add('hidden');
+    if (container) container.innerHTML =
+      '<div class="text-center text-white/50 text-sm animate-pulse">Initializing PayPal...</div>';
   });
 </script>

@@ -75,7 +75,7 @@ const {
               class="w-full rounded-xl bg-black/30 border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition appearance-none"
             >
               {programs.map((program) => (
-                <option value={program.id} data-label={program.label}>
+                <option value={program.id} data-label={program.label} data-price={program.description || '0'}>
                   {program.id} - {program.label}
                 </option>
               ))}
@@ -355,6 +355,31 @@ const {
       };
     }
 
+    // ─── Error message resolver ─────────────────────────────────────────────
+    // Maps backend HTTP errors and PayPal SDK errors to user-friendly messages.
+    function resolvePayPalError(err: any): string {
+      const msg: string = (err?.message || '').toLowerCase();
+
+      // Backend 400s we send deliberately
+      if (msg.includes('invalid amount') || msg.includes('400'))
+        return 'The amount entered is invalid. Please go back and try again.';
+      if (msg.includes('invalid program'))
+        return 'The selected program is not available. Please refresh and try again.';
+
+      // PayPal / network
+      if (msg.includes('paypal') && msg.includes('order'))
+        return 'PayPal could not create the order. Please try again in a moment.';
+      if (msg.includes('capture') || msg.includes('500'))
+        return 'The payment was approved but could not be captured. Please contact support with your order reference.';
+      if (msg.includes('network') || msg.includes('failed to fetch'))
+        return 'Network error. Please check your connection and try again.';
+      if (msg.includes('cancelled') || msg.includes('closed'))
+        return 'Payment was cancelled. You can try again whenever you\'re ready.';
+
+      // Generic fallback
+      return err?.message || 'An unexpected error occurred. Please try again or contact support.';
+    }
+
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
       
@@ -378,17 +403,17 @@ const {
       if (isNaN(adults) || adults < 1) errors.push(getTranslation('checkout.validation.atLeastOneAdult'));
       if (isNaN(children) || children < 0) errors.push(getTranslation('checkout.validation.childrenCannotBeNegative'));
 
-      // Validate amount BEFORE showing PayPal
-      const calc = calculateTotal();
-      if (!calc.customAmount || calc.customAmount <= 0) {
-        errors.push(getTranslation('checkout.validation.amountRequired') || 'Please enter a valid investment amount.');
-      }
-
       if (errors.length > 0) {
-        const errorTitle = getTranslation('validation.errorsDetected') || 'Errors detected:';
-        alert(errorTitle + '\n\n- ' + errors.join('\n- '));
+        const title = getTranslation('validation.errorsDetected') || 'Please fix the following:';
+        (window as any).toast?.error(title, errors.join(' · '), 7000);
+        // Scroll to first invalid field
+        const firstInvalid = form.querySelector(':invalid') as HTMLElement;
+        firstInvalid?.focus();
+        firstInvalid?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
+
+      const calc = calculateTotal();
 
       // Store data temporarily
       currentTransaction = {
@@ -431,16 +456,34 @@ const {
         summaryTotal.textContent = formattedTotal;
       }
 
+      // Validate amount after fields are confirmed valid
+      if (!calc.customAmount || calc.customAmount <= 0) {
+        (window as any).toast?.error(
+          'Invalid amount',
+          'Please enter a valid investment amount greater than $0.',
+          6000
+        );
+        document.getElementById('custom-amount')?.focus();
+        return;
+      }
+
       // Visual state update
       if (summaryContent) summaryContent.style.opacity = '1';
       if (summaryPlaceholder) summaryPlaceholder.classList.add('hidden');
-      
+
+      // Notify user PayPal is loading
+      (window as any).toast?.info(
+        'Opening payment',
+        'Please complete your payment in the PayPal window.',
+        4000
+      );
+
       // Initialize PayPal via Custom Event
-      // amount is a clean number — no commas, ready for backend parseFloat
+      // amount is a clean number string — no commas, ready for backend parseFloat
       window.dispatchEvent(new CustomEvent('init-paypal', {
         detail: {
           programId: calc.programId,
-          amount: calc.total.toFixed(2),   // ← "1500.00" — no commas, no ambiguity
+          amount: calc.total.toFixed(2), // e.g. "1500.00" — no commas
           adults: calc.adults,
           children: calc.children,
           clientDetails: {
@@ -451,7 +494,7 @@ const {
           },
 
           onApprove: (transaction: any) => {
-            // Build success payload and redirect — completely discards checkout state
+            // Build payload and redirect — sessionStorage is tab-scoped, never in URL
             const successPayload = {
               ticketId:      transaction.ticketId,
               paypalOrderId: transaction.payment?.paypalOrderId ?? '',
@@ -468,14 +511,14 @@ const {
               clientName:    currentTransaction.client?.fullName ?? '',
               destination:   'France',
             };
-            // sessionStorage: tab-scoped, never in URL, consumed once by success page
             sessionStorage.setItem('nh_tx_success', JSON.stringify(successPayload));
             window.location.href = '/payment-success';
           },
+
           onError: (err: any) => {
-            console.error('PayPal Integration Error:', err);
-            const errorMsg = getTranslation('validation.paypalError') || 'An error occurred with the PayPal payment process.';
-            alert(errorMsg + ' ' + err.message);
+            console.error('[Checkout] PayPal error:', err);
+            const userMessage = resolvePayPalError(err);
+            (window as any).toast?.error('Payment failed', userMessage, 0); // sticky
           }
         }
       }));
