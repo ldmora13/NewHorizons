@@ -205,6 +205,66 @@
   "sponsor": {
     "title": "Reconocido por"
   },
+  "family": {
+    "badge": "El beneficio principal de tu visa",
+    "title1": "Tu familia te",
+    "title2": "acompaña.",
+    "title3": "Desde el primer día.",
+    "subtitle": "Todos nuestros programas garantizan el traslado de tu núcleo familiar. Tu cónyuge e hijos menores obtienen su permiso de residencia",
+    "subtitle2": "a partir del tercer mes de tu llegada a Francia", 
+    "subtitle3": " — con acceso total al sistema de salud y educativo.",
+    "step1":{
+      "title": "Tu llegada a Francia",
+      "desc": "Inicias tu proyecto con tu permiso de residencia en regla."
+    },
+    "step2":{
+      "title": "Mes 3 — Trámites familiares",
+      "desc": "Tu cónyuge e hijos inician su proceso de residencia simplificado."
+    },
+    "step3":{
+      "title": "Vida familiar en Francia",
+      "desc": "Residencia propia para todos, con acceso a salud universal y educación pública."
+    },
+    "cta": "Consulta el proceso familiar",
+
+    "card1":{
+      "title": "Cónyuge incluido",
+      "desc": "Tu pareja recibe un permiso de residencia que permite trabajar legalmente desde el primer día."
+    },
+    "card2":{
+      "title": "Hijos menores de 18",
+      "desc": "Escolarización gratuita y cobertura sanitaria completa desde su llegada."
+    },
+    "card3":{
+      "title": "Proceso al",
+      "title2": " 3er mes",
+      "desc": "Olvídate de esperar años. A los 90 días de tu llegada, iniciamos el proceso oficial ante la Préfecture. Gestionamos todo el papeleo por ti."
+    },
+    "card4":{
+      "title": "Permiso de trabajo automático",
+      "desc": "Bajo la modalidad Passeport Talent, el cónyuge no necesita tramitar permisos de trabajo adicionales."
+    },
+    "card5":{
+      "title": "Salud y educación",
+      "desc": "Alta inmediata en la Sécurité Sociale y acceso a la red de colegios franceses sin coste."
+    },
+    "stat1":{
+      "value": "3 meses",
+      "label": "para iniciar el proceso"
+    },
+    "stat2":{
+      "value": "100%",
+      "label": "de programas familiares"
+    },
+    "stat3":{
+      "value": "+16k",
+      "label": "familias establecidas"
+    },
+    "stat4":{
+      "value": "4 años",
+      "label": "residencia Passeport Talent"
+    }
+  },
   "checkout": {
     "title": "Inicia tu Proyecto Francés",
     "destination": "Destino Final",

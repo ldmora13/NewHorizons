@@ -206,6 +206,53 @@
   "sponsor": {
     "title": "Reconhecido por"
   },
+  "family": {
+    "badge": "O maior benefício do seu visto",
+    "title1": "Sua família vem",
+    "title2": "com você.",
+    "title3": "Desde o primeiro dia.",
+    "subtitle": "Todos os nossos programas incluem o reagrupamento familiar completo. Seu cônjuge e filhos menores podem solicitar a residência",
+    "subtitle2": "a partir do terceiro mês da sua chegada à França",
+    "subtitle3": " — com acesso total ao sistema de saúde e educação.",
+    "step1": {
+      "title": "Você chega à França",
+      "desc": "Inicie sua nova vida com toda a documentação de residência em dia."
+    },
+    "step2": {
+      "title": "Mês 3 — Pedido de reagrupamento",
+      "desc": "Seu cônjuge e filhos já podem tramitar o visto de reagrupamento familiar."
+    },
+    "step3": {
+      "title": "Sua família com você na França",
+      "desc": "Com permissão própria, acesso a escolas públicas, saúde e todo o sistema social europeu."
+    },
+    "cta": "Consulte o processo para sua família",
+    "card1": {
+      "title": "Cônjuge incluso",
+      "desc": "Seu parceiro(a) obtém autorização de residência própria, com permissão de trabalho desde o primeiro dia."
+    },
+    "card2": {
+      "title": "Filhos menores de 18",
+      "desc": "Acesso a escolas públicas gratuitas e ao sistema de saúde universal francês desde a chegada."
+    },
+    "card3": {
+      "title": "Reagrupamento no",
+      "title2": " 3º mês",
+      "desc": "Sem esperas de anos. Aos 3 meses de chegada, você já pode iniciar o processo oficial na Préfecture. Nós cuidamos de tudo."
+    },
+    "card4": {
+      "title": "Sem vistos de trabalho extras",
+      "desc": "O Passeport Talent inclui autorização automática de trabalho para o cônjuge."
+    },
+    "card5": {
+      "title": "Saúde e Educação Pública",
+      "desc": "Acesso à Sécurité Sociale e escolas francesas — sem custos adicionais."
+    },
+    "stat1": { "value": "3 meses", "label": "para iniciar o processo" },
+    "stat2": { "value": "100%", "label": "programas incluem família" },
+    "stat3": { "value": "+16k", "label": "famílias estabelecidas" },
+    "stat4": { "value": "4 anos", "label": "visto renovável Passeport Talent" }
+  },
   "checkout": {
     "title": "Inicie Seu Projeto na França",
     "destination": "Destino Alvo",

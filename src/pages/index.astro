@@ -7,6 +7,7 @@ import WhySection from "@src/components/WhySection.astro";
 import MainLayout from "@src/layouts/MainLayout.astro";
 import Map from "@src/components/Map.astro";
 import Sponsors from "@src/components/Sponsors.astro";
+import FamilySection from "@src/components/FamilySection.astro";
 ---
 
 <MainLayout
@@ -44,11 +45,13 @@ import Sponsors from "@src/components/Sponsors.astro";
         },
       ]}
   />
-  <Map />
   <WhySection title="¿Por qué New Horizons es la elección correcta?" />
+  <Map />
+  <FamilySection />
   <CountriesSection />
   <Sponsors />
   <AboutSection />
+  
   <CtaSection
     title="¿Listo para empezar tu proceso hacia Francia?"
     description="Más de 16,000 familias ya lograron establecerse con nuestra guía. Agenda una consulta de 30 minutos y descubre en una sola llamada si calificas y qué programa te corresponde."

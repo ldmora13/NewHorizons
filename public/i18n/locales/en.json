@@ -204,6 +204,53 @@
   "sponsor": {
     "title": "Recognized by"
   },
+  "family": {
+    "badge": "The ultimate benefit of your visa",
+    "title1": "Your family joins",
+    "title2": "you.",
+    "title3": "From day one.",
+    "subtitle": "All our programs include full family reunification. Your spouse and minor children can apply for their residence permit",
+    "subtitle2": "as early as your third month in France",
+    "subtitle3": " — with full access to the healthcare and education systems.",
+    "step1": {
+      "title": "You arrive in France",
+      "desc": "Start your new life with a valid residence permit from the start."
+    },
+    "step2": {
+      "title": "Month 3 — Family Application",
+      "desc": "Your spouse and children are now eligible to process their reunification visa."
+    },
+    "step3": {
+      "title": "Living together in France",
+      "desc": "With their own permits, access to public schools, healthcare, and the European social system."
+    },
+    "cta": "Check the process for your family",
+    "card1": {
+      "title": "Spouse included",
+      "desc": "Your partner receives their own residence permit, including work authorization from day one."
+    },
+    "card2": {
+      "title": "Children under 18",
+      "desc": "Access to free public schooling and the French universal healthcare system upon arrival."
+    },
+    "card3": {
+      "title": "Reunification from",
+      "title2": " Month 3",
+      "desc": "No need to wait for years. Three months after your arrival, you can start the official process with the Prefecture. We handle all the paperwork."
+    },
+    "card4": {
+      "title": "No extra work permit",
+      "desc": "The Passeport Talent automatically grants work authorization to your spouse."
+    },
+    "card5": {
+      "title": "Public Health & Education",
+      "desc": "Full access to the 'Sécurité Sociale' and French public schools — at no extra cost."
+    },
+    "stat1": { "value": "3 months", "label": "to start reunification" },
+    "stat2": { "value": "100%", "label": "programs include family" },
+    "stat3": { "value": "+16k", "label": "settled families" },
+    "stat4": { "value": "4 years", "label": "renewable permit (Passeport Talent)" }
+  },
   "checkout": {
     "title": "Start Your French Project",
     "destination": "Target Destination",

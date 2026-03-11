@@ -204,6 +204,53 @@
   "sponsor": {
     "title": "Reconnu par"
   },
+  "family": {
+    "badge": "L'avantage majeur de votre visa",
+    "title1": "Votre famille vous",
+    "title2": "accompagne.",
+    "title3": "Dès le premier jour.",
+    "subtitle": "Tous nos programmes incluent le regroupement familial complet. Votre conjoint et vos enfants mineurs peuvent demander leur titre de séjour",
+    "subtitle2": "dès le troisième mois de votre arrivée en France",
+    "subtitle3": " — avec un accès total aux systèmes de santé et d'éducation.",
+    "step1": {
+      "title": "Votre arrivée en France",
+      "desc": "Démarrez votre nouvelle vie avec un titre de séjour en règle dès votre arrivée."
+    },
+    "step2": {
+      "title": "Mois 3 — Demande de regroupement",
+      "desc": "Votre conjoint et vos enfants peuvent entamer les démarches de regroupement familial."
+    },
+    "step3": {
+      "title": "Votre vie de famille en France",
+      "desc": "Titre de séjour individuel, accès aux écoles publiques, à la santé et au système social européen."
+    },
+    "cta": "Consulter la procédure familiale",
+    "card1": {
+      "title": "Conjoint inclus",
+      "desc": "Votre partenaire obtient son propre titre de séjour, avec autorisation de travailler dès le premier jour."
+    },
+    "card2": {
+      "title": "Enfants de moins de 18 ans",
+      "desc": "Accès gratuit aux écoles publiques et au système de santé universel dès leur arrivée."
+    },
+    "card3": {
+      "title": "Regroupement dès le",
+      "title2": " 3ème mois",
+      "desc": "Pas besoin d'attendre des années. Dès 3 mois de présence, lancez la procédure officielle auprès de la Préfecture. Nous gérons chaque document."
+    },
+    "card4": {
+      "title": "Accès au travail simplifié",
+      "desc": "Le Passeport Talent inclut une autorisation de travail automatique pour le conjoint."
+    },
+    "card5": {
+      "title": "Santé et éducation publique",
+      "desc": "Accès à la Sécurité Sociale et aux établissements publics français — sans frais supplémentaires."
+    },
+    "stat1": { "value": "3 mois", "label": "pour le regroupement" },
+    "stat2": { "value": "100%", "label": "programmes éligibles" },
+    "stat3": { "value": "+16k", "label": "familles installées" },
+    "stat4": { "value": "4 ans", "label": "durée du Passeport Talent" }
+  },
   "checkout": {
     "title": "Démarrez votre Projet Français",
     "destination": "Destination Cible",
