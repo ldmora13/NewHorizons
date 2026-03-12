@@ -9,6 +9,9 @@ export default defineConfig({
   site: 'https://newhorizonsimmigrationlaw.org',
   base: '/',
   output: 'static',
+  build: {
+    inlineStylesheets: 'always',
+  },
 
   integrations: [
     icon({

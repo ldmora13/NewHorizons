@@ -2,6 +2,11 @@
 import Header from '@src/components/Header.astro';
 import Footer from '@src/components/Footer.astro';
 
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
 import 'glightbox/dist/css/glightbox.min.css';
 import '@src/styles/style.css';
 import BackToTop from '@src/components/BackToTop.astro';
@@ -42,13 +47,12 @@ const {
 
     <link rel="canonical" href={Astro.url?.href || "https://newhorizonsimmigrationlaw.org/"} />
     <link rel="icon" type="image/x-icon" href="/img/icon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
 
   <body class="font-sans bg-[#313e52]">
     <Header
       logo={{
-        src: "/img/logo-white.png",
+        src: "/img/logo-white.svg",
         alt: "New Horizons Immigration Law",
         href: "/",
       }}
@@ -124,6 +128,6 @@ const {
     </script>
 
     <!-- i18n Client - Sistema de Internacionalización Estático -->
-    <script is:inline src="/i18n/client.js"></script>
+    <script is:inline src="/i18n/client.js" defer></script>
   </body>
 </html>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
+    "@fontsource/inter": "^5.2.8",
     "@iconify-json/bi": "^1.2.6",
     "@tailwindcss/vite": "^4.1.13",
     "alpinejs": "^3.14.9",
